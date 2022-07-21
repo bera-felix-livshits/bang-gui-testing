@@ -63,7 +63,7 @@ describe('Love Map Controls (Positive Flow) Test 1', () => {
     it(`Click on the Filters Button located to the right of the Analysis Period Dropdown button.`, async function () {
         await relationshipStage.clickFiltersButton();
         let selectedBrands = await relationshipStage.getSelectedBrands()
-        await relationshipStage.clickFiltersButton();
+        await relationshipStage.clickCloseFiltersButton();
         //primary brand comparison
         assert.equal(brandNamesSelectedDuringFlow[0], selectedBrands.primaryBrand);
 

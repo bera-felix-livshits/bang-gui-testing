@@ -2,7 +2,7 @@ module.exports = {
     dropDownXPath: `//div[@class="MuiPaper-root MuiPopover-paper MuiPaper-elevation8 MuiPaper-rounded"]`,
 
     getDisplayedAnalysisPeriodText: async function () {
-        let elems = await $$(`//span[contains(text(),"Analysis Period:")]/following-sibling::span`);
+        let elems = await $$(`//span[contains(text(),"Analysis Period")]/following-sibling::span`);
         console.log(`getDisplayedAnalysisPeriod length => ${elems.length}`)
         return Promise.all(elems.map(async el => {
             await el.waitForDisplayed()
@@ -35,7 +35,7 @@ module.exports = {
     },
 
     getAnalysisPeriodDropdownButton: async function () {
-        let xPath = `//span[contains(text(),"Analysis Period:")]/following-sibling::button`;
+        let xPath = `//span[contains(text(),"Analysis Period")]/following-sibling::button`;
         let elem = await $(xPath);
         await elem.waitForDisplayed();
         return elem;
@@ -50,6 +50,13 @@ module.exports = {
     clickFiltersButton: async function () {
         let filtersButtonXPath = `//button/span[text()="Filters"]`;
         await (await $(filtersButtonXPath)).click();
+    },
+
+    clickCloseFiltersButton: async function (){
+        let closeFiltersButton = await $(`//span[text()="Filters"]/../following-sibling::div/button`);
+        await closeFiltersButton.waitForExist();
+        await closeFiltersButton.waitForDisplayed();
+        await closeFiltersButton.click();
     },
 
     getSelectedBrands: async function () {

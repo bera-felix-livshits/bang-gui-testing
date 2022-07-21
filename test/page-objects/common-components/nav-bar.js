@@ -1,12 +1,12 @@
 const customClick = require('../../utilities/custom-click');
 
 module.exports = {
-    expandingNavBarXpath: "//a[@id='overview']", //"//div[@data-testid='nav-drawer']",
-    headerXpathForMovingFromNavBar: `//div[@id="bera-header-portal"]`,
+    expandingNavBarXpath: "//a[contains(@class,'MuiListItem-button active')]", //"//div[@data-testid='nav-drawer']",
+    headerXpathForMovingFromNavBar: `//div[contains(@class,"MuiToolbar-gutters")]`,
 
 
     generateNavBarXpath: function (textValue) {
-        return `//div[@class='MuiListItemText-root']/span[text()='${textValue}']`;
+        return `//span[text()='${textValue}']`;
     },
 
     clickOnNavbarItem: async function (itemName) {
