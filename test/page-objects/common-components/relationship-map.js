@@ -1,4 +1,5 @@
-const customClick = require('../../utilities/custom-click');
+const customClick = require('../../utilities/custom-click.js');
+const reverseGeoLookup = require('../../utilities/reverse-geo-lookup.js');
 
 module.exports = {
     getLoveMap: async function () {
@@ -121,13 +122,66 @@ module.exports = {
 
     },
 
+    closeSelectionBox: async function(){
+        let cancelButton = await $(`//button/span[text()="Cancel"]`);
+        await cancelButton.waitForExist();
+        await cancelButton.waitForDisplayed();
+        await cancelButton.click();
+    },
+
     doesSelectionExist: async function (isSelected) {
-        let targetParentEl= `//div[text()="Selected Areas"]/following-sibling::div//p[contains(text(),"${isSelected}")]/..`;
+        let targetParentEl = `//div[text()="Selected Areas"]/following-sibling::div//p[contains(text(),"${isSelected}")]/..`;
         let selectedAreaElement = await $(targetParentEl);
         await selectedAreaElement.waitForExist();
         await selectedAreaElement.waitForDisplayed();
         return await selectedAreaElement.isDisplayed();
+    },
+
+    isZoomLevelCheckboxSelected: async function (zoomLevel) {
+        let checkbox = await $(`//input[@type="radio" and @id="${zoomLevel}"]`);
+        await checkbox.waitForExist();
+        await checkbox.waitForDisplayed();
+        return await checkbox.isDisplayed();
+    },
+
+    isBrandPrimary: async function (brandName) {
+        let primarySelectedBrand = await $(`//img[@alt="${brandName}"]`)
+        try {
+            await primarySelectedBrand.waitForExist();
+            await primarySelectedBrand.waitForDisplayed();
+            return await primarySelectedBrand.isDisplayed()
+        } catch (e) {
+            return false;
+        }
+    },
+
+    isLoveMapTitleDisplayed: async function (){
+        loveMapTitleElement = await $(`//span[text()="Love Map"]`);
+        await loveMapTitleElement.waitForExist();
+        await loveMapTitleElement.waitForDisplayed();
+        return await loveMapTitleElement.isDisplayed();
+    },
+
+    getLatLonOfCirclesDrawnOnLoveMap: async function (){
+        
+        let circleElements = await $$(`//div[contains(@data-testid,"-item") and @lat and @lon]`);
+        let drawnCircles = circleElements.map(async el => {
+            let circleObj = {
+                locationName: (await el.getAttribute("data-testid")).replace("-item",''),
+                lat: await el.getAttribute("lat"),
+                lon: await el.getAttribute("lon")
+            }
+            return circleObj;
+        })
+        return await Promise.all(drawnCircles);
+    },
+
+    getLocationOfCircles: async function(){
+        let circles = await this.getLatLonOfCirclesDrawnOnLoveMap();
+        let locations = await Promise.all(circles.map(async circle => {
+            let location = await reverseGeoLookup(circle.lat, circle.lon);
+            return location.address;
+        }));
+        return locations;
     }
-
-
 }

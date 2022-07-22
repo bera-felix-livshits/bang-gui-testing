@@ -88,10 +88,30 @@ describe('Love Map Controls (Positive Flow) Test 1', () => {
     })
 
     it(`try to drag and drop`, async function () {
+        
         await relationshipStage.drawRectangleOnMapCanvasCoveringTheFullMap();
-        let isExisting = await relationshipStage.doesSelectionExist("USA");
+        let loveMap = await relationshipStage.getLoveMap();
+        let isUsaExisting = await relationshipStage.doesSelectionExist("USA");
+        let isElevationSetToCountryCheckboxSelected = await relationshipStage.isZoomLevelCheckboxSelected("country");
+        let isBrandPrimary = await relationshipStage.isBrandPrimary(brandNamesSelectedDuringFlow[0]);
+        let isLoveMapTitleDisplayed = await relationshipStage.isLoveMapTitleDisplayed();
+        let drawnCirclesLocations = await relationshipStage.getLocationOfCircles();
 
-        console.log(`\n\nis usa existing => ${isExisting}\n\n`);
-        assert.equal(isExisting, true);
+        console.log(`drawnCircles => ${JSON.stringify(drawnCirclesLocations, null, 4)}`)
+        console.log(`\n\nis usa existing => ${isUsaExisting}\n\n`);
+        console.log(`\n\n is country checkbox selected => ${isElevationSetToCountryCheckboxSelected}`)
+        console.log(`isBrandPrimary Coleman (active gear) => ${isBrandPrimary}`)
+        console.log(`drawnCirclesLocations.map(el=>el.country) => ${drawnCirclesLocations.map(el=>el.country)}`)
+        console.log(`drawnCirclesLocations.map(el=>el.country).length => ${drawnCirclesLocations.map(el=>el.country).length}`)
+        console.log(`drawnCirclesLocations.map(el=>el.country).includes("United States") => ${drawnCirclesLocations.map(el=>el.country).includes("United States")}`)
+
+        assert.equal(await loveMap.isDisplayed(), true);
+        assert.equal(isUsaExisting, true);
+        assert.equal(isElevationSetToCountryCheckboxSelected, true);
+        assert.equal(isBrandPrimary, true);
+        assert.equal(isLoveMapTitleDisplayed, true);
+        assert.equal(drawnCirclesLocations.map(el=>el.country).includes("United States"), true);
+
+
     })
 })
