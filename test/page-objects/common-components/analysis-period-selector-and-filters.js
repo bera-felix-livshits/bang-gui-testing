@@ -45,13 +45,13 @@ module.exports = {
 
         console.log(`textContentOfElems => ${textContentOfElems}`)
 
-        if (parseInt(date) > parseInt(textContentOfElems[textContentOfElems.length -1])){
-            await(await $(outerBoxXpath + buttonDecadeLeftXPath)).click();
+        if (parseInt(date) > parseInt(textContentOfElems[textContentOfElems.length - 1])) {
+            await (await $(outerBoxXpath + buttonDecadeLeftXPath)).click();
             await this.setYearValue((outerBoxXpath, date));
-        }   
+        }
 
-        if (parseInt(date) < parseInt(textContentOfElems[0])){
-            await(await $(outerBoxXpath + buttonDecadeRightXPath)).click();
+        if (parseInt(date) < parseInt(textContentOfElems[0])) {
+            await (await $(outerBoxXpath + buttonDecadeRightXPath)).click();
             await this.setYearValue((outerBoxXpath, date));
         }
 
@@ -60,13 +60,6 @@ module.exports = {
         await targetEl.click();
 
     },
-
-
-
-
-
-
-
 
     openAnalysisPeriodDropdownIfClosed: async function () {
         let elem = await $(`${this.dropDownXPath}//span[text()="Interval"]`)
@@ -137,14 +130,21 @@ module.exports = {
     clickPrimaryAudienceEditButton: async function () {
         let elem = await $(`//div/span[text()="Primary Audience"]/../following-sibling::div[position()=1]//span[text()="Edit"]`);
         await elem.waitForExist();
-        await elem.waitForDisplayed();
+        await elem.waitForClickable();
+        await elem.click();
+    },
+
+    clickBrandsEditButton: async function () {
+        let elem = await $(`//span[text()="Brands"]/../following-sibling::div[position()="1"]//span[text()="Edit"]`);
+        await elem.waitForExist();
+        await elem.waitForClickable();
         await elem.click();
     },
 
     clickAddFilterToYourAudienceButton: async function () {
         let elem = await $(`//div[text()="Filter your audience"]/../following-sibling::div[position()=1 and @class="ob-audience-section"]//div[@role="button"]`);
         await elem.waitForExist();
-        await elem.waitForDisplayed();
+        await elem.waitForClickable();
         await elem.click();
     },
 
@@ -152,7 +152,7 @@ module.exports = {
         // `//div[@role="button"]//span[text()="Credit Score"]`
         let elem = await $(`//div[@role="button"]//span[text()="${filterName}"]`);
         await elem.waitForExist();
-        await elem.waitForDisplayed();
+        await elem.waitForClickable();
         await elem.click();
     },
 

@@ -12,7 +12,7 @@ let brandNamesSelectedDuringFlow;
 
 const customClick = require('../utilities/custom-click.js');
 const { realpath } = require('fs');
-const analysisPeriodSelector = require('../page-objects/common-components/analysis-period-selector.js');
+const analysisPeriodSelector = require('../page-objects/common-components/analysis-period-selector-and-filters.js');
 
 describe('Love Map Controls (Positive Flow) Test 1', () => {
     it('Login to app.', async () => {
@@ -128,7 +128,7 @@ describe('Love Map Controls (Positive Flow) Test 1', () => {
         assert.equal(drawnCirclesLocations.map(el => el.country).includes("United States"), true);
         assert.equal(drawnCirclesLocations.map(el => el.country).includes("Canada"), false);
         assert.equal(await relationshipStage.isLoveMapTitleDisplayed(), true);
-        
+
         assert.equal(JSON.stringify(brandValuesForCustomAudience) != JSON.stringify(brandValuesForDefaultAudience), true);
     })
 
