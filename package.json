@@ -10,12 +10,14 @@
         "chromedriver": "^103.0.0",
         "dotenv": "^16.0.1",
         "node-fetch": "^2.6.7",
+        "pg": "^8.7.3",
         "wdio-chromedriver-service": "^7.3.2",
         "wdio-image-comparison-service": "^3.1.1",
         "wdio-json-reporter": "^3.0.0",
         "wdio-video-reporter": "^3.2.1"
     },
     "scripts": {
-        "wdio": "wdio run wdio.conf.js"
+        "wdio": "wdio run wdio.conf.js",
+        "wdio:headless": "wdio run wdio.conf-headless.js"
     }
 }

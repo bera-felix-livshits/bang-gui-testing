@@ -1,3 +1,8 @@
 module.exports = async (el) => {
-    await browser.execute("arguments[0].click();", el);
+    browser.execute("arguments[0].click();", el);
+    await new Promise(res => {
+        setTimeout(()=>{
+            res();
+        },200)
+    })
 }

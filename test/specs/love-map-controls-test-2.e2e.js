@@ -22,7 +22,8 @@ describe('Love Map Controls (Positive Flow) Test 1', () => {
     })
 
     it(`Brand Selector - Select the first 5 brands from the list available and click "Next" button`, async function () {
-        await brandSelectorPage.selectFirstFiveBrands();
+        await brandSelectorPage.selectSpecificBrand("Adidas");
+        await brandSelectorPage.selectFirstNButtons(4);
         brandNamesSelectedDuringFlow = await brandSelectorPage.getSelectedBrands();
         await brandSelectorPage.clickNextButton();
     })
@@ -64,6 +65,10 @@ describe('Love Map Controls (Positive Flow) Test 1', () => {
         let selectedBrands = await relationshipStage.getSelectedBrands()
         await relationshipStage.clickCloseFiltersButton();
         //primary brand comparison
+
+        console.log(`brandNamesSelectedDuringFlow => ${JSON.stringify(brandNamesSelectedDuringFlow, null, 4)}`);
+
+        console.log(`selectedBrands => ${JSON.stringify(selectedBrands, null ,4)}`)
         assert.equal(brandNamesSelectedDuringFlow[0], selectedBrands.primaryBrand);
 
         //comparitive set
@@ -73,6 +78,12 @@ describe('Love Map Controls (Positive Flow) Test 1', () => {
         assert.equal(brandNamesSelectedDuringFlow[4], selectedBrands.competitiveSet[3]);
 
     })
+
+
+
+
+
+
 
     it(`Click on the 'Map' button located to the right - top of the page directly below the filters button`, async function () {
         await relationshipStage.clickLoveMapIcon();
@@ -105,8 +116,8 @@ describe('Love Map Controls (Positive Flow) Test 1', () => {
         assert.equal(isBrandPrimary, true);
         assert.equal(isLoveMapTitleDisplayed, true);
         assert.equal(drawnCirclesLocations.map(el=>el.country).includes("United States"), true);
+        assert.equal(drawnCirclesLocations.map(el=>el.country).includes("Canada"), true);
         assert.equal(await relationshipStage.isLoveMapTitleDisplayed(), true);
-
 
     })
 })

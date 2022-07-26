@@ -11,6 +11,8 @@ const relationshipStage = require('../page-objects/relationship-page.js');
 let brandNamesSelectedDuringFlow;
 
 const customClick = require('../utilities/custom-click.js');
+const { realpath } = require('fs');
+const analysisPeriodSelector = require('../page-objects/common-components/analysis-period-selector.js');
 
 describe('Love Map Controls (Positive Flow) Test 1', () => {
     it('Login to app.', async () => {
@@ -59,6 +61,13 @@ describe('Love Map Controls (Positive Flow) Test 1', () => {
         assert.equal(analysisDatesTextValues[1], "2021")
     })
 
+    it(`Click on the 'Map' button located to the right - top of the page directly below the filters button`, async function () {
+        await relationshipStage.clickLoveMapIcon();
+        // let canvasElement = await relationshipStage.getMapCanvas();
+        //get 
+        // await browser.saveElement(canvasElement, "canvasMap-country", {});
+    })
+
     it(`Click on the Filters Button located to the right of the Analysis Period Dropdown button.`, async function () {
         await relationshipStage.clickFiltersButton();
         let selectedBrands = await relationshipStage.getSelectedBrands()
@@ -74,15 +83,19 @@ describe('Love Map Controls (Positive Flow) Test 1', () => {
 
     })
 
-    it(`Click on the 'Map' button located to the right - top of the page directly below the filters button`, async function () {
-        await relationshipStage.clickLoveMapIcon();
-        // let canvasElement = await relationshipStage.getMapCanvas();
-        //get 
-        // await browser.saveElement(canvasElement, "canvasMap-country", {});
+    it(`Create a new audience and confirm that it is applied {Region is set to Alabama}`, async function () {
+        await relationshipStage.clickFiltersButton();
+        await relationshipStage.clickPrimaryAudienceEditButton();
+        await relationshipStage.clickAddFilterToYourAudienceButton();
+
+        await relationshipStage.createAndSelectPrimaryAudience("Test sample", "Region", "Alabama");
+
+        await relationshipStage.clickCloseFiltersButton();
+        await assert.equal(await analysisPeriodSelector.isPrimaryAudienceDisplays("Test sample"), true);
     })
 
     it(`Validate that circles appear for US & Canada`, async function () {
-        
+
         await relationshipStage.drawRectangleOnMapCanvasCoveringTheFullMap();
         let loveMap = await relationshipStage.getLoveMap();
         let isUsaExisting = await relationshipStage.doesSelectionExist("USA");
@@ -90,23 +103,45 @@ describe('Love Map Controls (Positive Flow) Test 1', () => {
         let isBrandPrimary = await relationshipStage.isBrandPrimary(brandNamesSelectedDuringFlow[0]);
         let isLoveMapTitleDisplayed = await relationshipStage.isLoveMapTitleDisplayed();
         let drawnCirclesLocations = await relationshipStage.getLocationOfCircles();
+      
+        let brandValuesForCustomAudience = await relationshipStage.getSelectionMapDataValues("USA");
+        await relationshipStage.clickCancelNewSelectionButton();
 
-        console.log(`drawnCircles => ${JSON.stringify(drawnCirclesLocations, null, 4)}`)
-        console.log(`\n\nis usa existing => ${isUsaExisting}\n\n`);
-        console.log(`\n\n is country checkbox selected => ${isElevationSetToCountryCheckboxSelected}`)
-        console.log(`isBrandPrimary Coleman (active gear) => ${isBrandPrimary}`)
-        console.log(`drawnCirclesLocations.map(el=>el.country) => ${drawnCirclesLocations.map(el=>el.country)}`)
-        console.log(`drawnCirclesLocations.map(el=>el.country).length => ${drawnCirclesLocations.map(el=>el.country).length}`)
-        console.log(`drawnCirclesLocations.map(el=>el.country).includes("United States") => ${drawnCirclesLocations.map(el=>el.country).includes("United States")}`)
+        await relationshipStage.clickFiltersButton();
+        await relationshipStage.clickPrimaryAudienceEditButton();
+        await audienceDetailsPage.selectYourAudienceByValue("All Respondents 18+ US")
+        await audienceDetailsPage.clickSaveAndFinishButton();
+
+         await relationshipStage.drawRectangleOnMapCanvasCoveringTheFullMap();
+        let brandValuesForDefaultAudience = await relationshipStage.getSelectionMapDataValues("USA");
+
+
+        console.log(`brandValuesForCustomAudience => ${JSON.stringify(brandValuesForCustomAudience, null, 4)}`)
+        console.log(`brandValuesForDefaultAudience => ${JSON.stringify(brandValuesForDefaultAudience, null ,4)}`)
+
 
         assert.equal(await loveMap.isDisplayed(), true);
         assert.equal(isUsaExisting, true);
         assert.equal(isElevationSetToCountryCheckboxSelected, true);
         assert.equal(isBrandPrimary, true);
         assert.equal(isLoveMapTitleDisplayed, true);
-        assert.equal(drawnCirclesLocations.map(el=>el.country).includes("United States"), true);
+        assert.equal(drawnCirclesLocations.map(el => el.country).includes("United States"), true);
+        assert.equal(drawnCirclesLocations.map(el => el.country).includes("Canada"), false);
         assert.equal(await relationshipStage.isLoveMapTitleDisplayed(), true);
-
-
+        
+        assert.equal(JSON.stringify(brandValuesForCustomAudience) != JSON.stringify(brandValuesForDefaultAudience), true);
     })
+
 })
+
+// await relationshipStage.selectFilter("Test sample", "Region","Alabama");
+        // await audienceDetailsPage.selectFilterOptions("Test sample", "Region","Alabama");
+
+        // // Use for negative tests - no sample available with first five brands.
+        // // await relationshipStage.selectFilter("Test sample", "Credit Score","Very good (740-799)", "Good (670-739)");
+        // // await audienceDetailsPage.selectFilterOptions("Test sample", "Credit Score","Very good (740-799)", "Good (670-739)");
+        // // Unable to save your audience (check console)
+
+        // await audienceDetailsPage.clickApplyFilterButton();
+        // await audienceDetailsPage.insertNameForAudience("Test sample")
+        // await audienceDetailsPage.clickSaveAndFinishButton();

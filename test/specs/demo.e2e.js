@@ -76,9 +76,14 @@ describe('Love Map Controls (Positive Flow) Test 1', () => {
 
     it(`Click on the 'Map' button located to the right - top of the page directly below the filters button`, async function () {
         await relationshipStage.clickLoveMapIcon();
-        // let canvasElement = await relationshipStage.getMapCanvas();
+        let canvasElement = await relationshipStage.getMapCanvas();
         //get 
-        // await browser.saveElement(canvasElement, "canvasMap-country", {});
+        await browser.saveElement(canvasElement, "canvasMap-country", {});
+    })
+
+    it(`Compare map images`, async function () {
+        let canvasElement = await relationshipStage.getMapCanvas();
+        assert.equal(await browser.checkElement(canvasElement, 'canvasMap-country', {}), 0)
     })
 
     it(`Validate that circles appear for US & Canada`, async function () {
@@ -105,8 +110,7 @@ describe('Love Map Controls (Positive Flow) Test 1', () => {
         assert.equal(isBrandPrimary, true);
         assert.equal(isLoveMapTitleDisplayed, true);
         assert.equal(drawnCirclesLocations.map(el=>el.country).includes("United States"), true);
-        assert.equal(await relationshipStage.isLoveMapTitleDisplayed(), true);
 
 
     })
-})
+},)

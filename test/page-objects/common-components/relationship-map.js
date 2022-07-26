@@ -57,6 +57,11 @@ module.exports = {
         stateElem = await this.getLoveMapCountryRadioButtonStateScale();
         cityElem = await this.getLoveMapCountryRadioButtonCityScale();
         zipElem = await this.getLoveMapCountryRadioButtoZipScale();
+        new Promise(res => {
+            setTimeout(() => {
+                res()
+            }, 2000);
+        })
 
         return elem;
     },
@@ -117,12 +122,12 @@ module.exports = {
         await new Promise(res => {
             setTimeout(() => {
                 res()
-            }, 5000)
+            }, 3000)
         })
 
     },
 
-    closeSelectionBox: async function(){
+    closeSelectionBox: async function () {
         let cancelButton = await $(`//button/span[text()="Cancel"]`);
         await cancelButton.waitForExist();
         await cancelButton.waitForDisplayed();
@@ -135,6 +140,26 @@ module.exports = {
         await selectedAreaElement.waitForExist();
         await selectedAreaElement.waitForDisplayed();
         return await selectedAreaElement.isDisplayed();
+    },
+
+    getSelectionMapDataValues: async function (selection) {
+        let targetParentEl = `//div[text()="Selected Areas"]/following-sibling::div//p[contains(text(),"${selection}")]/..`;
+        let selectedAreaElement = await $(targetParentEl);
+        await selectedAreaElement.waitForExist();
+        await selectedAreaElement.waitForDisplayed();
+        await selectedAreaElement.click();
+
+        let brandDataRootValues = await $$(`//div[contains(@data-testid,"${selection}-item-details")]//p`);
+        let values = await Promise.all(brandDataRootValues.map(async el => {
+            return await el.getText();
+        }))
+        let valuesObj = {};
+        valuesObj[values[0]] = values[1];
+        valuesObj[values[2]] = values[3];
+        valuesObj[values[4]] = values[5];
+        valuesObj[values[6]] = values[7];
+
+        return valuesObj;
     },
 
     isZoomLevelCheckboxSelected: async function (zoomLevel) {
@@ -155,19 +180,19 @@ module.exports = {
         }
     },
 
-    isLoveMapTitleDisplayed: async function (){
+    isLoveMapTitleDisplayed: async function () {
         loveMapTitleElement = await $(`//span[text()="Love Map"]`);
         await loveMapTitleElement.waitForExist();
         await loveMapTitleElement.waitForDisplayed();
         return await loveMapTitleElement.isDisplayed();
     },
 
-    getLatLonOfCirclesDrawnOnLoveMap: async function (){
-        
+    getLatLonOfCirclesDrawnOnLoveMap: async function () {
+
         let circleElements = await $$(`//div[contains(@data-testid,"-item") and @lat and @lon]`);
         let drawnCircles = circleElements.map(async el => {
             let circleObj = {
-                locationName: (await el.getAttribute("data-testid")).replace("-item",''),
+                locationName: (await el.getAttribute("data-testid")).replace("-item", ''),
                 lat: await el.getAttribute("lat"),
                 lon: await el.getAttribute("lon")
             }
@@ -176,7 +201,7 @@ module.exports = {
         return await Promise.all(drawnCircles);
     },
 
-    getLocationOfCircles: async function(){
+    getLocationOfCircles: async function () {
         let circles = await this.getLatLonOfCirclesDrawnOnLoveMap();
         let locations = await Promise.all(circles.map(async circle => {
             let location = await reverseGeoLookup(circle.lat, circle.lon);
