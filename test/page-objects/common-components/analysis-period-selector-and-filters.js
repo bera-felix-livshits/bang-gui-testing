@@ -150,6 +150,11 @@ module.exports = {
 
     selectFilter: async function (filterName) {
         // `//div[@role="button"]//span[text()="Credit Score"]`
+        await new Promise (res => {
+            setTimeout(() => {
+                res()
+            }, 500);
+        })
         let elem = await $(`//div[@role="button"]//span[text()="${filterName}"]`);
         await elem.waitForExist();
         await elem.waitForClickable();

@@ -27,14 +27,12 @@ module.exports = {
     selectFilterOptions: async function (...args) {
         // `//span[text()="Excellent (800 or higher)"]/preceding-sibling::span[position()=0 and @class="MuiIconButton-label"]`
         await Promise.all(args.map(async (arg, i) => {
-            // if (i >= 2) {
-                let elem = await $(`//span[text()="${arg}"]/preceding-sibling::span/span[@class="MuiIconButton-label"]`);
-                await elem.waitForExist();
-                await elem.waitForDisplayed();
-                await elem.click();
-                return true;
-            // }
-            return false;
+            
+            let elem = await $(`//span[text()="${arg}"]/preceding-sibling::span/span[@class="MuiIconButton-label"]`);
+            await elem.waitForExist();
+            await elem.waitForDisplayed();
+            await elem.click();
+
         }))
     },
 
