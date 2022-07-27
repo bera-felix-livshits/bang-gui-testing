@@ -1,4 +1,5 @@
 const dotenv = require('dotenv');
+const pgCleanup = require('./test/utilities/pg-cleanup.js');
 const { join } = require("path");
 
 exports.config = {
@@ -24,7 +25,7 @@ exports.config = {
     // will be called from there.
     //
     specs: [
-        './test/specs/**/*.js'
+        './test/specs/**/*.e2e.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -66,7 +67,7 @@ exports.config = {
                 '--headless',
                 '--disable-dev-shm-usage',
                 '--disable-gpu',
-                '--window-size=1920,1080',
+                '--window-size=2048,1180',
                 '--disable-web-security',
                 'ignore-certificate-errors'
             ],
@@ -102,7 +103,7 @@ exports.config = {
     //
     // If you only want to run your tests until a specific amount of tests have failed use
     // bail (default is 0 - don't bail, run all tests).
-    bail: 0,
+    bail: 1,
     //
     // Set a base URL in order to shorten url command calls. If your `url` parameter starts
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
@@ -133,10 +134,11 @@ exports.config = {
                 // Some options, see the docs for more
                 baselineFolder: join(
                     process.cwd(),
-                    "./test/baseline-images/"
+                    "./test/img-baseline/"
                 ),
-                formatImageName: "{tag}-{logName}-{width}x{height}",
-                screenshotPath: join(process.cwd(), "./tmp/"),
+                // formatImageName: "{tag}-{logName}-{width}x{height}",
+                formatImageName: "{tag}",
+                screenshotPath: join(process.cwd(), "./test/img-compare/"),
                 savePerInstance: true,
                 autoSaveBaseline: true,
                 blockOutStatusBar: true,
@@ -169,7 +171,7 @@ exports.config = {
     framework: 'mocha',
     //
     // The number of times to retry the entire specfile when it fails as a whole
-    // specFileRetries: 1,
+    specFileRetries: 2,
     //
     // Delay in seconds between the spec file retry attempts
     // specFileRetriesDelay: 0,
@@ -255,7 +257,8 @@ exports.config = {
      * @param {Object}         browser      instance of created browser/device session
      */
     before: function (capabilities, specs) {
-        browser.maximizeWindow()
+        browser.maximizeWindow();
+        
     },
     /**
      * Runs before a WebdriverIO command gets executed.
@@ -268,8 +271,9 @@ exports.config = {
      * Hook that gets executed before the suite starts
      * @param {Object} suite suite details
      */
-    // beforeSuite: function (suite) {
-    // },
+    beforeSuite: async function (suite) {
+        await pgCleanup();
+    },
     /**
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
@@ -305,8 +309,9 @@ exports.config = {
      * Hook that gets executed after the suite has ended
      * @param {Object} suite suite details
      */
-    // afterSuite: function (suite) {
-    // },
+    afterSuite: async function (suite) {
+        // await pgCleanup();
+    },
     /**
      * Runs after a WebdriverIO command gets executed
      * @param {String} commandName hook command name
@@ -331,8 +336,9 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that ran
      */
-    // afterSession: function (config, capabilities, specs) {
-    // },
+    afterSession: async function (config, capabilities, specs) {
+        // await pgCleanup();
+    },
     /**
      * Gets executed after all workers got shut down and the process is about to exit. An error
      * thrown in the onComplete hook will result in the test run failing.

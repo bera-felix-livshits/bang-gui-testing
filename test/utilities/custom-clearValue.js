@@ -9,6 +9,6 @@ const sendDeleteUntilEmpty = async (el) =>{
     await browser.keys("\uE017"); //delete
     let value = await el.getAttribute('value')
     if(value != ''){
-        sendDeleteUntilEmpty(el)
+        await sendDeleteUntilEmpty(el)
     }
 }

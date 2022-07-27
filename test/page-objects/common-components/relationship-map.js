@@ -78,8 +78,8 @@ module.exports = {
         let location = await canvasMap.getLocation();
 
         let size = await canvasMap.getSize();
-        let width = size.width; // 1637
-        let height = size.height; //736
+        let width = parseInt(size.width); // 1637
+        let height = parseInt(size.height); //736
         console.log(`Height typeof ${typeof height}`)
         let width64Percent = parseInt(width * 0.64)
         let windowSize = await browser.getWindowSize();
@@ -137,7 +137,11 @@ module.exports = {
     doesSelectionExist: async function (isSelected) {
         let targetParentEl = `//div[text()="Selected Areas"]/following-sibling::div//p[contains(text(),"${isSelected}")]/..`;
         let selectedAreaElement = await $(targetParentEl);
-        await selectedAreaElement.waitForExist();
+        try {
+            await selectedAreaElement.waitForExist();
+        } catch (e) {
+            return false;
+        }
         await selectedAreaElement.waitForDisplayed();
         return await selectedAreaElement.isDisplayed();
     },

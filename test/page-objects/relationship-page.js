@@ -21,7 +21,12 @@ module.exports = {
         let elem = await $(`//button[@title="Love map view tooltip text"]`);
         await elem.waitForExist();
         await elem.waitForDisplayed({ timeout: 5000 });
-        await customClick(elem)
+        await customClick(elem);
+        await new Promise (res => {
+            setTimeout(()=>{
+                res();
+            },1500)
+        })
         // await elem.click();
 
     },
@@ -34,8 +39,8 @@ module.exports = {
 
     createAndSelectPrimaryAudience: async function (...args) {
         console.log('!!! ARGS =>', args);
-        await this.selectFilter(args[1]);
-        let filterOpts = args.slice(2)
+        await this.selectFilter(args[0]);
+        let filterOpts = args.slice(1)
         console.log('filterOpts =>', filterOpts)
         await selectFilterOptions(filterOpts);
 
@@ -45,8 +50,8 @@ module.exports = {
         // Unable to save your audience (check console)
 
         await clickApplyFilterButton();
-        await insertNameForAudience(args[0])
-        await clickSaveAndFinishButton();
+        // await insertNameForAudience(args[0])
+        // await clickSaveAndFinishButton();
     },
 
     clickCancelNewSelectionButton: async function () {

@@ -116,12 +116,6 @@ describe('Love Map Controls (Positive Flow) Test 1', () => {
         assert.equal(await relationshipStage.isLoveMapTitleDisplayed(), true);
 
         assert.equal(JSON.stringify(brandValuesfor2020) != JSON.stringify(brandValuesfor2020_2021), true);
-
-        await new Promise(res => {
-            setTimeout(()=>{
-                res()
-            }, 5000);
-        })
     })
     
 })
