@@ -5,7 +5,7 @@ const { selectFilterOptions, clickApplyFilterButton, insertNameForAudience, clic
 
 module.exports = {
     getRelationshipStageHeader: async function () {
-        let maintXPath = `//*[@id="lc-header-maintain-text" and text()="Maintain"]`;
+        let maintXPath = `//main//span[contains(@class, "MuiTypography-root") and text()="Relationship Stage"]`;
         let elem = await $(maintXPath);
         await elem.waitForDisplayed({ timeout: 5000 });
         return elem;

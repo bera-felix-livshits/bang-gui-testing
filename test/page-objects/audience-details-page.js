@@ -6,7 +6,8 @@ module.exports = {
     },
 
     clickSelectYourAudienceDropdown: async function () {
-        let elem = await $("//div[contains(@class,'MuiInputBase-root')]/*[contains(@class,'MuiSelect-icon')]/..");
+        let elem = await $(`//div[@class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"]`);
+        // let elem = await $("//div[contains(@class,'MuiInputBase-root')]/*[contains(@class,'MuiSelect-icon')]/..");
         await elem.waitForDisplayed();
         await elem.click();
     },
@@ -48,5 +49,11 @@ module.exports = {
         await elem.waitForExist();
         await elem.waitForDisplayed();
         await elem.setValue(audienceName + ' ' + (Date.now()));
+    },
+
+    getSelectedAudience: async function () {
+        let elem = await $(`//div[@class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"]//div[string-length(text()) > 0]`);
+        await elem.waitForDisplayed();
+        return await elem.getText();
     }
 }

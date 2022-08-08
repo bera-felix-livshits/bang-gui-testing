@@ -170,7 +170,7 @@ exports.config = {
     framework: 'mocha',
     //
     // The number of times to retry the entire specfile when it fails as a whole
-    specFileRetries: 2,
+    specFileRetries: 0,
     //
     // Delay in seconds between the spec file retry attempts
     // specFileRetriesDelay: 0,
@@ -200,7 +200,7 @@ exports.config = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout: 60000
+        timeout: 60000 * 10
     },
     //
     // =====
@@ -271,7 +271,10 @@ exports.config = {
      * @param {Object} suite suite details
      */
     beforeSuite: async function (suite) {
-        await pgCleanup();
+        
+        // await pgCleanup();
+
+
     },
     /**
      * Function to be executed before a test (in Mocha/Jasmine) starts.
