@@ -1,11 +1,7 @@
 module.exports = {
     scrapeAllForPrimaryBrand: async function () {
         let activeButtons = await this.getActiveButtons();
-
-
-        let resultsObj =await this.scrapePrimaryBrandForAllActiveRows(activeButtons)
-        console.log('buttonArray.length =>', activeButtons.length);
-        console.log(`resultsObj => ${JSON.stringify(resultsObj, null, 4)}`);
+        return await this.scrapePrimaryBrandForAllActiveRows(activeButtons)
     },
 
     getActiveButtons: async function () {
@@ -37,7 +33,7 @@ module.exports = {
             await firstButton.buttonElement.click();
             let rowHeaderValues = await this.scrapePrimaryBrandDisplayedRow();
             console.log("rowHeaderValues =>", rowHeaderValues);
-            populatedObj[firstButton.buttonText] = {...rowHeaderValues};
+            populatedObj[firstButton.buttonText] = { ...rowHeaderValues };
             populatedObj = await this.scrapePrimaryBrandForAllActiveRows(copiedButtons, populatedObj)
 
         }
@@ -57,7 +53,7 @@ module.exports = {
         let primaryBrand = await (await $(`//tbody/tr[1]/td//div[@class="brand-cell-inline-label"]`)).getText();
         let primaryBrandValueElements = await $$(`//tbody/tr[1]/td[@role="cell" and not(descendant::*)]`);
 
-        let primaryBrandValues = await Promise.all(primaryBrandValueElements.map(async el =>{
+        let primaryBrandValues = await Promise.all(primaryBrandValueElements.map(async el => {
             return await el.getText();
         }))
 
@@ -66,9 +62,9 @@ module.exports = {
             values: {}
         }
 
-        rowHeaderValues.forEach((el,i) => {
+        rowHeaderValues.forEach((el, i) => {
             retObj.values[el] = primaryBrandValues[i]
-        
+
         })
         return retObj;
     }

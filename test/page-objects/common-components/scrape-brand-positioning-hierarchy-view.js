@@ -6,7 +6,6 @@ module.exports = {
     generatePillarsObj: async function () {
         let obj = { children: [] };
         await this.scrapeHierarchyForValues(obj)
-        console.log(`stringifyed =>`, JSON.stringify(obj, null, 4))
         return obj;
     },
 
@@ -15,7 +14,7 @@ module.exports = {
         chainedHeading = chainedHeading.trim();
         let currentLevelPillarHeadings = await this.getPillarHeadingsWithChainedHeading(chainedHeading);
         currentLevelPillarHeadings = currentLevelPillarHeadings.filter(heading => heading.length > 0);
-        let currentHeading = currentLevelPillarHeadings.find(heading => !(existingHeadings.includes(heading))).trim();
+        let currentHeading = currentLevelPillarHeadings.find(heading => !(existingHeadings.includes(heading)));
 
         console.log(`current Level Pillar Headings  =>`, currentHeading)
         if (!!currentHeading) {
@@ -53,24 +52,26 @@ module.exports = {
 
     applyPropertiesToPillarObject: async function (obj, objHeading, chainedHeading) {
 
-        const currentValues = {}
-        currentValues.pillarName = objHeading
-        currentValues.percentage = await this.determinePercentage(objHeading, chainedHeading);
-        currentValues.adjacentText = await this.getAdjacentText(objHeading, chainedHeading);
-        currentValues.readMoreContentHeader = await this.getReadMoreContentHeader(objHeading, chainedHeading);
-        obj.currentValues = currentValues;
+        // const currentValues = {}
+        obj.pillarName = objHeading
+        obj.percentage = await this.determinePercentage(objHeading, chainedHeading);
+        obj.adjacentText = await this.getAdjacentText(objHeading, chainedHeading);
+        obj.readMoreContentHeader = await this.getReadMoreContentHeader(objHeading, chainedHeading);
+        // obj.currentValues = currentValues;
 
     },
 
     getReadMoreContentHeader: async function (objHeading, chainedHeading) {
         let readMoreXpath = `//*[@data-testid="hc-description-${chainedHeading}${camelize(objHeading.replace('/', ''))}-more" and text()="Read more"]`;
         console.log('readMoreXpath =>', readMoreXpath);
+        
         let el = await $(readMoreXpath);
         await el.waitForClickable();
         await el.click();
 
-
-        let textEl = await $(`//iframe[(contains(@style,'overflow-x: hidden'))]/..//span[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'${objHeading.toLowerCase().replace('/', '&').replace('factor', '').trim()}') or contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ-', 'abcdefghijklmnopqrstuvwxyz '),'${objHeading.toLowerCase().replace('factor', '').trim()}') or  contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ-', 'abcdefghijklmnopqrstuvwxyz '),'${objHeading.toLowerCase().replace('factor', '').trim()}')]`);
+        await new Promise(res => { setTimeout(() => { res() }, 100) })
+        // let textEl = await $(`//iframe[(contains(@style,'overflow-x: hidden'))]/..//span[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'${objHeading.toLowerCase().replace('/', '&').replace('factor', '').trim()}') or contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ-', 'abcdefghijklmnopqrstuvwxyz '),'${objHeading.toLowerCase().replace('factor', '').trim()}') or  contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ-', 'abcdefghijklmnopqrstuvwxyz '),'${objHeading.toLowerCase().replace('factor', '').trim()}')]`);
+        let textEl = await $(`//iframe[(contains(@style,'overflow-x: hidden'))]/..//span[string-length(text()) > 0]`);
         await textEl.waitForDisplayed();
         let text = await textEl.getText();
         // .//right here trying to find lower case
@@ -82,7 +83,8 @@ module.exports = {
         // await closeButtonEl.click()
         await customClick(closeButtonEl);
 
-        return text === objHeading ? true : false;
+        // return text === objHeading ? true : false;
+        return (text.length > 0);
     },
 
     getAdjacentText: async function (objHeader, chainedHeader) {
@@ -120,7 +122,7 @@ module.exports = {
         fgWidth = await fgRect.getAttribute("width");
         bgWidth = await bgRect.getAttribute("width");
 
-        return parseInt(fgWidth / bgWidth * 1000) / 10;
+        return Math.round(fgWidth / bgWidth * 1000) / 10;
     },
 
     getPillarHeadings: async function () {

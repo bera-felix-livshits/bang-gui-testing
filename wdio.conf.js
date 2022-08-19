@@ -257,7 +257,6 @@ exports.config = {
      */
     before: function (capabilities, specs) {
         browser.maximizeWindow();
-        
     },
     /**
      * Runs before a WebdriverIO command gets executed.

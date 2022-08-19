@@ -1,12 +1,14 @@
 const assert = require('assert');
 
-const beraLoginPage = require("../page-objects/bera-login-page.js");
-const landingPage = require("../page-objects/landing-page.js");
-const brandSelectorPage = require("../page-objects/brand-selector-page.js");
-const audienceDetailsPage = require("../page-objects/audience-details-page.js");
-const navBar = require('../page-objects/common-components/nav-bar.js');
-const overviewPage = require("../page-objects/overview-page.js");
-const brandPositioningPage = require("../page-objects/brand-positioning-page.js");
+const beraLoginPage = require("../../page-objects/bera-login-page.js");
+const landingPage = require("../../page-objects/landing-page.js");
+const brandSelectorPage = require("../../page-objects/brand-selector-page.js");
+const audienceDetailsPage = require("../../page-objects/audience-details-page.js");
+const navBar = require('../../page-objects/common-components/nav-bar.js');
+const overviewPage = require("../../page-objects/overview-page.js");
+const brandPositioningPage = require("../../page-objects/brand-positioning-page.js");
+
+let tableObj, hierarchyObj;
 
 describe('Love Map Controls (Positive Flow) Test 1', () => {
     it('Login to app.', async () => {
@@ -47,10 +49,23 @@ describe('Love Map Controls (Positive Flow) Test 1', () => {
         assert.equal(isBannerDisplayed, true)
     })
 
+    it(`Scrape hieararchy for values`, async function () {
+        hierarchyObj = await brandPositioningPage.generatePillarsObj();
+        console.log('!!! hierarchy obj =>', JSON.stringify(hierarchyObj, null, 4));
+    })
+
+    it(`Scrape table for values`, async function () {
+        await brandPositioningPage.clickTableViewButton();
+        tableObj = await brandPositioningPage.scrapeAllForPrimaryBrand();
+        console.log(`table obj => `, JSON.stringify(tableObj, null, 4));
+    })
+
     it(`Verify that the page loads the Hierarchy Chart view`, async function () {
-        // let isPurposeChartDisplayed = brandPositioningPage;
-        let emotionalPercentage = await brandPositioningPage.getEmotionalChartDisplayedPercentage();
-        let purposePercentage = await brandPositioningPage.getPurposeChartDisplayedPercentage();
+        let purposeNode = hierarchyObj.children.find(el => el.pillarName == "Purpose");
+        let emotionalNode = hierarchyObj.children.find(el => el.pillarName == "Emotional");
+
+        let purposePercentage = purposeNode.percentage;
+        let emotionalPercentage = emotionalNode.percentage;
 
         console.log('emotionalPercentage =>', emotionalPercentage)
         console.log('purposePercentage =>', purposePercentage)
