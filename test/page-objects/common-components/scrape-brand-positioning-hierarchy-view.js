@@ -4,6 +4,7 @@ const customClick = require('../../utilities/custom-click.js');
 module.exports = {
 
     generatePillarsObj: async function () {
+        await new Promise(res => { setTimeout(() => { res() }, 200) })
         let obj = { children: [] };
         await this.scrapeHierarchyForValues(obj)
         return obj;
@@ -56,15 +57,24 @@ module.exports = {
         obj.pillarName = objHeading
         obj.percentage = await this.determinePercentage(objHeading, chainedHeading);
         obj.adjacentText = await this.getAdjacentText(objHeading, chainedHeading);
-        obj.readMoreContentHeader = await this.getReadMoreContentHeader(objHeading, chainedHeading);
+        let [readMoreContent, paragraphContent] = await this.getReadMoreContentHeader(objHeading, chainedHeading)
+        obj.readMoreContentHeader = readMoreContent.length > 0;
+        obj.readMoreContentHeaderValue = readMoreContent;
+        obj.paragraphContent = paragraphContent;
+        obj.color = await this.getPillarColor(objHeading, chainedHeading);
         // obj.currentValues = currentValues;
 
+    },
+
+    getPillarColor: async function (objHeading, chainedHeading) {
+        let fgRect = await this.getFgRect(objHeading, chainedHeading);
+        return await fgRect.getCSSProperty('fill');
     },
 
     getReadMoreContentHeader: async function (objHeading, chainedHeading) {
         let readMoreXpath = `//*[@data-testid="hc-description-${chainedHeading}${camelize(objHeading.replace('/', ''))}-more" and text()="Read more"]`;
         console.log('readMoreXpath =>', readMoreXpath);
-        
+
         let el = await $(readMoreXpath);
         await el.waitForClickable();
         await el.click();
@@ -73,18 +83,26 @@ module.exports = {
         // let textEl = await $(`//iframe[(contains(@style,'overflow-x: hidden'))]/..//span[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'${objHeading.toLowerCase().replace('/', '&').replace('factor', '').trim()}') or contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ-', 'abcdefghijklmnopqrstuvwxyz '),'${objHeading.toLowerCase().replace('factor', '').trim()}') or  contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ-', 'abcdefghijklmnopqrstuvwxyz '),'${objHeading.toLowerCase().replace('factor', '').trim()}')]`);
         let textEl = await $(`//iframe[(contains(@style,'overflow-x: hidden'))]/..//span[string-length(text()) > 0]`);
         await textEl.waitForDisplayed();
-        let text = await textEl.getText();
-        // .//right here trying to find lower case
-        // let closeButtonXpath = `//span[lower-case(text())="${objHeading.toLowerCase()}"]/../following-sibling::div/button/span`;
+        let headerText = await textEl.getText();
+    
+        let readMoreFrame = await $(`//iframe[@title and not(contains(@title,"test"))]`)
+        await readMoreFrame.waitForExist();
+        await browser.switchToFrame(readMoreFrame)
+        let paragraphEl = await $(`//div[@class="bera-p"]`);
+        await paragraphEl.isDisplayed()
+        let paragraph = await paragraphEl.getText();
+        await browser.switchToParentFrame()
+
         let closeButtonXpath = `//span[translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')="${objHeading.toLowerCase().replace('/', '&')}" or translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ-', 'abcdefghijklmnopqrstuvwxyz ')="${objHeading.toLowerCase()}" or translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')="${objHeading.toLowerCase().replace('factor', '').trim()}"]/../following-sibling::div/button/span`;
         let closeButtonEl = await $(closeButtonXpath);
         await closeButtonEl.waitForExist();
         await closeButtonEl.waitForClickable();
+        
         // await closeButtonEl.click()
         await customClick(closeButtonEl);
 
         // return text === objHeading ? true : false;
-        return (text.length > 0);
+        return [headerText, paragraph]; //(text.length > 0);
     },
 
     getAdjacentText: async function (objHeader, chainedHeader) {

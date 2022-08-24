@@ -1,3 +1,5 @@
+const customClick = require("../../utilities/custom-click");
+
 module.exports = {
     dropDownXPath: `//div[@class="MuiPaper-root MuiPopover-paper MuiPaper-elevation8 MuiPaper-rounded"]`,
 
@@ -103,6 +105,7 @@ module.exports = {
         await closeFiltersButton.waitForExist();
         await closeFiltersButton.waitForDisplayed();
         await closeFiltersButton.click();
+        // await new Promise(res => setTimeout(() => { res() }, 100))
     },
 
     getSelectedBrands: async function () {
@@ -150,7 +153,7 @@ module.exports = {
 
     selectFilter: async function (filterName) {
         // `//div[@role="button"]//span[text()="Credit Score"]`
-        await new Promise (res => {
+        await new Promise(res => {
             setTimeout(() => {
                 res()
             }, 500);
@@ -165,8 +168,19 @@ module.exports = {
         let elem = $(`//span[contains(text(),"${audienceName}")]`);
         await elem.waitForExist();
         return await elem.isDisplayed();
+    },
+
+    clickEditPrimaryAudienceButton: async function () {
+        let elem = await $(`//span[text()="Primary Audience"]/../following-sibling::div//span[text()="Edit"]`);
+        await elem.waitForExist();
+        await elem.waitForDisplayed();
+        await customClick(elem)
+    },
+
+    clickEditBrandsButton: async function () {
+        let elem = await $(`//span[text()="Brands"]/../following-sibling::div//span[text()="Edit"]`);
+        await elem.waitForExist();
+        await elem.waitForDisplayed();
+        await customClick(elem)
     }
-
-    // => `//div[contains(@class,"sample-size-tooltip")]/div[text()="${brandName}"]`
-
 }

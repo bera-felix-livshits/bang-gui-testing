@@ -19,6 +19,10 @@ module.exports = {
         await (await $('//span[@class="MuiButton-label" and text()="Next"]')).click();
     },
 
+    clickSaveButton: async function () {
+        await (await $('//span[@class="MuiButton-label" and text()="Save"]')).click();
+    },
+
     getAvailableBrandNames: async function (startIndex, endIndex) {
         await (await $(`//div[@class="bt-brand-row-label"]`)).waitForDisplayed();
         let elems = await $$(`//div[@class="bt-brand-row-label"]`);

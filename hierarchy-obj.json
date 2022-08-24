@@ -1,0 +1,1250 @@
+{
+    "children": [
+        {
+            "children": [
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "pillarName": "Glamorous",
+                            "percentage": 53,
+                            "adjacentText": "If someone or something is glamorous, they are considered attractive,",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Glamorous",
+                            "paragraphContent": "If someone or something is glamorous, they are considered attractive, exciting, intriguing, and a little extra dazzling than the ordinary. Glamour is the flagrant amplification of beauty and a healthy appreciation for its flawless execution. To glamourize something or someone is to enhance their natural charisma or allure. Glamorous people and brands celebrate the complex tapestry of shapes and shades that enhances someone or something’s hidden beauty.",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Good Looking",
+                            "percentage": 74.4,
+                            "adjacentText": "A good-looking person or thing is attractive or pleasing to the eye.",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Good Looking",
+                            "paragraphContent": "A good-looking person or brand is attractive or pleasing to the eye. They might have a magnetic smile or perhaps they have balanced features that make them beautiful. Good-looking people and brands have qualities that others find handsome or pretty.  ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Upper Class",
+                            "percentage": 47.5,
+                            "adjacentText": "Upper-class can be used to describe a personality or a place that",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Upper Class",
+                            "paragraphContent": "Upper-class can be used to describe a personality or a place that reflects great wealth or exclusive status in society. Upper-class people, places, or things are associated with a lifestyle of luxury or decadence that many aspire to but very few possess. Upper-class brands have logos that are recognized, indeed celebrated, as symbols of the elite lifestyle they represent.  ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Feminine",
+                            "percentage": 45.1,
+                            "adjacentText": "Feminine individuals and brands are perceived as more empathetic and",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Feminine",
+                            "paragraphContent": "Feminine individuals and brands are perceived as more empathetic, graceful, sensitive and nurturing. While definitions of femininity are highly influenced by social conventions and can change over time, feminine individuals and brands are generally perceived as more secure and caring, often evoking emotions related to motherhood. Feelings of being feminine could be found in someone’s comforting presence or in the quiet, enduring strength of a leader.",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Smooth",
+                            "percentage": 56.1,
+                            "adjacentText": "Smooth might be used to describe something free of roughness or",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Smooth",
+                            "paragraphContent": "Smooth might be used to describe something free of roughness or imperfections, or it might refer to someone’s cool and unbothered attitude. The glossy, unblemished surface of a luxury car’s frame is smooth, and so is a velvety cup of espresso tempered with a dollop of cream. The brassy notes of an oboe solo by the modern-day master of easy listening, Kenny G., deliver a silky-smooth vibrato that audiences generally love. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Charming",
+                            "percentage": 51.9,
+                            "adjacentText": "Charming people and brands are considered charismatic, enchanting, or",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Charming",
+                            "paragraphContent": "Charming people and brands are considered charismatic, enchanting, or attractive. They have a special something about them that draws people in and keeps audiences hanging on their every word. Charming actors often have a magnetism that others find enthralling and alluring. Charming individuals are amiable, pleasant to be around, and easily attract companions. Charming places are cozy spots with character or picturesque locations that conjure warmth and romance.   ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        }
+                    ],
+                    "pillarName": "Sophistication",
+                    "percentage": 48.5,
+                    "adjacentText": "Sophistication is a word used to describe a brand or a person that embodies an effortless grace or glamor that others admire.",
+                    "readMoreContentHeader": true,
+                    "readMoreContentHeaderValue": "Sophistication",
+                    "paragraphContent": "Sophistication is a word used to describe a brand or a person that embodies an effortless grace or glamor that others admire. Sophisticated individuals and things are considered classy, highly intelligent, and incredibly civilized. They are schooled in the classics and have a flair for the stylishly modern. Their refined nature, carefully crafted opinions, and acculturated aptitude are a result of their erudite lifestyle. ",
+                    "color": {
+                        "property": "fill",
+                        "value": "rgb(251,120,45)",
+                        "parsed": {
+                            "hex": "#fb782d",
+                            "alpha": 1,
+                            "type": "color",
+                            "rgb": "rgb(251,120,45)"
+                        }
+                    }
+                },
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "pillarName": "Small Town",
+                            "percentage": 91.3,
+                            "adjacentText": "Small-town refers to the picturesque hamlets and towns usually found",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Small Town",
+                            "paragraphContent": "Small-town refers to the picturesque hamlets and towns usually found nestled among the world’s wide-open spaces. Famous musicians from John Cougar Mellencamp to Taylor Swift have written countless songs about their love of these small communities full of family values, country roads, authentic people, and scenic main streets. Folks from these places are usually characterized as  friendly, honest, polite, traditional, and often salt-of-the-earth. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Original",
+                            "percentage": 76.3,
+                            "adjacentText": "Original can be classified as the inception of (or the earliest",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Original",
+                            "paragraphContent": "Original can be classified as the inception of (or the earliest identifiable form of) something that already exists. It is new, fresh, unique, never been seen or done before and is therefore seen as something special. There are millions of brands and people, each of them with their own unique origin story. Some brands and individuals may even be lucky enough to be the originator of an innovative or disruptive new concept, product, service, or form of expression. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Cheerful",
+                            "percentage": 49.7,
+                            "adjacentText": "Cheerful means to behave in a happy and friendly way. If someone or",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Cheerful",
+                            "paragraphContent": "Cheerful means to behave in a happy and friendly way. If someone or something is cheerful, it evokes feelings of joy, humor, and good spirits. People or brands that are cheerful are seen as lighthearted, fun, optimistic, ebullient, carefree, genial, and/or jovial. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Sentimental",
+                            "percentage": 78.6,
+                            "adjacentText": "Being sentimental is associated with tenderness or sadness borne from",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Sentimental",
+                            "paragraphContent": "Being sentimental is associated with tenderness or sadness borne from an emotionally significant memory or moment in time. Though feeling sentimental is deeply personal, it is usually a shared experience associated with warmth and affection.  Sentimentality is strongly influenced by past experiences, perceptions, and interpersonal relationships, rather than rooted in fact. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Real",
+                            "percentage": 83.7,
+                            "adjacentText": "Real is synonymous with authenticity. It is the experience of being",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Real",
+                            "paragraphContent": "Real is synonymous with authenticity. It is the experience of being true to one's self as well as to others. Someone who embodies the concept of real has no intent to deceive or impress others, nor do they require the approval of others to operate. Something that is real is tangible and not imagined, invented, or theoretical. If someone is having a specific experience, it is real to them even though others may not share the same perception.",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Wholesome",
+                            "percentage": 77.9,
+                            "adjacentText": "Wholesome describes someone or something that is seen as fundamentally",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Wholesome",
+                            "paragraphContent": "Wholesome describes someone or something that is seen as fundamentally good. Be it healthy foods served farm-to-table or going out of your way to make someone smile, being wholesome can be characterized as the intent to positively impact on other people’s behavior or mental state. People or brands that are wholesome look to nourish the soul, the mind, and the body of others through open, honest, and helpful actions and communications. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Friendly",
+                            "percentage": 65.3,
+                            "adjacentText": "Friendly means to behave in a pleasant and kind manner. A friendly",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Friendly",
+                            "paragraphContent": "Friendly means to behave in a pleasant, kind manner and to put people at ease. A friendly person makes people feel happy, offering goodwill and a sense of trustworthiness. Friendly people are a joy to be around!",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Family Oriented",
+                            "percentage": 78.6,
+                            "adjacentText": "Being family-oriented means putting family ahead of everything. At its",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Family Oriented",
+                            "paragraphContent": "Being family-oriented is a state of mind that guides how one approaches relationships, putting the needs of others above one's own. Someone who is family-oriented appreciates and looks forward to spending time with and deepening relationships with loved ones. This attribute can also bring ideas of being comfortable in the presence of children and prioritizing their role in one's life.",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Down to Earth",
+                            "percentage": 96.1,
+                            "adjacentText": "Down-to-earth is defined as being realistic or avoiding grandiose",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Down To Earth",
+                            "paragraphContent": "Down-to-earth is defined as being realistic, practical and lacking pretenses. Someone down-to-earth tends to be humble, equanimous, self-accepting, and tolerant of others.  They have a  balanced and sincere appraisal of themselves and those around them. Down-to-earth individuals can pursue goals with a perspective that is grounded in reality, without being overconfident, while internalizing the valuable learnings gleaned from their mistakes.",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Sincere",
+                            "percentage": 61.2,
+                            "adjacentText": "To be sincere is to be genuinely free of deceit, hypocrisy or",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Sincere",
+                            "paragraphContent": "To be sincere is to be genuinely free of deceit, hypocrisy or falseness. Someone or something that is sincere communicates and behaves in accordance with their true feelings and beliefs. To others, their steadfast ability to remain true to themselves shows that they act with conviction. Everything they say and do is aligned with their principles. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Honest",
+                            "percentage": 76.6,
+                            "adjacentText": "Being honest means to be truthful or trustworthy. Honesty is a moral",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Honest",
+                            "paragraphContent": "Being honest means to be truthful or trustworthy. Honesty is a moral aspect of character that represents honorable principles such as integrity and straightforwardness. Honesty can be characterized in people as someone with a strong moral compass, who is not likely to steal, cheat, or lie. In general, integrity, loyalty, fairness, and sincerity are at the heart of every decision and action.",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        }
+                    ],
+                    "pillarName": "Sincerity",
+                    "percentage": 80,
+                    "adjacentText": "Sincerity is an honest and straightforward way of behaving, without any pretense, misrepresentation, or deceit.",
+                    "readMoreContentHeader": true,
+                    "readMoreContentHeaderValue": "Sincerity",
+                    "paragraphContent": "Sincerity is an honest and straightforward way of behaving, without any pretense, misrepresentation, or deceit. A sincere persona is considered genuine or down-to-earth, friendly, and trustworthy. Globally, sincerity is a highly valued trait in people and brands because it is an invaluable element of any relationship. If you do things with sincerity, you will build trust with people.",
+                    "color": {
+                        "property": "fill",
+                        "value": "rgb(251,120,45)",
+                        "parsed": {
+                            "hex": "#fb782d",
+                            "alpha": 1,
+                            "type": "color",
+                            "rgb": "rgb(251,120,45)"
+                        }
+                    }
+                },
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "pillarName": "Outdoorsy",
+                            "percentage": 99.9,
+                            "adjacentText": "If you’re a person or a brand that people associate with being",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Outdoorsy",
+                            "paragraphContent": "If you’re a person or a brand that people associate with being outdoorsy, you enjoy spending a lot of time outside being active and appreciating nature. Individuals and brands that are outdoorsy are part of a movement to celebrate, explore, and experience the many landscapes and incredible environments around them. Caring for the planet, giving back to nature, replenishing natural resources, a responsible approach to consumption, and recycling are often parts of this eco-friendly lifestyle too. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Masculine",
+                            "percentage": 89.7,
+                            "adjacentText": "If someone or something is described as masculine, they embody the",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Masculine",
+                            "paragraphContent": "If someone or something is described as masculine, they embody the qualities and stereotypes usually associated with males. Masculine can mean behaving in a macho or aggressive manner and it is often associated with virility. Arnold Schwarzenegger would be a good example of an individual who has built a personal brand around his masculine appearance. While masculinity may be confused with muscle, it may also be embodied in the quiet strength of the soul. Women, for example, do not need large muscles or display overt bravado to have a masculine presence.  ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Tough",
+                            "percentage": 97.7,
+                            "adjacentText": "A tough person or brand might be seen as strong, unyielding,",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Tough",
+                            "paragraphContent": "A tough person or brand might be seen as strong, unyielding, demanding, arduous, tricky, inflexible, or stringent. Tough can embody many things at once, yet they all boil down to strength of perseverance. Tough brands outperform and outlast the competition. Tough people take a hit, and they get back up. Tough might be used to describe the enduring surface of a weathered saddle, or the resilience of a heart that blazes for justice, or it could be the soul that rises to the challenge and triumphs over adversity.",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Rugged",
+                            "percentage": 99.2,
+                            "adjacentText": "Rugged could be used to describe the surface of a craggy cliff or the",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Rugged",
+                            "paragraphContent": "Rugged could be used to describe the surface of a craggy cliff or the etched and life-worn skin of an elephant. Something rugged has a steady countenance, is sturdy or reliable, quite possibly weathered or grizzled by years of labor, and is seen as able to withstand the test of time. Only a rugged constitution, for example, will keep you alive in the most extreme of circumstances or times of hardship. Rugged brands and people are not afraid of physical, financial, or mental challenges because they will endure. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        }
+                    ],
+                    "pillarName": "Ruggedness",
+                    "percentage": 99.2,
+                    "adjacentText": "Ruggedness is more than a leathery exterior or a craggy landscape or having a rough and tumble attitude. Ruggedness is a state of mind.",
+                    "readMoreContentHeader": true,
+                    "readMoreContentHeaderValue": "Ruggedness",
+                    "paragraphContent": "Ruggedness is more than a leathery exterior or a craggy landscape or having a rough and tumble attitude. Ruggedness is a state of mind. It is a way of life. It is the existential masculinity that is associated with the toil of a demanding occupation or existence full of backbreaking work in harsh conditions. Individuals and brands associated with ruggedness seem to be built for sever conditions or capable of shouldering manual labor because they are tough enough to handle anything. They embody a quiet, enduring strength and a resilient spirit that others find safe or comforting.",
+                    "color": {
+                        "property": "fill",
+                        "value": "rgb(251,120,45)",
+                        "parsed": {
+                            "hex": "#fb782d",
+                            "alpha": 1,
+                            "type": "color",
+                            "rgb": "rgb(251,120,45)"
+                        }
+                    }
+                },
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "pillarName": "Contemporary",
+                            "percentage": 35.9,
+                            "adjacentText": "People or things that are contemporary are hip, fashionable, and",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Contemporary",
+                            "paragraphContent": "People or things that are contemporary are hip, fashionable, and on-trend. They exist in the here and now. They may draw inspiration from the past but are intrinsically relevant to today. Contemporary may also refer to a person or brand that is seen as cutting-edge or modern. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Daring",
+                            "percentage": 76.8,
+                            "adjacentText": "Daring is the quality of being brave or defiant in the face of danger.",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Daring",
+                            "paragraphContent": "Daring is the quality of being brave or audaciously bold. They are fearless and willing to take risks that most people would consider dangerous. It is the courage to do things that others would not. Daring personalities and brands are adventurous, they thrive on the unknown, they do not color inside the lines, and they embrace the unconventional to achieve their lofty goals. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Young",
+                            "percentage": 46.4,
+                            "adjacentText": "Young describes a person or brand that embodies a youthful spirit.",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Young",
+                            "paragraphContent": "Young describes a person or brand that embodies a youthful spirit. Being young is not defined by an age or number. It is a state of mind. It is someone or something that is exuberant, has plenty or energy or vigor, and is optimistic or idyllic in their views on life. A young person or brand is culturally relevant, fresh and full of life, and embraces a child-like wonder of the world that others are drawn to. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Trendy",
+                            "percentage": 50.2,
+                            "adjacentText": "Trendy describes something or someone that is considered stylish,",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Trendy",
+                            "paragraphContent": "Trendy describes something or someone that is considered stylish, popular, fashionable or consistently in-the-know about the next big thing. People and brands that are tuned into the current social zeitgeist are often the first to adopt, and eventually normalize, new elements of pop culture from cool fashion and life hacks to cutting-edge music and tech.",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Spirited",
+                            "percentage": 69.2,
+                            "adjacentText": "Those that are spirited are seen as lively, feisty, brave,",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Spirited",
+                            "paragraphContent": "Those that are spirited are seen as lively, feisty, brave, strong-willed or enthusiastic. Spirited people are often spunky, determined, strong in their own belief system, and willing to face danger to prove a point. A spirited personality would not be afraid to ardently speak their mind or take a daring risk or take a stand or face incredible odds, even if it meant going against popular opinion. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Imaginative",
+                            "percentage": 64,
+                            "adjacentText": "To be imaginative is to be inventive, creative, and original.",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Imaginative",
+                            "paragraphContent": "To be imaginative is to be inventive, creative, and original. Someone or something that is seen as imaginative embraces the non-traditional and celebrates out-of-the-box thinking. They are seen as visionary and oftentimes regarded as inspirational for their inventive ideas. Imaginative people and brands take pride in finding ingenious or new and unique solutions to problems that others couldn’t see or solve.",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Cool",
+                            "percentage": 68.2,
+                            "adjacentText": "When people or brands are described as cool, they’re well-liked by the",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Cool",
+                            "paragraphContent": "Cool has many meanings.  When it’s the weather, there’s probably a slight breeze on a crisp fall day. When it’s food fresh out of the oven, it needs time to cool down. When people or brands are described as cool, they’re well-liked by the general population, possibly trendy or fashionable, casual or nonchalant, unflappable or in control of themselves. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Exciting",
+                            "percentage": 68,
+                            "adjacentText": "When someone or something is exciting, it gets your blood pumping and",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Exciting",
+                            "paragraphContent": "When someone or something is exciting, it is thrilling - it gets your blood pumping and your heart racing. If you’re thrilled or exhilarated or jumping up and down with anticipation, you are excited. Exciting brands stir feelings of elated enthusiasm and spine-tingling delight.",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        }
+                    ],
+                    "pillarName": "Excitement",
+                    "percentage": 58.2,
+                    "adjacentText": "Excitement is a feeling or situation full of joy, exhilarating activity, or elation.",
+                    "readMoreContentHeader": true,
+                    "readMoreContentHeaderValue": "Excitement",
+                    "paragraphContent": "Excitement is a feeling or situation full of joy, exhilarating activity, or elation. It could be a flurry of activity or the squeal of delight following a happy surprise or the thrill of leaping into a cold swimming pool or the turmoil of a passionate argument, but excitement is sure to stimulate people’s hearts, bodies, and minds.",
+                    "color": {
+                        "property": "fill",
+                        "value": "rgb(251,120,45)",
+                        "parsed": {
+                            "hex": "#fb782d",
+                            "alpha": 1,
+                            "type": "color",
+                            "rgb": "rgb(251,120,45)"
+                        }
+                    }
+                },
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "pillarName": "Innovative",
+                            "percentage": 82.6,
+                            "adjacentText": "A brand that innovates with purpose sets clear, customer-focused goals",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Innovative",
+                            "paragraphContent": "Innovative means pushing boundaries in creative and unexpected ways. People and things that are unafraid of testing limits and constantly seek to improve themselves are innovative. Innovation lies in groundbreaking discoveries that have far-reaching impact on society, as well as in small changes to existing tools that make our everyday lives easier. Brands both large and small are capable of innovation if they keep a pulse on consumer needs and are excited about evolving with market demand.",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Independent",
+                            "percentage": 69.6,
+                            "adjacentText": "If someone or something is independent, they are free agents or",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Independent",
+                            "paragraphContent": "If someone or something is independent, they are free agents or masters of their own destiny, unencumbered by ties to worldly possessions, money, or other people to find their bliss. Be it financial, physical, emotional,  or any other type of aid, independent individuals and brands do not require the permission, assistance, or support of anyone or anything else. For example, an independent organization controls its own brand, finances, product, and operations, rather than being controlled by a parent corporation. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Hard Working",
+                            "percentage": 92.8,
+                            "adjacentText": "Hardworking people and brands are diligent, tireless, strong,",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Hard Working",
+                            "paragraphContent": "Hardworking people and brands are diligent, tireless, strong, faithful, and steadfast in everything they do. Be it a skill, a task, or a topic, hard-working individuals operate by a set of dogged principles that drive their every decision. They are industrious and tenacious. Hard-working people recognize the deep-seeded pride of a hard day’s work. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Technical",
+                            "percentage": 71.7,
+                            "adjacentText": "Technical describes a specific science or highly skilled training for",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Technical",
+                            "paragraphContent": "Technical describes a specific science or highly skilled training for a particular job. Anything technical requires both art and skill. Quantum physics for example, is a highly technical field, yet it requires a creative mind, a meticulous dedication to detail, and years of study to master the complicated theories and apply its concepts. Technical people or brands are specialists in their chosen field or industry. They are analytical, resourceful, and methodical in their approach.",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Reliable",
+                            "percentage": 89.5,
+                            "adjacentText": "Someone or something that is reliable is steadfast and unwavering.",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Reliable",
+                            "paragraphContent": "Someone or something that is reliable is steadfast and unwavering. They are consistent in their beliefs or behaviors, almost to the point of comfortingly predictable. A reliable person or brand is so trustworthy, they bring a sense of comfort and confidence because others know what to expect. Reliable people and brands take responsibility for their actions and they show up for the people and causes that that care about. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Corporate",
+                            "percentage": 58.9,
+                            "adjacentText": "Corporate brands or individuals who identify as corporate, see",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Corporate",
+                            "paragraphContent": "Corporate brands or individuals who identify as corporate, see themselves as all business all the time. They embrace corporate culture, and they love the sometimes-hectic pace because they see themselves as part of something bigger. They are part of a large corporation or global conglomeration that contributes to world banks and markets. High rise buildings, finely tailored suits, big data, transformational technology, and busy cities often come to mind when thinking of corporate people or the brands that employ them. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Successful",
+                            "percentage": 61.3,
+                            "adjacentText": "If you set the bar for achievement high, and you get everything you",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Successful",
+                            "paragraphContent": "If you set the bar for achievement high, and you get everything you want (or even more), you are successful. Successful people are often associated with great achievements or lots of money, or fancy things, but in reality, success is whatever you believe it to be. Money, praise, tokens, trophies, and attention are all accepted barometers for success. People or brands that are seen as successful, project an aspirational lifestyle that others want to have or emulate.  ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Confident",
+                            "percentage": 76.6,
+                            "adjacentText": "If you're confident, you are sure about something.",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Confident",
+                            "paragraphContent": "If you're confident you are sure about something. Maybe it’s an ability, or perhaps it’s a clever plan, or it could be a flawless face of makeup with a dash of effervescent extra. Confident people or brands exude poise. They are sure of who they are and what they want, and they are not about to apologize for expressing their needs. Confidence is never to be confused with braggadocios behavior. Confident people and brands neither require nor do they desire the opinions or approval of others. They are simply living their best life.",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Intelligent",
+                            "percentage": 63.1,
+                            "adjacentText": "Intelligent people and brands make brilliance look effortless.",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Intelligent",
+                            "paragraphContent": "Intelligent people and brands make brilliance look effortless. They display an uncanny ability to look at problems from a new angle. They upset entire fields of study and disrupt whole industries with new theories and hypothesis, or solutions aimed at improving the status quo. Intelligent brands and people are innovators that embrace change. In fact, they crave it. Intelligence is more than a score on a test or point on a graph, it is an elegant way of processing information and reason that transcends average thinking.",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Up to Date",
+                            "percentage": 64.5,
+                            "adjacentText": "If something is up-to-date, it is the newest thing of its kind. A",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Up-to-date",
+                            "paragraphContent": "If something is up-to-date, it is the newest thing of its kind. A person or brand that is up-to-date is considered to have the latest information about current events and pop culture. They are at the forefront of the cultural zeitgeist, so much so that they might even influence social adoption of certain trends, philosophies, technologies, fashion, artists, habits and life-hacks, etc. Being up-to-date reflects someone or something that is wholly present in that moment in time. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Secure",
+                            "percentage": 86,
+                            "adjacentText": "At its core, being secure means feeling safe or protected. Your money",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Secure",
+                            "paragraphContent": "At its core, being secure means feeling safe or protected. Your money is secure in a bank. Supportive friends and family make you feel secure when you confide in them. A secure website makes you feel like your data is being stored in a trustworthy fashion. When people think of secure places or people or brands, they think of someone or something that will keep their information secure. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Leader",
+                            "percentage": 82.3,
+                            "adjacentText": "A leader is a person, animal, or brand that guides or directs others.",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Leader",
+                            "paragraphContent": "A leader is a person, animal or brand that guides or directs others. A great leader inspires confidence in other people and moves them to action. Leaders come in all shapes, sizes, and sexes. Be it a brave suffragette from herstory or the sway of a conductor's baton, or the rousing cry that sparks a national movement, leaders can come from anywhere. Great leaders are forged in the crucible of hardship and are humble servants of the people that trust them. They are known for their strategic, yet level-headed, approach to solving problems.",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(251,120,45)",
+                                "parsed": {
+                                    "hex": "#fb782d",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(251,120,45)"
+                                }
+                            }
+                        }
+                    ],
+                    "pillarName": "Competence",
+                    "percentage": 81.7,
+                    "adjacentText": "Competence is showing proficient skill in a certain topic or activity or a field of study.",
+                    "readMoreContentHeader": true,
+                    "readMoreContentHeaderValue": "Competence",
+                    "paragraphContent": "Competence is showing proficient skill in a certain topic or activity or a field of study. Competent individuals and brands have demonstrated aptitude and are often leaders in their chosen field or category. They display the confidence, the calm exterior, the proficiency, the experience, and the mental dexterity to guide others as a mentor or an example of excellence.  ",
+                    "color": {
+                        "property": "fill",
+                        "value": "rgb(251,120,45)",
+                        "parsed": {
+                            "hex": "#fb782d",
+                            "alpha": 1,
+                            "type": "color",
+                            "rgb": "rgb(251,120,45)"
+                        }
+                    }
+                }
+            ],
+            "pillarName": "Emotional",
+            "percentage": 72.5,
+            "adjacentText": "How your brand expresses itself to be meaningfully unique.",
+            "readMoreContentHeader": true,
+            "readMoreContentHeaderValue": "Emotional",
+            "paragraphContent": "A brand's Emotional Score reflects how strongly it evokes feelings among consumers. The Emotional Score is one of four constructs central to Brand Positioning: Purpose, Emotional, Functional, and Experiential. Underneath the Score are five factors which highlight the perceptions consumers have about the brand’s personality: Competence, Sincerity, Sophistication, Excitement and Ruggedness. Each of these factors is brought to life through 41 specific, scientifically-tested attributes (e.g., Cool, Trendy).",
+            "color": {
+                "property": "fill",
+                "value": "rgb(251,120,45)",
+                "parsed": {
+                    "hex": "#fb782d",
+                    "alpha": 1,
+                    "type": "color",
+                    "rgb": "rgb(251,120,45)"
+                }
+            }
+        },
+        {
+            "children": [
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "pillarName": "Point of View",
+                            "percentage": 45.1,
+                            "adjacentText": "To have a point of view is to have a distinct perspective on a topic",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Point of View",
+                            "paragraphContent": "To have a point of view is to have a distinct perspective on a topic or subject. Individuals and brands that are known for their point of view, are vocal about their opinions and they seek to align others to their goals because they believe that they voice, and their help makes a difference. They are not afraid to express their opinion on societal matters and they invest time, money, and activities to be the change they want to see in the world. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(255,187,0)",
+                                "parsed": {
+                                    "hex": "#ffbb00",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(255,187,0)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Culturally Relevant",
+                            "percentage": 38.7,
+                            "adjacentText": "When someone or something is described as culturally relevant, they",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Culturally Relevant",
+                            "paragraphContent": "When someone or something is described as culturally relevant, they are part of a diverse, global narrative. People or brands that are culturally relevant are actively involved in the most significant social conversations, when and where they are happening. Culturally relevant people and brands do not shy away from a topic because it is uncomfortable, instead, they seek out differing opinions and backgrounds as a source of enrichment. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(255,187,0)",
+                                "parsed": {
+                                    "hex": "#ffbb00",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(255,187,0)"
+                                }
+                            }
+                        }
+                    ],
+                    "pillarName": "Protagonism Factor",
+                    "percentage": 41.9,
+                    "adjacentText": "Protagonist brands stand up and speak out with a strong POV.",
+                    "readMoreContentHeader": true,
+                    "readMoreContentHeaderValue": "Protagonism",
+                    "paragraphContent": "Protagonist brands stand up and speak out with a strong POV. They are vocal advocates and agents of change – at times provoking attention and making waves in culture. Attributes include: Clarity – brand’s Purpose is clear in its look and feel, Stands Out – brand stands out from its competitors",
+                    "color": {
+                        "property": "fill",
+                        "value": "rgb(255,187,0)",
+                        "parsed": {
+                            "hex": "#ffbb00",
+                            "alpha": 1,
+                            "type": "color",
+                            "rgb": "rgb(255,187,0)"
+                        }
+                    }
+                },
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "pillarName": "Beliefs / Values",
+                            "percentage": 77.3,
+                            "adjacentText": "",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Beliefs & Values",
+                            "paragraphContent": "Someone with beliefs and/or values is driven by a higher set of ideals. Their moral fiber is strengthened by a set of principles that they operate by day in and day out, faithfully. A person or a brand that operates by their beliefs or values is known for aligning their choices, their actions, and their investments with their convictions. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(255,187,0)",
+                                "parsed": {
+                                    "hex": "#ffbb00",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(255,187,0)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Societal Commitment",
+                            "percentage": 80.2,
+                            "adjacentText": "Individuals who are known for their societal commitment are deeply",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Societal Commitment",
+                            "paragraphContent": "Individuals who are known for their societal commitment are deeply devoted to social causes and affecting positive change within their community. Driven by a devotion to improve the human condition, a dedication to society is not just a monetary pledge, it means taking action to improve the status quo or right an injustice. When a brand stands for a societal commitment, that brand is making a pledge within their community and beyond, to do better every day, not just once in a while.    ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(255,187,0)",
+                                "parsed": {
+                                    "hex": "#ffbb00",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(255,187,0)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Humanitarian",
+                            "percentage": 87.2,
+                            "adjacentText": "A person or brand seen as a humanitarian, is concerned with the",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Humanitarian",
+                            "paragraphContent": "A person or brand seen as a humanitarian, is concerned with the welfare of all humankind. Philanthropic kindness isn't a job to them, it is a way of life. Those individuals and companies who display a humanitarian spirit, are benevolent and altruistic in character.  Brands that are known for their humanitarian efforts, are on a mission to make an enormous impact all over the world in order to better the lives of others. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(255,187,0)",
+                                "parsed": {
+                                    "hex": "#ffbb00",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(255,187,0)"
+                                }
+                            }
+                        }
+                    ],
+                    "pillarName": "Social Impact",
+                    "percentage": 81.6,
+                    "adjacentText": "To celebrate the differences that set someone or something apart from everyone or anything else.",
+                    "readMoreContentHeader": true,
+                    "readMoreContentHeaderValue": "Social Impact",
+                    "paragraphContent": "Social impact is about making positive contributions to society. It means being—and being seen as—a good citizen of the world. These brands deliver more than benefits for customers and profits for shareholders. Attributes include: Humanitarian – brand addresses human needs and / or aspirations, Social Commitment – brand has a commitment to society, Beliefs and Values – brand has a clear set of beliefs.",
+                    "color": {
+                        "property": "fill",
+                        "value": "rgb(255,187,0)",
+                        "parsed": {
+                            "hex": "#ffbb00",
+                            "alpha": 1,
+                            "type": "color",
+                            "rgb": "rgb(255,187,0)"
+                        }
+                    }
+                },
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "pillarName": "Clarity",
+                            "percentage": 94,
+                            "adjacentText": "A person that provides clarity is always certain of their purpose and",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Clarity",
+                            "paragraphContent": "A person that provides clarity is always certain of their purpose and direction in life and there are able to express that reason for being, succinctly. Brands and individuals that provide clarity, seek to make their intentions known. They do not hide their opinions or use ambiguous language to try and confuse others, they are clear and up front about their goals, their focus, and the actions they plan on taking to achieve them. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(255,187,0)",
+                                "parsed": {
+                                    "hex": "#ffbb00",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(255,187,0)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Appropriate",
+                            "percentage": 99.9,
+                            "adjacentText": "When someone or something is appropriate, they are perfectly suited",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Appropriate",
+                            "paragraphContent": "When someone or something is appropriate, they are perfectly suited for the situation or company they are in at that moment. Brands, for example, will have multiple campaigns a year, all showing that brand’s products and solutions being used in a way that is appropriate to that particular object or service. A high-fashion shoe brand would not plan a campaign featuring mountain climbers trying to scale a craggy rock in stilettos, it wouldn’t be appropriate (or safe!).",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(255,187,0)",
+                                "parsed": {
+                                    "hex": "#ffbb00",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(255,187,0)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Employer Brand",
+                            "percentage": 92.2,
+                            "adjacentText": "An employer brand is a company or organization that people view as a",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Employer Brand",
+                            "paragraphContent": "An employer brand is a company or organization that people view as a great place to work. While they might not be employed by that company, outsiders look at that organization and think, ‘I’ll bet it would be really fun to work there.’ Employer brands go above and beyond to show current and prospective employees how much they value their people. In fact, it is a well-known adage that a happy workforce is a productive workforce, so, it stands to reason, that employer brands have some of the happiest and most productive employees in the world!",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(255,187,0)",
+                                "parsed": {
+                                    "hex": "#ffbb00",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(255,187,0)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Stands Out",
+                            "percentage": 90,
+                            "adjacentText": "To stand out is to celebrate the differences that set someone or",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Stands Out",
+                            "paragraphContent": "To stand out is to celebrate the differences that set someone or something apart from everyone or anything else. People and brands that stand out, attract attention whether they want to or not because they are so singular. A brand or person that stands out is inspired by uniqueness, they do not want to blend in or be counted among the pack. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(255,187,0)",
+                                "parsed": {
+                                    "hex": "#ffbb00",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(255,187,0)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Innovates with Purpose",
+                            "percentage": 92.5,
+                            "adjacentText": "A brand that innovates with purpose sets clear, customer-focused goals",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Innovates with Purpose",
+                            "paragraphContent": "A brand that innovates with purpose sets clear, customer-focused goals and standards that solve meaningful problems for the greater good. Their purpose gives them direction and \"the why\" behind what they do. They're intently focused on satisfying customers by showing them how their brand genuinely improves their lives.",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(255,187,0)",
+                                "parsed": {
+                                    "hex": "#ffbb00",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(255,187,0)"
+                                }
+                            }
+                        }
+                    ],
+                    "pillarName": "Consistent Focus",
+                    "percentage": 93.7,
+                    "adjacentText": "Your brands experience with singular intention and consistent devotion.",
+                    "readMoreContentHeader": true,
+                    "readMoreContentHeaderValue": "Consistent Focus",
+                    "paragraphContent": "Consistent focus means building a brand experience with singular intention and consistent devotion. These Brands hold true to their core values and unique identity assets in all they do. Attributes Include: Point of View - brand is not afraid to voice their point of view on social issues, Culturally Relevant – brand is part of the cultural conversation, Innovates with Purpose – the brand innovates with a Purpose, Employer Brand – I imagine that this would be a good brand to work for, Appropriate – I see the brand in environments that are fitting for the brand.",
+                    "color": {
+                        "property": "fill",
+                        "value": "rgb(255,187,0)",
+                        "parsed": {
+                            "hex": "#ffbb00",
+                            "alpha": 1,
+                            "type": "color",
+                            "rgb": "rgb(255,187,0)"
+                        }
+                    }
+                },
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "pillarName": "Personal Connection",
+                            "percentage": 79.4,
+                            "adjacentText": "A personal connection is an inextricable, emotional bond that brings a",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Personal Connection",
+                            "paragraphContent": "It’s a psychological theory that there are five levels of basic human needs that motivate people to achieve, and one of them is forming personal connections. A personal connection is an inextricable, emotional bond that brings a sense of belonging. Lifelong friendships, and passionate opinions about a certain brand, and fleeting relationships alike can all stem from a personal connection. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(255,187,0)",
+                                "parsed": {
+                                    "hex": "#ffbb00",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(255,187,0)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Emotional Connection",
+                            "percentage": 82.6,
+                            "adjacentText": "When someone feels an emotional connection to someone or something,",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Emotional Connection",
+                            "paragraphContent": "When someone feels an emotional connection to someone or something, they have formed an emotional bond from shared memories or experiences that are significant to them. For example, a person may feel a deep emotional connection to a specific brand because it is the same brand that one of their parent’s used and it is connected to decades of happy memoirs. This link, though invisible, is incredibly strong and oftentimes, unbreakable. ",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(255,187,0)",
+                                "parsed": {
+                                    "hex": "#ffbb00",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(255,187,0)"
+                                }
+                            }
+                        },
+                        {
+                            "children": [],
+                            "pillarName": "Inclusive",
+                            "percentage": 79,
+                            "adjacentText": "A brand or an individual that is inclusive is welcoming to any and all",
+                            "readMoreContentHeader": true,
+                            "readMoreContentHeaderValue": "Inclusive",
+                            "paragraphContent": "A brand or an individual that is inclusive is welcoming to any and all kinds of people and personalities. Regardless of race, education, belief system, gender, or any other factor, individuals who are inclusive do not pay attention to our differences. Instead, they focus on the beauty of multiple perspectives and the incredible beauty of the collective human spirit. Furthermore, inclusive people and brands seek to design experiences that will bring people together and make everyone feel important.",
+                            "color": {
+                                "property": "fill",
+                                "value": "rgb(255,187,0)",
+                                "parsed": {
+                                    "hex": "#ffbb00",
+                                    "alpha": 1,
+                                    "type": "color",
+                                    "rgb": "rgb(255,187,0)"
+                                }
+                            }
+                        }
+                    ],
+                    "pillarName": "Universal Connection",
+                    "percentage": 80.3,
+                    "adjacentText": "How your brand taps into a fundamental human ideals and creates enduring bonds.",
+                    "readMoreContentHeader": true,
+                    "readMoreContentHeaderValue": "Universal Connection",
+                    "paragraphContent": "Brands that forge a universal connection tap into a fundamental human ideal and create enduring bonds. They provide easy, open access points and invite broad participation. Attributes include: Humanitarian – brand addresses human needs and / or aspirations, Social Commitment – brand has a commitment to society, Beliefs and Values – brand has a clear set of beliefs.",
+                    "color": {
+                        "property": "fill",
+                        "value": "rgb(255,187,0)",
+                        "parsed": {
+                            "hex": "#ffbb00",
+                            "alpha": 1,
+                            "type": "color",
+                            "rgb": "rgb(255,187,0)"
+                        }
+                    }
+                }
+            ],
+            "pillarName": "Purpose",
+            "percentage": 79.9,
+            "adjacentText": "Your brand's reason for being beyond making a profit.",
+            "readMoreContentHeader": true,
+            "readMoreContentHeaderValue": "Purpose",
+            "paragraphContent": "Brand Positioning consists of four constructs: Purpose, Emotional, Functional, and Experiential. These constructs can be broken down into factors and attributes, which convey the brand’s personality through audiences’ belief as to why it exists, how it is perceived, what the brand offers, and how it is experienced. Your brands reason for being beyond making a profit. To win the minds, hearts, and wallets of [the audience], our brand needs to express purpose with these factors: Universal Connection, Consistent Focus, Social Impact, Protagonism.",
+            "color": {
+                "property": "fill",
+                "value": "rgb(255,187,0)",
+                "parsed": {
+                    "hex": "#ffbb00",
+                    "alpha": 1,
+                    "type": "color",
+                    "rgb": "rgb(255,187,0)"
+                }
+            }
+        }
+    ]
+}

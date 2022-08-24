@@ -31,6 +31,25 @@ exports.config = {
     exclude: [
         // 'path/to/excluded/files'
     ],
+    suites: {
+        hierarchyView: [
+            './test/specs/hierarchy-view/hierarchy-chart-navigation-analysis-period-change-test-1.e2e.js',
+            './test/specs/hierarchy-view/hierarchy-chart-navigation-analysis-period-change-with-different-page-load-test-2.e2e.js',
+            './test/specs/hierarchy-view/hierarchy-chart-navigation-audience-change-test-1.e2e.js',
+            './test/specs/hierarchy-view/hierarchy-chart-navigation-audience-change-with-different-page-load-test-2.e2e.js',
+            './test/specs/hierarchy-view/hierarchy-chart-navigation-brand-positioning-more-button-test-2.e2e.js',
+            './test/specs/hierarchy-view/hierarchy-chart-navigation-brand-positioning-test-1.e2e.js',
+            './test/specs/hierarchy-view/hierarchy-chart-navigation-constructs-colors-test-5.e2e.js',
+            './test/specs/hierarchy-view/hierarchy-chart-navigation-constructs-order-test-6.e2e.js',
+            './test/specs/hierarchy-view/hierarchy-chart-navigation-data-for-chart-bar-and-table-views-test-4.e2e.js',
+            './test/specs/hierarchy-view/hierarchy-chart-navigation-data-loads-in-percent-test-3.e2e.js',
+            './test/specs/hierarchy-view/hierarchy-chart-navigation-default-parameters-test-2.e2e.js',
+            './test/specs/hierarchy-view/hierarchy-chart-navigation-primary-brand-change-test-1.e2e.js',
+            './test/specs/hierarchy-view/hierarchy-chart-navigation-primary-brand-change-with-different-page-load-test-2.e2e.js',
+            './test/specs/hierarchy-view/hierarchy-chart-navigation-test-1.e2e.js'
+
+        ]
+    },
     //
     // ============
     // Capabilities
@@ -58,7 +77,7 @@ exports.config = {
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
-        maxInstances: 1,
+        maxInstances: 10,
         //
         browserName: 'chrome',
         acceptInsecureCerts: true,
@@ -270,7 +289,7 @@ exports.config = {
      * @param {Object} suite suite details
      */
     beforeSuite: async function (suite) {
-        
+
         // await pgCleanup();
 
 

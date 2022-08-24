@@ -1,6 +1,18 @@
 // const relationshipStage = require('./relationship-stage.js');
 
 module.exports = {
+    getPrimaryBrand: async function (){
+        let elem = await $(`//div[count(child::span)=2 and count(child::*)=2]/span[1]`)
+        await elem.waitForDisplayed();
+        return await elem.getText();
+    },
+
+    getPrimaryBrandCategory: async function (){
+        let elem = await $(`//div[count(child::span)=2 and count(child::*)=2]/span[2]`)
+        await elem.waitForDisplayed();
+        return await elem.getText();
+    },
+
     generateXPathForSummaryValue: async function (columnHeader, valueHeader, brandEquity) {
         if (!brandEquity[columnHeader]) {
             brandEquity[columnHeader] = {}
@@ -56,9 +68,7 @@ module.exports = {
         console.log('overview brandEquity["Brand Levers"]["People"] =>', brandEquity["Brand Levers"]["People"])
         return brandEquity;
     },
-    getPageHeader: function () {
-        cy.xpath('//span[text()="Overview"]')
-    },
+    
     // getBrandEquitySummary: function(){
 
     // },

@@ -17,6 +17,10 @@ module.exports = {
         let inputElem = await $(`//input[@type="search"]`);
         await inputElem.isExisting();
         await inputElem.isDisplayed();
+
+        // await inputElem.click();
+        // await browser.keys(audienceName);
+        // await customClick(await $(`//div[contains(text(),"${audienceName}")]`))
         await inputElem.setValue(audienceName)
         await (await $(`//div[contains(text(),"${audienceName}")]`)).click()
     },
