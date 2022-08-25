@@ -5,6 +5,9 @@ module.exports = {
 
     generatePillarsObj: async function () {
         await new Promise(res => { setTimeout(() => { res() }, 200) })
+        let patientEl = await $(`//*[text()="Read more"]`)
+        await patientEl.waitForDisplayed();
+
         let obj = { children: [] };
         await this.scrapeHierarchyForValues(obj)
         return obj;
@@ -84,7 +87,7 @@ module.exports = {
         let textEl = await $(`//iframe[(contains(@style,'overflow-x: hidden'))]/..//span[string-length(text()) > 0]`);
         await textEl.waitForDisplayed();
         let headerText = await textEl.getText();
-    
+
         let readMoreFrame = await $(`//iframe[@title and not(contains(@title,"test"))]`)
         await readMoreFrame.waitForExist();
         await browser.switchToFrame(readMoreFrame)
@@ -97,7 +100,7 @@ module.exports = {
         let closeButtonEl = await $(closeButtonXpath);
         await closeButtonEl.waitForExist();
         await closeButtonEl.waitForClickable();
-        
+
         // await closeButtonEl.click()
         await customClick(closeButtonEl);
 
