@@ -1,0 +1,283 @@
+{
+    "node": "root",
+    "child": [
+        {
+            "node": "element",
+            "tag": "div",
+            "attr": {
+                "id": "bera-aside"
+            },
+            "child": [
+                {
+                    "node": "element",
+                    "tag": "div",
+                    "attr": {
+                        "class": "bera-sh1"
+                    },
+                    "child": [
+                        {
+                            "node": "text",
+                            "text": "Brand Positioning"
+                        }
+                    ]
+                },
+                {
+                    "node": "element",
+                    "tag": "p",
+                    "child": [
+                        {
+                            "node": "element",
+                            "tag": "strong",
+                            "child": [
+                                {
+                                    "node": "text",
+                                    "text": "Brand Positioning"
+                                }
+                            ]
+                        },
+                        {
+                            "node": "text",
+                            "text": " helps you understand your brand’s image in the mind of your selected audience. It has four constructs:"
+                        }
+                    ]
+                },
+                {
+                    "node": "element",
+                    "tag": "ul",
+                    "child": [
+                        {
+                            "node": "element",
+                            "tag": "li",
+                            "child": [
+                                {
+                                    "node": "element",
+                                    "tag": "strong",
+                                    "child": [
+                                        {
+                                            "node": "text",
+                                            "text": "Purpose: "
+                                        }
+                                    ]
+                                },
+                                {
+                                    "node": "text",
+                                    "text": "a brand’s reason for being beyond making a profit"
+                                }
+                            ]
+                        },
+                        {
+                            "node": "element",
+                            "tag": "li",
+                            "child": [
+                                {
+                                    "node": "element",
+                                    "tag": "strong",
+                                    "child": [
+                                        {
+                                            "node": "text",
+                                            "text": "Emotional: "
+                                        }
+                                    ]
+                                },
+                                {
+                                    "node": "text",
+                                    "text": "how a brand expresses itself&nbsp;"
+                                }
+                            ]
+                        },
+                        {
+                            "node": "element",
+                            "tag": "li",
+                            "child": [
+                                {
+                                    "node": "element",
+                                    "tag": "strong",
+                                    "child": [
+                                        {
+                                            "node": "text",
+                                            "text": "Functional: "
+                                        }
+                                    ]
+                                },
+                                {
+                                    "node": "text",
+                                    "text": "tangible features offered by a brand"
+                                }
+                            ]
+                        },
+                        {
+                            "node": "element",
+                            "tag": "li",
+                            "child": [
+                                {
+                                    "node": "element",
+                                    "tag": "strong",
+                                    "child": [
+                                        {
+                                            "node": "text",
+                                            "text": "Experiential"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "node": "text",
+                                    "text": ": interactions people have with a brand"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "node": "element",
+                    "tag": "p",
+                    "child": [
+                        {
+                            "node": "text",
+                            "text": "Each construct comprises a set of factors and attributes to help you diagnose your brand’s image at multiple levels of detail for your selected audience and analysis period."
+                        }
+                    ]
+                },
+                {
+                    "node": "element",
+                    "tag": "p",
+                    "child": [
+                        {
+                            "node": "text",
+                            "text": "In the DNA view, you can identify the strengths and weaknesses of the primary brand’s attributes versus other selected brands, and which of those attributes drive Meaning, Uniqueness, or both. This will help you understand your brand’s core competencies and positioning priorities."
+                        }
+                    ]
+                },
+                {
+                    "node": "element",
+                    "tag": "p",
+                    "child": [
+                        {
+                            "node": "text",
+                            "text": "How to navigate:"
+                        }
+                    ]
+                },
+                {
+                    "node": "element",
+                    "tag": "ul",
+                    "child": [
+                        {
+                            "node": "element",
+                            "tag": "li",
+                            "child": [
+                                {
+                                    "node": "text",
+                                    "text": "Use the icons at top right to toggle between the chart, table, hierarchy, and DNA views."
+                                }
+                            ]
+                        },
+                        {
+                            "node": "element",
+                            "tag": "li",
+                            "child": [
+                                {
+                                    "node": "text",
+                                    "text": "In the chart view, you can select a single bar to see the values. You can also select an item on the legend to display its value across all brands."
+                                }
+                            ]
+                        },
+                        {
+                            "node": "element",
+                            "tag": "li",
+                            "child": [
+                                {
+                                    "node": "text",
+                                    "text": "Both the chart and table views are sortable by a particular metric."
+                                }
+                            ]
+                        },
+                        {
+                            "node": "element",
+                            "tag": "li",
+                            "child": [
+                                {
+                                    "node": "text",
+                                    "text": "Selecting the ‘more options’ (vertical three dots) icon enables more functionality:  Pin locks in your primary brand on the left, Transpose flips the axes, Sample Size is a toggle that displays the size of the population being analyzed. The color coding indicates whether you have sufficient sample size for your analysis."
+                                }
+                            ]
+                        },
+                        {
+                            "node": "element",
+                            "tag": "li",
+                            "child": [
+                                {
+                                    "node": "text",
+                                    "text": "Hierarchy view shows you details of each construct and factor."
+                                }
+                            ]
+                        },
+                        {
+                            "node": "element",
+                            "tag": "li",
+                            "child": [
+                                {
+                                    "node": "text",
+                                    "text": "BERA’s driver model utilizes 3 separate factors in prioritization:"
+                                },
+                                {
+                                    "node": "element",
+                                    "tag": "br"
+                                },
+                                {
+                                    "node": "text",
+                                    "text": "1.&nbsp;&nbsp;&nbsp;&nbsp; The impact of growing that attribute on brand equity and therefore business performance. This comes from a structural equation     model trained on over 8 billion data points that isolates the impact of each attribute."
+                                },
+                                {
+                                    "node": "element",
+                                    "tag": "br"
+                                },
+                                {
+                                    "node": "text",
+                                    "text": "2.&nbsp;&nbsp;&nbsp;&nbsp; The amount of headroom that attribute has for growth. This is to ensure that there is still juice left to squeeze in impactful traits and we aren’t focusing on attributes the brand already owns completely."
+                                },
+                                {
+                                    "node": "element",
+                                    "tag": "br"
+                                },
+                                {
+                                    "node": "text",
+                                    "text": "3.&nbsp;&nbsp;&nbsp;&nbsp; Lastly, how well that attribute fits within existing perceptions of the brand. This is to ensure the attribute isn’t so distant from existing perceptions that it would cause confusion or alienation."
+                                }
+                            ]
+                        },
+                        {
+                            "node": "element",
+                            "tag": "li",
+                            "child": [
+                                {
+                                    "node": "text",
+                                    "text": "Select “Metrics” to turn on/off metrics in your view."
+                                }
+                            ]
+                        },
+                        {
+                            "node": "element",
+                            "tag": "li",
+                            "child": [
+                                {
+                                    "node": "text",
+                                    "text": "Use the “Factors” &lt;&gt; “Attributes” button to toggle between the two."
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "node": "element",
+                    "tag": "p",
+                    "child": [
+                        {
+                            "node": "text",
+                            "text": "&nbsp;"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

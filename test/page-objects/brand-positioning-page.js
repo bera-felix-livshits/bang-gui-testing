@@ -9,7 +9,7 @@ const scrapeBrandPositionChartView = require("./common-components/scrape-brand-p
 
 
 module.exports = {
-    
+
     getBrandPositioningHeader: async function () {
         let maintXPath = `//main//span[contains(@class, "MuiTypography-root") and text()="Brand Positioning"]`;
         let elem = await $(maintXPath);
@@ -23,7 +23,7 @@ module.exports = {
         return await elem.getText();
     },
 
-    getPrimaryBrandBeingUsed: async function (){
+    getPrimaryBrandBeingUsed: async function () {
         let elem = await $(`//div[@style="padding-left: 16px; padding-right: 0px; height: 56px;"]/div[count(child::span)=2]/span[1]`);
         await elem.waitForDisplayed();
         return await elem.getText();
@@ -86,18 +86,73 @@ module.exports = {
         await sampleSizeButtonEl.isDisplayed();
         await sampleSizeButtonEl.click();
 
-        let sliderEl = await $(`//input[contains(@class,"MuiSwitch-input") and @type="checkbox"]`);
-        await sliderEl.isDisplayed();
-        await sliderEl.click();
+        let sampleSizeSpan = await $(`//span[text()="Sample Size"]`);
+
+        await sampleSizeSpan.isDisplayed();
+        await sampleSizeSpan.click();
 
         await browser.keys("\uE00C");
     },
 
-    getSampleSize: async function(){
+    getSampleSizeTextValue: async function () {
         await new Promise(res => setTimeout(() => { res() }, 100));
-        let el = await $(`//div[@class="bsi-count"]`);
-        await el.isDisplayed();
-        return await el.getText();
+        let el = await $(`//*[name()="img"]/following-sibling::div[@title and @id]/div[@class="bsi-count"]`);
+        if (await el.isExisting()) {
+            await el.isDisplayed();
+            let text = await el.getText();
+            if (text === '...') {
+                await new Promise(res => setTimeout(() => { res() }, 100));
+                text = await this.getSampleSizeTextValue()
+            }
+            return text;
+        }
+        return "Sample size element does not exist";
+    },
+
+    getSampleSizeAttributes: async function () {
+        let sampleSize = await this.getSampleSizeTextValue();
+        let el = await $(`//*[name()="img"]/following-sibling::div[@title and @id]/div[@class="bsi-count"]`);
+        let colour = await el.getCSSProperty("color")
+
+        let bsiIcon = await $(`//*[name()="img"]/following-sibling::div[@title and @id]/div[@class="bsi-icon"]`);
+        await bsiIcon.waitForDisplayed();
+
+        let toolTipTitle = await $(`//div[@title and @id]`)
+        let toolTipValue = await toolTipTitle.getAttribute("title");
+        return { sampleSize, colour, toolTipValue };
+    },
+
+    clickOpenPageInfoButton: async function () {
+        let infoButtonIconEl = await $(`//button[contains(@class, "MuiButton-outlined MuiButton-outlinedSizeLarge MuiButton-sizeLarge")]/span/*[name()="svg"]/../..`);
+        await infoButtonIconEl.isDisplayed()
+        await infoButtonIconEl.click();
+    },
+
+    clickClosePageInfoButton: async function () {
+        let infoButtonIconEl = await $(`//iframe/preceding-sibling::div//button`);
+        await infoButtonIconEl.isDisplayed()
+        await infoButtonIconEl.click();
+    },
+
+    getPageInfoContents: async function () {
+        let iframe = await $(`//iframe[@title="test"]`);
+        await iframe.waitForExist();
+        await browser.switchToFrame(iframe);
+        let contentEl = await $(`//div[@id="bera-aside"]`);
+        await contentEl.waitForExist();
+        let location = await contentEl.getLocation();
+        console.log(`location =>`, location);
+        let content = await contentEl.getHTML(contentEl)
+        await browser.switchToParentFrame();
+        return content;
+    },
+
+    isBrandPositioningInfoContentShowing: async function () {
+        let infoButtonIconEl = await $(`//iframe/preceding-sibling::div//button`);
+        await infoButtonIconEl.isExisting();
+        let visible = await infoButtonIconEl.isDisplayedInViewport();
+        console.log('visible =>', visible)
+        return visible;
     },
 
     ...scrapeBrandPositioningHierarchyView,

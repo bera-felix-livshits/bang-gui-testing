@@ -1,12 +1,12 @@
 const assert = require('assert');
 
-const beraLoginPage = require("../page-objects/bera-login-page.js");
-const landingPage = require("../page-objects/landing-page.js");
-const brandSelectorPage = require("../page-objects/brand-selector-page.js");
-const audienceDetailsPage = require("../page-objects/audience-details-page.js");
-const relationshipStage = require('../page-objects/relationship-page.js');
+const beraLoginPage = require("../../page-objects/bera-login-page.js");
+const landingPage = require("../../page-objects/landing-page.js");
+const brandSelectorPage = require("../../page-objects/brand-selector-page.js");
+const audienceDetailsPage = require("../../page-objects/audience-details-page.js");
+const relationshipStage = require('../../page-objects/relationship-page.js');
 
-const analysisPeriodSelector = require('../page-objects/common-components/analysis-period-selector-and-filters.js');
+const analysisPeriodSelector = require('../../page-objects/common-components/analysis-period-selector-and-filters.js');
 
 describe('Love Map Controls (Positive Flow) Test 1', () => {
     it('Login to app.', async () => {

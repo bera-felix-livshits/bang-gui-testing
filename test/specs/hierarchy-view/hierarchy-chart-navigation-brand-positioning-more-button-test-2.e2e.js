@@ -53,7 +53,7 @@ describe('Hierarchy Chart Navigation - Brand Positioning - More Button Test 2', 
     it(`Scrape hieararchy for values`, async function () {
         hierarchyObj = await brandPositioningPage.generatePillarsObj();
         console.log('!!! hierarchy obj =>', JSON.stringify(hierarchyObj, null, 4));
-        fs.writeFileSync('./zzz.hiearchy-obj.json', JSON.stringify(hierarchyObj, null, 4));
+        fs.writeFileSync('./zzz.hierarchy-obj.json', JSON.stringify(hierarchyObj, null, 4));
     })
 
     it(`Scrape table for values`, async function () {

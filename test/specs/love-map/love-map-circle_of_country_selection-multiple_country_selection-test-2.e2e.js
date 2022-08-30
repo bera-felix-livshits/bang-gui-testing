@@ -1,17 +1,17 @@
 const assert = require('assert');
 
-const beraLoginPage = require("../page-objects/bera-login-page.js");
-const landingPage = require("../page-objects/landing-page.js");
-const brandSelectorPage = require("../page-objects/brand-selector-page.js");
-const audienceDetailsPage = require("../page-objects/audience-details-page.js");
-const overviewPage = require("../page-objects/overview-page.js");
-const navBar = require('../page-objects/common-components/nav-bar.js');
-const relationshipStage = require('../page-objects/relationship-page.js');
-const analysisPeriodSelector = require('../page-objects/common-components/analysis-period-selector-and-filters.js');
+const beraLoginPage = require('../../page-objects/bera-login-page');
+const landingPage = require("../../page-objects/landing-page.js");
+const brandSelectorPage = require("../../page-objects/brand-selector-page.js");
+const audienceDetailsPage = require("../../page-objects/audience-details-page.js");
+const overviewPage = require("../../page-objects/overview-page.js");
+const navBar = require('../../page-objects/common-components/nav-bar.js');
+const relationshipStage = require('../../page-objects/relationship-page.js');
+const analysisPeriodSelector = require('../../page-objects/common-components/analysis-period-selector-and-filters.js');
 
 let brandNamesSelectedDuringFlow;
 
-const customClick = require('../utilities/custom-click.js');
+const customClick = require(`../../utilities/custom-click`); //('../utilities/custom-click.js');
 
 describe('Love Map Controls (Positive Flow) Test 1', () => {
     it('Login to app.', async () => {
@@ -92,7 +92,7 @@ describe('Love Map Controls (Positive Flow) Test 1', () => {
 
     it(`Create a new audience and confirm that it is applied {Region is set to Alabama}`, async function () {
         await relationshipStage.clickFiltersButton();
-        await relationshipStage.clickPrimaryAudienceEditButton();
+        await relationshipStage.clickEditPrimaryAudienceButton();
         await relationshipStage.clickAddFilterToYourAudienceButton(); 
 
         await relationshipStage.createAndSelectPrimaryAudience("Region", "Alabama");

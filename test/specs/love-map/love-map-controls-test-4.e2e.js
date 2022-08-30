@@ -1,18 +1,17 @@
 const assert = require('assert');
 
-const beraLoginPage = require("../page-objects/bera-login-page.js");
-const landingPage = require("../page-objects/landing-page.js");
-const brandSelectorPage = require("../page-objects/brand-selector-page.js");
-const audienceDetailsPage = require("../page-objects/audience-details-page.js");
-const overviewPage = require("../page-objects/overview-page.js");
-const navBar = require('../page-objects/common-components/nav-bar.js');
-const relationshipStage = require('../page-objects/relationship-page.js');
+const beraLoginPage = require("../../page-objects/bera-login-page.js");
+const landingPage = require("../../page-objects/landing-page.js");
+const brandSelectorPage = require("../../page-objects/brand-selector-page.js");
+const audienceDetailsPage = require("../../page-objects/audience-details-page.js");
+const overviewPage = require("../../page-objects/overview-page.js");
+const navBar = require('../../page-objects/common-components/nav-bar.js');
+const relationshipStage = require('../../page-objects/relationship-page.js');
 
 let brandNamesSelectedDuringFlow;
 
-const customClick = require('../utilities/custom-click.js');
-const { realpath } = require('fs');
-const analysisPeriodSelector = require('../page-objects/common-components/analysis-period-selector-and-filters.js');
+const customClick = require('../../utilities/custom-click.js');
+const analysisPeriodSelector = require('../../page-objects/common-components/analysis-period-selector-and-filters.js');
 
 describe('Love Map Controls (Positive Flow) Test 1', () => {
     it('Login to app.', async () => {
@@ -119,15 +118,3 @@ describe('Love Map Controls (Positive Flow) Test 1', () => {
     })
     
 })
-
-// await relationshipStage.selectFilter("Test sample", "Region","Alabama");
-        // await audienceDetailsPage.selectFilterOptions("Test sample", "Region","Alabama");
-
-        // // Use for negative tests - no sample available with first five brands.
-        // // await relationshipStage.selectFilter("Test sample", "Credit Score","Very good (740-799)", "Good (670-739)");
-        // // await audienceDetailsPage.selectFilterOptions("Test sample", "Credit Score","Very good (740-799)", "Good (670-739)");
-        // // Unable to save your audience (check console)
-
-        // await audienceDetailsPage.clickApplyFilterButton();
-        // await audienceDetailsPage.insertNameForAudience("Test sample")
-        // await audienceDetailsPage.clickSaveAndFinishButton();

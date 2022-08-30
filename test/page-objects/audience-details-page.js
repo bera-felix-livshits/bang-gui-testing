@@ -6,7 +6,7 @@ module.exports = {
     },
 
     clickSelectYourAudienceDropdown: async function () {
-        let elem = await $(`//div[@class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"]`);
+        let elem = await $(`//div[@class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"]/..`);
         // let elem = await $("//div[contains(@class,'MuiInputBase-root')]/*[contains(@class,'MuiSelect-icon')]/..");
         await elem.waitForDisplayed();
         await elem.click();
@@ -14,7 +14,7 @@ module.exports = {
 
     selectYourAudienceByValue: async function (audienceName) {
         await this.clickSelectYourAudienceDropdown();
-        let inputElem = await $(`//input[@type="search"]`);
+        let inputElem = await $(`//input[@type="search" and @placeholder="Find audience..."]`);
         await inputElem.isExisting();
         await inputElem.isDisplayed();
 

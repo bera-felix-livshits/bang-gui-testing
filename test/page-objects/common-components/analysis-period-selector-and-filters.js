@@ -130,20 +130,6 @@ module.exports = {
         return brandsObj;
     },
 
-    clickPrimaryAudienceEditButton: async function () {
-        let elem = await $(`//div/span[text()="Primary Audience"]/../following-sibling::div[position()=1]//span[text()="Edit"]`);
-        await elem.waitForExist();
-        await elem.waitForClickable();
-        await elem.click();
-    },
-
-    clickBrandsEditButton: async function () {
-        let elem = await $(`//span[text()="Brands"]/../following-sibling::div[position()="1"]//span[text()="Edit"]`);
-        await elem.waitForExist();
-        await elem.waitForClickable();
-        await elem.click();
-    },
-
     clickAddFilterToYourAudienceButton: async function () {
         let elem = await $(`//div[text()="Filter your audience"]/../following-sibling::div[position()=1 and @class="ob-audience-section"]//div[@role="button"]`);
         await elem.waitForExist();

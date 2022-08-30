@@ -53,7 +53,7 @@ describe('Hierarchy Chart Navigation - Brand Positioning - More Button Test 2', 
 
     it(`Enable sample size`, async function (){
         await brandPositioningPage.toggleSampleSize();
-        sampleSizeBefore = await brandPositioningPage.getSampleSize()
+        sampleSizeBefore = await brandPositioningPage.getSampleSizeTextValue()
         console.log('before sample size =>', sampleSizeBefore);
         
     })
@@ -75,7 +75,7 @@ describe('Hierarchy Chart Navigation - Brand Positioning - More Button Test 2', 
     })
 
     it(`Verify that the new audience has loaded`, async function(){
-        sampleSizeAfter = await brandPositioningPage.getSampleSize();
+        sampleSizeAfter = await brandPositioningPage.getSampleSizeTextValue();
         assert.notEqual(sampleSizeAfter, sampleSizeBefore, "New audience had failed to load");
     })
 
@@ -88,7 +88,7 @@ describe('Hierarchy Chart Navigation - Brand Positioning - More Button Test 2', 
     })
 
     it(`Verify that the audience is back to it's default value`, async function (){
-        let assumedDefaultAudienceSize = await brandPositioningPage.getSampleSize();
+        let assumedDefaultAudienceSize = await brandPositioningPage.getSampleSizeTextValue();
         assert.equal(assumedDefaultAudienceSize, sampleSizeBefore, "Audience was not reset back to default");
     })
    
