@@ -59,25 +59,25 @@ describe('Hierarchy Chart Navigation - Brand Positioning - More Button Test 2', 
     })
 
     it(`Verify that the Factors is displayed`, async function () {
-        let flattend = flattenHierarchyObj(hierarchyObj);
+        let flattened = flattenHierarchyObj(hierarchyObj);
 
-        let factorConstructs =flattend.filter(el => el.type === "factor");
+        let factorConstructs =flattened.filter(el => el.type === "factor");
         assert.equal(factorConstructs.length, 9, "There are factors missing from the hierarchy.")
     })
 
     it(`Verify that the correct colors are assigned to the constructs: All Purpose metrics are apricot, All Emotional metrics are orange`, async function () {
-        let flattend = flattenHierarchyObj(hierarchyObj);
+        let flattened = flattenHierarchyObj(hierarchyObj);
 
-        let purposeMetrics = flattend.filter(el => el.parents.includes("Purpose") || el.pillarName === "Purpose" );
-        let emotionalMetrics = flattend.filter(el => el.parents.includes("Emotional" || el.pillarName === "Emotional"));
+        let purposeMetrics = flattened.filter(el => el.parents.includes("Purpose") || el.pillarName === "Purpose" );
+        let emotionalMetrics = flattened.filter(el => el.parents.includes("Emotional" || el.pillarName === "Emotional"));
 
         assert.equal(purposeMetrics.every(el => el.color.value === "rgb(255,187,0)"), true, "Color mismatch on 'purpose' metrics");
         assert.equal(emotionalMetrics.every(el => el.color.value === "rgb(251,120,45)"), true, "Color mismatch on 'purpose' metrics");
     })
 
     it(`Verify that no other colors or shades of Apricot or Orange are used`, async function () {
-        let flattend = flattenHierarchyObj(hierarchyObj);
-        assert.equal(flattend.every(el => el.color.value !== "rgb(251,120,45)" && el.color.value !== "rgb(255,187,0)"), 0, "Other colors are represented than 'Orange' or 'Apricot'")
+        let flattened = flattenHierarchyObj(hierarchyObj);
+        assert.equal(flattened.every(el => el.color.value !== "rgb(251,120,45)" && el.color.value !== "rgb(255,187,0)"), 0, "Other colors are represented than 'Orange' or 'Apricot'")
     })
 
     // it(`Verify that the Brand Positioning Attributes are listed alphabetically`, async function () {

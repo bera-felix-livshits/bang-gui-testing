@@ -81,12 +81,12 @@ describe('Hierarchy Chart Navigation - Positioning Attributes - Test 1', () => {
     })
 
     it(`Verify that the correct colors are assigned to the constructs: All Purpose metrics are apricot, All Emotional metrics are orange. Verify that no other colors or shades of Apricot or Orange are used.`, async function () {
-        let flattendObjArr = flattenHierarchyObj(hierarchyObj);
-        // fs.writeFileSync('./flattendObj.json', JSON.stringify(flattendObjArr, null, 4))
+        let flattenedObjArr = flattenHierarchyObj(hierarchyObj);
+        // fs.writeFileSync('./flattenedObj.json', JSON.stringify(flattenedObjArr, null, 4))
 
-        let index = flattendObjArr.findIndex(el => el.pillarName === "Purpose");
-        let emotionalArr = flattendObjArr.slice(0, index);
-        let purposeArr = flattendObjArr.slice(index);
+        let index = flattenedObjArr.findIndex(el => el.pillarName === "Purpose");
+        let emotionalArr = flattenedObjArr.slice(0, index);
+        let purposeArr = flattenedObjArr.slice(index);
 
         let everyEmotionalColourIsOrange = emotionalArr.every(el => el.color.value === "rgb(251,120,45)")
         let everyPurposeColourIsApricot = purposeArr.every(el => el.color.value === "rgb(255,187,0)")
@@ -96,18 +96,18 @@ describe('Hierarchy Chart Navigation - Positioning Attributes - Test 1', () => {
     })
 
     it(`Verify that the Brand Positioning Attributes are listed alphabetically`, async function () {
-        let flattend = flattenHierarchyObj(hierarchyObj);
-        // fs.writeFileSync(`./flattened.json`, JSON.stringify(flattend, null, 4))
-        flattend = flattend.reverse()
-        let clonedArr = JSON.parse(JSON.stringify(flattend));
+        let flattened = flattenHierarchyObj(hierarchyObj);
+        // fs.writeFileSync(`./flattened.json`, JSON.stringify(flattened, null, 4))
+        flattened = flattened.reverse()
+        let clonedArr = JSON.parse(JSON.stringify(flattened));
         clonedArr.sort((a, b) => {
             if (a.pillarName < b.pillarName) { return 1; }
             else { return -1; }
         })
 
         let sorted = true;
-        flattend.forEach(el => {
-            let filteredOriginal = flattend.filter((flatEl) => {
+        flattened.forEach(el => {
+            let filteredOriginal = flattened.filter((flatEl) => {
                 let match = true;
                 el.parents.forEach((parent, i) => {
                     if (parent !== flatEl.parents[i]) {

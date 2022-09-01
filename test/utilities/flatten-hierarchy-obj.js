@@ -29,5 +29,5 @@ const flattenHierarchyObj = (parentEl, flattenedObj = [], parents = []) => {
 }
 
 module.exports = flattenHierarchyObj;
-// let flattend = flattenHierarchyObj(hierarchyObj);
-// fs.writeFileSync('flattened-hierarchy-obj', JSON.stringify(flattend, null, 4));
+// let flattened = flattenHierarchyObj(hierarchyObj);
+// fs.writeFileSync('flattened-hierarchy-obj', JSON.stringify(flattened, null, 4));

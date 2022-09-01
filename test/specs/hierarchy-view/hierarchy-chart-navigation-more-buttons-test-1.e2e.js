@@ -57,9 +57,9 @@ describe('Love Map Controls (Positive Flow) Test 1', () => {
 
     it(`Verify that read-more-values fixture matches to what is scraped`, async function () {
         const readMoreValues = JSON.parse(fs.readFileSync('./test/fixtures/read-more-values.json').toString());
-        const flattendObj = flattenHierarchyObj(hierarchyObj)
+        const flattenedObj = flattenHierarchyObj(hierarchyObj)
         let failedArr = Object.keys(readMoreValues).filter(key => {
-            let targetObj = flattendObj.find( el => el.pillarName === key)
+            let targetObj = flattenedObj.find( el => el.pillarName === key)
             if(targetObj.paragraphContent.toLowerCase().trim() != readMoreValues[key].toLowerCase().trim()){
                 return targetObj;
             }
