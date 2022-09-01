@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 module.exports = {
     getAllChartEntryElements: async function () {
         await new Promise(res => { setTimeout(() => { res() }, 100); })
@@ -10,50 +12,71 @@ module.exports = {
     },
 
     scrapeChart: async function () {
-        let percentValuesXpath = `//*[@class="recharts-layer recharts-label-list"]//*[string-length(text()) > 0]`;
 
-        let brandTextElements = await $$(`//*[@class="becharts-x-label"]`);
-        let brandNames = await Promise.all(brandTextElements.map(async el => await el.getText()));
-
-        let purposeLabel = await $(`//div[@class="becharts-legend-label" and text()="Purpose"]`);
-        await purposeLabel.waitForDisplayed()
-        await purposeLabel.click();
-        await new Promise(res => { setTimeout(() => { res() }, 100); })
-
-        let purposePercentagesElements = await $$(percentValuesXpath)
-        let purposePercentages = await Promise.all(purposePercentagesElements.map(async el => await el.getText()));
-        let purposeColorElements = await $$(`//*[@class="recharts-layer recharts-bar"]//*[@name="purpose"]`);
-        let purposeColors = await Promise.all(purposeColorElements.map(async el => await el.getCSSProperty('fill')))
-
-        let emotionalLabel = await $(`//div[@class="becharts-legend-label" and text()="Emotional"]`);
-        await emotionalLabel.waitForDisplayed()
-        await emotionalLabel.click();
-        await new Promise(res => { setTimeout(() => { res() }, 100); })
-
-        let emotionalPercentagesElements = await $$(percentValuesXpath)
-        let emotionalPercentages = await Promise.all(emotionalPercentagesElements.map(async el => await el.getText()));
-        let emotionalColorElements = await $$(`//*[@class="recharts-layer recharts-bar"]//*[@name="emotional"]`);
-        let emotionalColors = await Promise.all(emotionalColorElements.map(async el => await el.getCSSProperty('fill')))
-
-        let chartValues = brandNames.map((brandName, i) => {
-            let dataObj = {};
-            if (i === 0) {
-                dataObj.primaryBrand = true;
-            } else {
-                dataObj.primaryBrand = false;
+        let constructButtons = await $$(`//div[@role="button"]/span[string-length(text()) > 0]`)
+        let validConstructButtons = await Promise.all(constructButtons.map(async button => {
+            if (await button.isClickable()) {
+                return button;
             }
+            return null;
+        }))
+        validConstructButtons = validConstructButtons.filter(el => el);
+        let names = await Promise.all(validConstructButtons.map(async button => {
+            return await button.getText();
+        }))
 
-            dataObj.brandName = brandName;
-            dataObj.emotionalPercentage = emotionalPercentages[i];
-            dataObj.emotionalColor = emotionalColors[i];
-            dataObj.purposePercentage = purposePercentages[i];
-            dataObj.purposeColor = purposeColors[i];
 
-            return dataObj
-        })
-
-        console.log('!!! chart view values =>', chartValues)
-
-        return chartValues;
+        return await this.getChartLevels(names)
     },
+
+    getChartLevels: async function (names, index = 0, chartsObj = {} ) {
+        let name = names[index];
+        await $(`//div[@role="button"]/span[text()="${name}"]`).click()
+        let xAxisEntries = await $$(`//div[@data-bar]`);
+        let xAxisEntryNames = await Promise.all(xAxisEntries.map(async el => await el.getAttribute('data-bar')));
+        let levelEntries = await this.getChartLevelEntries(xAxisEntryNames)
+        chartsObj[name] = levelEntries;
+        
+        index++;
+        if(index < names.length){
+            await new Promise(res => { setTimeout(() => { res() }, 100); })
+            chartsObj = await this.getChartLevels(names, index, chartsObj)
+        }
+
+        return chartsObj;
+    },
+
+    getChartLevelEntries: async function (entryNames, index = 0, entriesDataObj = {}) {
+        let entryName = entryNames[index];
+        let targetDataBar = await $(`//div[@data-bar="${entryName}"]//div[@class="becharts-legend-label"]`);
+        let brands = await Promise.all((await $$(`//*[name()="text" and @class="becharts-x-label"]`))
+            .map(async el => await el.getText()))
+        let entryNameKey = await $(`//div[@data-bar="${entryName}"]//div[@class="becharts-legend-label"]`).getText();
+
+        await targetDataBar.waitForDisplayed();
+        await targetDataBar.click();
+        await new Promise(res => { setTimeout(() => { res() }, 100); })
+
+        let entryNameValueEls = await $$(`//*[@class="recharts-layer recharts-label-list"]//*[name()="text"]`);
+        let entryNameValues = await Promise.all(entryNameValueEls.map(async el => await el.getText()));
+
+        let colourElements = await $$(`//*[@class="recharts-layer recharts-bar"]//*[@name="${entryName}"]`);
+        let colourValues = await Promise.all(colourElements.map(async el => await el.getCSSProperty('fill')))
+
+        entriesDataObj[entryNameKey] = {}
+        brands.forEach((brand, i) => {
+            brandDataObj = {};
+            i === 0 ? brandDataObj.primaryBrand = true : brandDataObj.primaryBrand = false;
+            brandDataObj.percentage = entryNameValues[i];
+            brandDataObj.colour = colourValues[i];
+            entriesDataObj[entryNameKey][brand] = brandDataObj;
+        });
+
+        index++;
+        if (index < entryNames.length) {
+            entriesDataObj = await this.getChartLevelEntries(entryNames, index, entriesDataObj);
+        }
+
+        return entriesDataObj;
+    }
 }

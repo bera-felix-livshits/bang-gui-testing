@@ -11,7 +11,7 @@ const brandPositioningPage = require("../../page-objects/brand-positioning-page.
 
 let tableObj, hierarchyObj, chartObj;
 
-describe('Hierarchy Chart Navigation - Brand Positioning - More Button Test 2', () => {
+describe('Hierarchy Chart Navigation - Positioning Attributes - Test 1', () => {
     it('Login to app.', async () => {
         await beraLoginPage.login();
     })
@@ -53,41 +53,37 @@ describe('Hierarchy Chart Navigation - Brand Positioning - More Button Test 2', 
     it(`scrape chart for values`, async function () {
         await brandPositioningPage.clickChartViewButton();
         chartObj = await brandPositioningPage.scrapeChart();
-    })
-
-    it(`Scrape hieararchy for values`, async function () {
-        await brandPositioningPage.clickHierarchyViewButton();
-        hierarchyObj = await brandPositioningPage.generatePillarsObj();
-    })
-
-    it(`Scrape table for values`, async function () {
-        await brandPositioningPage.clickTableViewButton();
-        tableObj = await brandPositioningPage.scrapeAllForPrimaryBrand();
-    })
-
-    it(`Verify that the percentile score values match for chart view and table view for the Purpose and Emotional constructs`, async function () {
-
-        let primaryBrandEmotionalKey = Object.keys(chartObj["Overview"]["Emotional"]).find(key => chartObj["Overview"]["Emotional"][key].primaryBrand)
-        let primaryBrandEmotional = chartObj["Overview"]["Emotional"][primaryBrandEmotionalKey];
-
-        let primaryBrandPurposeKey =  Object.keys(chartObj["Overview"]["Purpose"]).find(key => chartObj["Overview"]["Purpose"][key].primaryBrand);
-        let primaryBrandPurpose = chartObj["Overview"]["Purpose"][primaryBrandPurposeKey];
-
-        assert.equal(parseFloat(primaryBrandEmotional.percentage) , tableObj["Overview"]["values"]["Emotional"], "Table view and Chart view do not match values for emotional percentage")
-        assert.equal(parseFloat(primaryBrandPurpose.percentage) , tableObj["Overview"]["values"]["Purpose"], "Table view and Chart view do not match values for purpose percentage")
+        // fs.writeFileSync('./chart-obj.json', JSON.stringify(chartObj, null, 4));
     })
 
     it(`Verify that the percentile score values match for Hierarchy chart and Table view for the Purpose and Emotional constructs`, async function () {
-        let primaryBrandEmotionalKey = Object.keys(chartObj["Overview"]["Emotional"]).find(key => chartObj["Overview"]["Emotional"][key].primaryBrand)
-        let primaryBrandEmotional = chartObj["Overview"]["Emotional"][primaryBrandEmotionalKey];
+        await brandPositioningPage.clickHierarchyViewButton();
 
-        let primaryBrandPurposeKey =  Object.keys(chartObj["Overview"]["Purpose"]).find(key => chartObj["Overview"]["Purpose"][key].primaryBrand);
-        let primaryBrandPurpose = chartObj["Overview"]["Purpose"][primaryBrandPurposeKey];
+        let purposePercentage = await brandPositioningPage.getConstructBoxPercentageFill("Purpose");
+        let emotionalPercentage = await brandPositioningPage.getConstructBoxPercentageFill("Emotional");
 
-        let emotionalHierarchy = hierarchyObj.children.find(child => child.pillarName === "Emotional")
-        let purposeHierarchy = hierarchyObj.children.find(child => child.pillarName === "Purpose")
+        let primaryBrandKeyPurpose = Object.keys(chartObj["Overview"]["Purpose"]).find(key => chartObj["Overview"]["Purpose"][key].primaryBrand)
+        let primaryBrandPurpose = chartObj["Overview"]["Purpose"][primaryBrandKeyPurpose];
 
-        assert.equal(parseFloat(primaryBrandEmotional.percentage), emotionalHierarchy.percentage)
-        assert.equal(parseFloat(primaryBrandPurpose.percentage), purposeHierarchy.percentage)
+        let primaryBrandKeyEmotional = Object.keys(chartObj["Overview"]["Emotional"]).find(key => chartObj["Overview"]["Emotional"][key].primaryBrand)
+        let primaryBrandEmotional = chartObj["Overview"]["Emotional"][primaryBrandKeyEmotional];
+        
+
+        assert.equal(parseFloat(primaryBrandEmotional.percentage), emotionalPercentage)
+        assert.equal(parseFloat(primaryBrandPurpose.percentage), purposePercentage)
+    })
+
+    it(`Confirm and validate that when a construct is selected that the construct no longer is visually represented as a percentage`, async function () {
+        
+        await brandPositioningPage.clickConstructBox("Purpose");
+        let purposePercentage = await brandPositioningPage.getConstructBoxPercentageFill("Purpose");
+        await brandPositioningPage.clickConstructBox("Purpose");
+        
+        await brandPositioningPage.clickConstructBox("Emotional");
+        let emotionalPercentage = await brandPositioningPage.getConstructBoxPercentageFill("Emotional");
+        await brandPositioningPage.clickConstructBox("Emotional");
+
+        assert.equal(purposePercentage, 100, "Purpose construct does not fill up the entirety of the background character")
+        assert.equal(emotionalPercentage, 100, "Emotional construct does not fill up the entirety of the background character")
     })
 })

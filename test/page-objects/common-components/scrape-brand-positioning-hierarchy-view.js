@@ -140,8 +140,8 @@ module.exports = {
         let bgRect = await this.getBgRect(objHeading, chainedHeading);
         await bgRect.waitForDisplayed();
 
-        fgWidth = await fgRect.getAttribute("width");
-        bgWidth = await bgRect.getAttribute("width");
+        let fgWidth = await fgRect.getAttribute("width");
+        let bgWidth = await bgRect.getAttribute("width");
 
         return Math.round(fgWidth / bgWidth * 1000) / 10;
     },

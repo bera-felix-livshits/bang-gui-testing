@@ -9,6 +9,7 @@
         "@wdio/spec-reporter": "^7.20.7",
         "chromedriver": "^104.0.0",
         "dotenv": "^16.0.1",
+        "html2json": "^1.0.2",
         "mapbox-gl": "^2.9.2",
         "node-fetch": "^2.6.7",
         "pg": "^8.7.3",
@@ -20,6 +21,7 @@
     },
     "scripts": {
         "wdio": "wdio run wdio.conf.js",
-        "wdio:headless": "wdio run wdio.conf-headless.js"
+        "wdio:headless": "wdio run wdio.conf-headless.js",
+        "testing": "wdio -- --spec hierarchy-chart-navigation-more-buttons-test-1.e2e"
     }
 }

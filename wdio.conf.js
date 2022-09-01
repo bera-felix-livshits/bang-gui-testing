@@ -33,21 +33,28 @@ exports.config = {
     ],
     suites: {
         hierarchyView: [
-            './test/specs/hierarchy-view/hierarchy-chart-navigation-analysis-period-change-test-1.e2e.js',
-            './test/specs/hierarchy-view/hierarchy-chart-navigation-analysis-period-change-with-different-page-load-test-2.e2e.js',
-            './test/specs/hierarchy-view/hierarchy-chart-navigation-audience-change-test-1.e2e.js',
-            './test/specs/hierarchy-view/hierarchy-chart-navigation-audience-change-with-different-page-load-test-2.e2e.js',
-            './test/specs/hierarchy-view/hierarchy-chart-navigation-brand-positioning-more-button-test-2.e2e.js',
-            './test/specs/hierarchy-view/hierarchy-chart-navigation-brand-positioning-test-1.e2e.js',
-            './test/specs/hierarchy-view/hierarchy-chart-navigation-constructs-colors-test-5.e2e.js',
-            './test/specs/hierarchy-view/hierarchy-chart-navigation-constructs-order-test-6.e2e.js',
-            './test/specs/hierarchy-view/hierarchy-chart-navigation-data-for-chart-bar-and-table-views-test-4.e2e.js',
-            './test/specs/hierarchy-view/hierarchy-chart-navigation-data-loads-in-percent-test-3.e2e.js',
-            './test/specs/hierarchy-view/hierarchy-chart-navigation-default-parameters-test-2.e2e.js',
-            './test/specs/hierarchy-view/hierarchy-chart-navigation-primary-brand-change-test-1.e2e.js',
-            './test/specs/hierarchy-view/hierarchy-chart-navigation-primary-brand-change-with-different-page-load-test-2.e2e.js',
-            './test/specs/hierarchy-view/hierarchy-chart-navigation-test-1.e2e.js'
 
+            'test/specs/hierarchy-view/hierarchy-chart-info-icon-test-1.e2e.js',
+            'test/specs/hierarchy-view/hierarchy-chart-navigation-analysis-period-change-test-1.e2e.js',
+            'test/specs/hierarchy-view/hierarchy-chart-navigation-analysis-period-change-with-different-page-load-test-2.e2e.js',
+            'test/specs/hierarchy-view/hierarchy-chart-navigation-audience-change-test-1.e2e.js',
+            'test/specs/hierarchy-view/hierarchy-chart-navigation-audience-change-with-different-page-load-test-2.e2e.js',
+            'test/specs/hierarchy-view/hierarchy-chart-navigation-brand-positioning-more-button-test-2.e2e.js',
+            'test/specs/hierarchy-view/hierarchy-chart-navigation-brand-positioning-test-1.e2e.js',
+            'test/specs/hierarchy-view/hierarchy-chart-navigation-constructs-colors-test-5.e2e.js',
+            'test/specs/hierarchy-view/hierarchy-chart-navigation-constructs-order-test-6.e2e.js',
+            'test/specs/hierarchy-view/hierarchy-chart-navigation-data-for-chart-bar-and-table-views-test-4.e2e.js',
+            'test/specs/hierarchy-view/hierarchy-chart-navigation-data-loads-in-percent-test-3.e2e.js',
+            'test/specs/hierarchy-view/hierarchy-chart-navigation-default-parameters-test-2.e2e.js',
+            'test/specs/hierarchy-view/hierarchy-chart-navigation-more-buttons-test-1.e2e.js',
+            'test/specs/hierarchy-view/hierarchy-chart-navigation-positioning-attributes-test-1.e2e.js',
+            'test/specs/hierarchy-view/hierarchy-chart-navigation-positioning-attributes-test-2.e2e.js',
+            'test/specs/hierarchy-view/hierarchy-chart-navigation-primary-brand-change-test-1.e2e.js',
+            'test/specs/hierarchy-view/hierarchy-chart-navigation-primary-brand-change-with-different-page-load-test-2.e2e.js',
+            'test/specs/hierarchy-view/hierarchy-chart-navigation-test-1.e2e.js',
+            'test/specs/hierarchy-view/hierarchy-chart-sample-size-test-1.e2e.js',
+            `test/specs/hierarchy-view/hierarchy-chart-navigation-data-factors-level-test-1.e2e.js`,
+            `test/specs/hierarchy-view/hierarchy-chart-navigation-data-factors-level-test-2.e2e.js`
         ]
     },
     //
@@ -66,7 +73,7 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 5,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -77,7 +84,7 @@ exports.config = {
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
-        maxInstances: 10,
+        maxInstances: 5,
         //
         browserName: 'chrome',
         acceptInsecureCerts: true,
@@ -121,7 +128,7 @@ exports.config = {
     //
     // If you only want to run your tests until a specific amount of tests have failed use
     // bail (default is 0 - don't bail, run all tests).
-    bail: 1,
+    bail: 0,
     //
     // Set a base URL in order to shorten url command calls. If your `url` parameter starts
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
@@ -189,7 +196,7 @@ exports.config = {
     framework: 'mocha',
     //
     // The number of times to retry the entire specfile when it fails as a whole
-    specFileRetries: 0,
+    specFileRetries: 2,
     //
     // Delay in seconds between the spec file retry attempts
     // specFileRetriesDelay: 0,
@@ -330,7 +337,19 @@ exports.config = {
      * @param {Object} suite suite details
      */
     afterSuite: async function (suite) {
-        // await pgCleanup();
+        try {
+            await new Promise(async res => {
+                setTimeout(() => {
+                    res()
+                }, 5000)
+                setTimeout(async () => {
+                    res(await pgCleanup())
+                }, 100)
+
+            })
+
+
+        } catch (e) { }
     },
     /**
      * Runs after a WebdriverIO command gets executed

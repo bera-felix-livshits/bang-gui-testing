@@ -53,14 +53,14 @@ describe('Hierarchy Chart Navigation - Brand Positioning - More Button Test 2', 
     it(`Scrape hieararchy for values`, async function () {
         hierarchyObj = await brandPositioningPage.generatePillarsObj();
         console.log('!!! hierarchy obj =>', JSON.stringify(hierarchyObj, null, 4));
-        fs.writeFileSync('./zzz.hierarchy-obj.json', JSON.stringify(hierarchyObj, null, 4));
+        // fs.writeFileSync('./zzz.hierarchy-obj.json', JSON.stringify(hierarchyObj, null, 4));
     })
 
     it(`Scrape table for values`, async function () {
         await brandPositioningPage.clickTableViewButton();
         tableObj = await brandPositioningPage.scrapeAllForPrimaryBrand();
         console.log(`table obj => `, JSON.stringify(tableObj, null, 4));
-        fs.writeFileSync('./zzz.table-obj.json', JSON.stringify(tableObj, null, 4));
+        // fs.writeFileSync('./zzz.table-obj.json', JSON.stringify(tableObj, null, 4));
     })
 
     it(`Verify that data for both the Purpose and Emotional constructs are loaded and their percentile-ranked scores are shown in the applicable charts`, async function () {

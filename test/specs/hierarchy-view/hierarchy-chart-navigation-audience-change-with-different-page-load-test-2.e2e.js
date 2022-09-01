@@ -53,7 +53,7 @@ describe('Hierarchy Chart Navigation - Brand Positioning - More Button Test 2', 
 
     it(`Enable sample size`, async function () {
         await brandPositioningPage.toggleSampleSize();
-        sampleSizeBefore = await brandPositioningPage.getSampleSize()
+        sampleSizeBefore = await brandPositioningPage.getSampleSizeAttributes()
         console.log('before sample size =>', sampleSizeBefore);
 
     })
@@ -77,8 +77,8 @@ describe('Hierarchy Chart Navigation - Brand Positioning - More Button Test 2', 
     })
 
     it(`Verify that the new audience has loaded`, async function () {
-        sampleSizeAfter = await brandPositioningPage.getSampleSize();
-        assert.notEqual(sampleSizeAfter, sampleSizeBefore, "New audience had failed to load");
+        sampleSizeAfter = await brandPositioningPage.getSampleSizeAttributes();
+        assert.notEqual(sampleSizeAfter.sampleSize, sampleSizeBefore.sampleSize, "New audience had failed to load");
     })
 
     it(`Navigate to Hierarchy view`, async function () {

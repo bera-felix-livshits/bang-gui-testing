@@ -54,7 +54,7 @@ describe('Hierarchy Chart Navigation - Brand Positioning - More Button Test 2', 
         await brandPositioningPage.clickHierarchyViewButton();
         hierarchyObj = await brandPositioningPage.generatePillarsObj();
         console.log('!!! hierarchy obj =>', JSON.stringify(hierarchyObj, null, 4));
-        fs.writeFileSync(`./zzz.hierarchy-obj.json`, JSON.stringify(hierarchyObj, null, 4))
+        // fs.writeFileSync(`./zzz.hierarchy-obj.json`, JSON.stringify(hierarchyObj, null, 4))
     })
 
     it(`Verify that that purpose and emotional constructs colors are apricot and orange`, async function () {

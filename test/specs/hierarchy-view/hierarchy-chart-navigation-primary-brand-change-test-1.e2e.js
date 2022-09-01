@@ -53,9 +53,9 @@ describe('Hierarchy Chart Navigation - Brand Positioning - More Button Test 2', 
 
     it(`Enable sample size`, async function (){
         await brandPositioningPage.toggleSampleSize();
-        sampleSizeBefore = await brandPositioningPage.getSampleSize()
+        let sampleSizeBefore = await brandPositioningPage.getSampleSizeAttributes()
         console.log('before sample size =>', sampleSizeBefore);
-        
+
     })
 
     it(`Click filters drop down and select "Edit" Primary Audience element`,async function (){

@@ -9,6 +9,8 @@ const navBar = require('../../page-objects/common-components/nav-bar.js');
 const overviewPage = require("../../page-objects/overview-page.js");
 const brandPositioningPage = require("../../page-objects/brand-positioning-page.js");
 
+const flattenHierarchyObj = require(`../../utilities/flatten-hierarchy-obj`);
+
 let tableObj, hierarchyObj, chartObj;
 
 describe('Hierarchy Chart Navigation - Brand Positioning - More Button Test 2', () => {
@@ -50,44 +52,36 @@ describe('Hierarchy Chart Navigation - Brand Positioning - More Button Test 2', 
         assert.equal(isBannerDisplayed, true, "Hierarchy banner is not displayed")
     })
 
-    it(`scrape chart for values`, async function () {
-        await brandPositioningPage.clickChartViewButton();
-        chartObj = await brandPositioningPage.scrapeChart();
-    })
-
     it(`Scrape hieararchy for values`, async function () {
         await brandPositioningPage.clickHierarchyViewButton();
         hierarchyObj = await brandPositioningPage.generatePillarsObj();
+        console.log('!!! hierarchy obj =>', JSON.stringify(hierarchyObj, null, 4));
     })
 
-    it(`Scrape table for values`, async function () {
-        await brandPositioningPage.clickTableViewButton();
-        tableObj = await brandPositioningPage.scrapeAllForPrimaryBrand();
+    it(`Verify that the Factors is displayed`, async function () {
+        let flattend = flattenHierarchyObj(hierarchyObj);
+
+        let factorConstructs =flattend.filter(el => el.type === "factor");
+        assert.equal(factorConstructs.length, 9, "There are factors missing from the hierarchy.")
     })
 
-    it(`Verify that the percentile score values match for chart view and table view for the Purpose and Emotional constructs`, async function () {
+    it(`Verify that the correct colors are assigned to the constructs: All Purpose metrics are apricot, All Emotional metrics are orange`, async function () {
+        let flattend = flattenHierarchyObj(hierarchyObj);
 
-        let primaryBrandEmotionalKey = Object.keys(chartObj["Overview"]["Emotional"]).find(key => chartObj["Overview"]["Emotional"][key].primaryBrand)
-        let primaryBrandEmotional = chartObj["Overview"]["Emotional"][primaryBrandEmotionalKey];
+        let purposeMetrics = flattend.filter(el => el.parents.includes("Purpose") || el.pillarName === "Purpose" );
+        let emotionalMetrics = flattend.filter(el => el.parents.includes("Emotional" || el.pillarName === "Emotional"));
 
-        let primaryBrandPurposeKey =  Object.keys(chartObj["Overview"]["Purpose"]).find(key => chartObj["Overview"]["Purpose"][key].primaryBrand);
-        let primaryBrandPurpose = chartObj["Overview"]["Purpose"][primaryBrandPurposeKey];
-
-        assert.equal(parseFloat(primaryBrandEmotional.percentage) , tableObj["Overview"]["values"]["Emotional"], "Table view and Chart view do not match values for emotional percentage")
-        assert.equal(parseFloat(primaryBrandPurpose.percentage) , tableObj["Overview"]["values"]["Purpose"], "Table view and Chart view do not match values for purpose percentage")
+        assert.equal(purposeMetrics.every(el => el.color.value === "rgb(255,187,0)"), true, "Color mismatch on 'purpose' metrics");
+        assert.equal(emotionalMetrics.every(el => el.color.value === "rgb(251,120,45)"), true, "Color mismatch on 'purpose' metrics");
     })
 
-    it(`Verify that the percentile score values match for Hierarchy chart and Table view for the Purpose and Emotional constructs`, async function () {
-        let primaryBrandEmotionalKey = Object.keys(chartObj["Overview"]["Emotional"]).find(key => chartObj["Overview"]["Emotional"][key].primaryBrand)
-        let primaryBrandEmotional = chartObj["Overview"]["Emotional"][primaryBrandEmotionalKey];
-
-        let primaryBrandPurposeKey =  Object.keys(chartObj["Overview"]["Purpose"]).find(key => chartObj["Overview"]["Purpose"][key].primaryBrand);
-        let primaryBrandPurpose = chartObj["Overview"]["Purpose"][primaryBrandPurposeKey];
-
-        let emotionalHierarchy = hierarchyObj.children.find(child => child.pillarName === "Emotional")
-        let purposeHierarchy = hierarchyObj.children.find(child => child.pillarName === "Purpose")
-
-        assert.equal(parseFloat(primaryBrandEmotional.percentage), emotionalHierarchy.percentage)
-        assert.equal(parseFloat(primaryBrandPurpose.percentage), purposeHierarchy.percentage)
+    it(`Verify that no other colors or shades of Apricot or Orange are used`, async function () {
+        let flattend = flattenHierarchyObj(hierarchyObj);
+        assert.equal(flattend.every(el => el.color.value !== "rgb(251,120,45)" && el.color.value !== "rgb(255,187,0)"), 0, "Other colors are represented than 'Orange' or 'Apricot'")
     })
+
+    // it(`Verify that the Brand Positioning Attributes are listed alphabetically`, async function () {
+
+    // })
+
 })

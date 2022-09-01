@@ -1,6 +1,7 @@
 const relationshipMap = require('../page-objects/common-components/relationship-map');
 const analysisPeriodSelector = require('./common-components/analysis-period-selector-and-filters.js');
 const customClick = require('../utilities/custom-click.js');
+const camelize = require('../utilities/camelize');
 
 const scrapeBrandPositioningHierarchyView = require("./common-components/scrape-brand-positioning-hierarchy-view.js");
 const scrapeBrandPositionTableView = require("./common-components/scrape-brand-position-table-view.js");
@@ -153,6 +154,40 @@ module.exports = {
         let visible = await infoButtonIconEl.isDisplayedInViewport();
         console.log('visible =>', visible)
         return visible;
+    },
+
+    ///////////////////////////////// For Hieararchy view
+    clickConstructBox: async function (constructName) {
+        // let el = await $(`//*[name()="text" and text()="${constructName}"]/preceding-sibling::*[name()="rect" and @class="hc-block-bg"]`);
+        let el = await $(`//*[name()="text" and text()="${constructName}"]`);
+        await el.waitForDisplayed();
+        await el.click();
+    },
+
+    getConstructBoxPercentageFill: async function (constructName) { 
+        let progressRect = await $(`//*[name()="text" and text()="${constructName}"]/preceding-sibling::*[name()="rect" and @class="hc-block-progress"]`);
+        let backgroundRect = await $(`//*[name()="text" and text()="${constructName}"]/preceding-sibling::*[name()="rect" and @class="hc-block-bg"]`)
+
+        progressRect = await progressRect.getAttribute("width");
+        backgroundRect = await backgroundRect.getAttribute("width");
+
+        return Math.round(progressRect / backgroundRect * 1000) / 10;
+    },
+
+    isConstructDisplayed: async function (constructName){
+        let el = await $(`//*[name()="text" and text()="${constructName}"]`);
+        await el.waitForExist();
+        let progressRect = await $(`//*[name()="text" and text()="${constructName}"]/preceding-sibling::*[name()="rect" and @class="hc-block-progress"]`);
+        await progressRect.waitForExist();
+        let backgroundRect = await $(`//*[name()="text" and text()="${constructName}"]/preceding-sibling::*[name()="rect" and @class="hc-block-bg"]`)
+        await backgroundRect.waitForExist();
+        return (await el.isDisplayed() && await progressRect.isDisplayed() && await backgroundRect.isDisplayed());
+    },
+
+    getConstructReadMoreElement: async function (constructName){
+        let el = await $(`//*[name()="text" and contains(@data-testid,"${camelize(constructName)}") and text()="Read more"]`);
+        await el.waitForDisplayed();
+        return el;
     },
 
     ...scrapeBrandPositioningHierarchyView,

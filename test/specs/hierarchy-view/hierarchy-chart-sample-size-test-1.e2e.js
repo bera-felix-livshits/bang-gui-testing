@@ -51,6 +51,7 @@ describe('Hierarchy Chart Sample Size - Test 1', () => {
         // confirm tool tip
 
         let sampleSize = attributes.sampleSize.indexOf('K') ? parseFloat(attributes.sampleSize.replace('K','')) * 1000 : parseFloat(attributes.sampleSize.replace('K',''))
+        console.log('sample size =>', sampleSize)
         assert.equal(attributes.colour.value === 'rgba(153,153,153,1)', true, "Colour is not black, but should be for sufficient sample size")
         assert.equal(sampleSize >= 385, true, "Sample size number value is outside the boundaries for sufficient sample size (96 <= x <=385)")
         assert.equal(attributes.toolTipValue != "", true, "Tooltip value does not match the exected value of: sufficient sample size")
