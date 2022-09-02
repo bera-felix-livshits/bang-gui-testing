@@ -1,6 +1,7 @@
 const dotenv = require('dotenv');
 const pgCleanup = require('./test/utilities/pg-cleanup.js');
 const { join } = require("path");
+const fs = require('fs');
 
 exports.config = {
     //
@@ -33,7 +34,6 @@ exports.config = {
     ],
     suites: {
         hierarchyView: [
-
             'test/specs/hierarchy-view/hierarchy-chart-info-icon-test-1.e2e.js',
             'test/specs/hierarchy-view/hierarchy-chart-navigation-analysis-period-change-test-1.e2e.js',
             'test/specs/hierarchy-view/hierarchy-chart-navigation-analysis-period-change-with-different-page-load-test-2.e2e.js',
@@ -46,15 +46,15 @@ exports.config = {
             'test/specs/hierarchy-view/hierarchy-chart-navigation-data-for-chart-bar-and-table-views-test-4.e2e.js',
             'test/specs/hierarchy-view/hierarchy-chart-navigation-data-loads-in-percent-test-3.e2e.js',
             'test/specs/hierarchy-view/hierarchy-chart-navigation-default-parameters-test-2.e2e.js',
+            'test/specs/hierarchy-view/hierarchy-chart-navigation-factors-level-test-1.e2e.js',
+            'test/specs/hierarchy-view/hierarchy-chart-navigation-factors-level-test-2.e2e.js',
             'test/specs/hierarchy-view/hierarchy-chart-navigation-more-buttons-test-1.e2e.js',
             'test/specs/hierarchy-view/hierarchy-chart-navigation-positioning-attributes-test-1.e2e.js',
             'test/specs/hierarchy-view/hierarchy-chart-navigation-positioning-attributes-test-2.e2e.js',
             'test/specs/hierarchy-view/hierarchy-chart-navigation-primary-brand-change-test-1.e2e.js',
             'test/specs/hierarchy-view/hierarchy-chart-navigation-primary-brand-change-with-different-page-load-test-2.e2e.js',
             'test/specs/hierarchy-view/hierarchy-chart-navigation-test-1.e2e.js',
-            'test/specs/hierarchy-view/hierarchy-chart-sample-size-test-1.e2e.js',
-            `test/specs/hierarchy-view/hierarchy-chart-navigation-data-factors-level-test-1.e2e.js`,
-            `test/specs/hierarchy-view/hierarchy-chart-navigation-data-factors-level-test-2.e2e.js`
+            'test/specs/hierarchy-view/hierarchy-chart-sample-size-test-1.e2e.js'
         ]
     },
     //
@@ -213,6 +213,7 @@ exports.config = {
         ['json', {
             outputDir: './Results',
             outputFileFormat: function (opts) {
+                fs.writeFileSync(`./zzz.opts-post-execution.json`, JSON.stringify(opts, null, 4))
                 return `results-${opts.cid}.json`
             }
         }]
@@ -386,8 +387,13 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    // onComplete: function(exitCode, config, capabilities, results) {
-    // },
+    onComplete: function (exitCode, config, capabilities, results) {
+        fs.writeFileSync(`./zzz.config-post-execution.json`, JSON.stringify(config, null, 4))
+        fs.writeFileSync(`./zzz.capabilities-post-execution.json`, JSON.stringify(capabilities, null, 4))
+        
+        const mergeResults = require('wdio-json-reporter/mergeResults')
+        mergeResults('./Results', 'results-*', 'wdio-custom-report.json')
+    },
     /**
     * Gets executed when a refresh happens.
     * @param {String} oldSessionId session ID of the old session

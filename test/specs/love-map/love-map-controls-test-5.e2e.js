@@ -66,7 +66,7 @@ describe('Love Map Controls (Positive Flow) Test 1', () => {
     })
 
     it(`Add 2 brand and remove the primary brand`, async function () {
-        await brandSelectorPage.selectFirstNButtons(2);
+        await brandSelectorPage.selectFirstNBrands(2);
         await brandSelectorPage.removePrimaryBrand();
 
         assert.equal((await brandSelectorPage.getCompetitiveSetElements()).length === 0, true);

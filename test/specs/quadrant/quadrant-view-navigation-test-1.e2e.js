@@ -7,18 +7,9 @@ const audienceDetailsPage = require("../../page-objects/audience-details-page.js
 const navBar = require('../../page-objects/common-components/nav-bar.js');
 const overviewPage = require("../../page-objects/overview-page.js");
 const brandPositioningPage = require("../../page-objects/brand-positioning-page.js");
-const flattenHierarchyObj = require('../../utilities/flatten-hierarchy-obj');
-const fs = require('fs');
-const { html2json } = require('html2json');
-const analysisPeriodSelectorAndFilters = require('../../page-objects/common-components/analysis-period-selector-and-filters.js');
 
-const brandPositioningInfoContents = JSON.parse(fs.readFileSync('./test/fixtures/brand-positioning-info-content.json'));
+describe(`Quadrant View Navigation - Test 1`, () => {
 
-let hierarchyObj;
-let scrapedInfoContent;
-
-describe('Hierarchy Chart Info Icon - Test 1', () => {
-    this.retries = 0;
     it('Login to app.', async () => {
         await beraLoginPage.login();
     })
@@ -27,9 +18,9 @@ describe('Hierarchy Chart Info Icon - Test 1', () => {
         await landingPage.letsGetStartedWithExploreTheData();
     })
 
-    it(`Brand Selector - Select the first 5 brands from the list available and click "Next" button`, async function () {
+    it(`Brand Selector - Select the Oshkosh from the list available and click "Next" button`, async function () {
         await brandSelectorPage.selectFirstFiveBrands();
-        brandNamesSelectedDuringFlow = await brandSelectorPage.getSelectedBrands();
+        // brandNamesSelectedDuringFlow = await brandSelectorPage.getSelectedBrands();
         await brandSelectorPage.clickNextButton();
     })
 
@@ -48,22 +39,22 @@ describe('Hierarchy Chart Info Icon - Test 1', () => {
         assert.equal(isBrandPositioningDisplayed, true)
     })
 
-    it(`Open page Info side bar`, async function () {
-        await brandPositioningPage.clickOpenPageInfoButton();
+    it(`Click the "Quadrant View" button in the view controller`, async function () {
+        await brandPositioningPage.clickQuadrantViewButton()
+
     })
 
-    it(`Get contents of Brand Positioning information side bar`, async function () {
-        scrapedInfoContent = html2json((await brandPositioningPage.getPageInfoContents()));
-        assert.deepEqual(scrapedInfoContent, brandPositioningInfoContents, "Scraped Info content does not match expected values found in fixutres.")
+    it(`Verify that the Quadrant View is loaded`, async function () {
+        let title = await brandPositioningPage.getSubscreenTitle();
+        assert.equal(title.trim(), "DNA", "Title is not 'DNA' but should be")
     })
 
-    it(`Close page Info side bar`,async function (){
-        await brandPositioningPage.clickClosePageInfoButton();
-    })
+    it(`Verify that the view title is set to “2x2 Quadrant View`, async function () {
+        let topLeftVisible = await (await brandPositioningPage.getQuadrant('top-left')).isDisplayed();
+        let topRightVisible = await (await brandPositioningPage.getQuadrant('top-right')).isDisplayed();
+        let bottomLeftVisible = await (await brandPositioningPage.getQuadrant('bottom-left')).isDisplayed();
+        let bottomRightVisible = await (await brandPositioningPage.getQuadrant('bottom-right')).isDisplayed();
 
-    it(`Verify that info content is not displayed`, async function (){
-        let isContentDisplayed = await brandPositioningPage.isBrandPositioningInfoContentShowing();
-        assert.equal(isContentDisplayed, false, "Brand Positioning Content Information is visible contrary to expected behaviour.")
+        assert.equal(topLeftVisible && topRightVisible && bottomLeftVisible && bottomRightVisible, true, "All quadrants are not visible");
     })
-
 })

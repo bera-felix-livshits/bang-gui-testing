@@ -11,7 +11,7 @@ const brandPositioningPage = require("../../page-objects/brand-positioning-page.
 
 let tableObj, hierarchyObj, chartObj;
 
-describe('Hierarchy Chart Navigation - Brand Positioning - More Button Test 2', () => {
+describe('Hierarchy Chart Navigation - Constructs Ordering - Test 6', () => {
     it('Login to app.', async () => {
         await beraLoginPage.login();
     })
@@ -38,7 +38,7 @@ describe('Hierarchy Chart Navigation - Brand Positioning - More Button Test 2', 
 
     it(`Navigate to Brand Positions Stage`, async function () {
         await navBar.clickBrandPositioning();
-        let isBrandPositioningDisplayed = await brandPositioningPage.getBrandPositioningHeader()
+        let isBrandPositioningDisplayed = await brandPositioningPage.isBrandPositioningHeaderDisplayed()
         // console.log(`isRelStageDisplayed => ${isRelStageDisplayed}`);
         assert.equal(isBrandPositioningDisplayed, true, "Brand positioning is not displayed")
     })

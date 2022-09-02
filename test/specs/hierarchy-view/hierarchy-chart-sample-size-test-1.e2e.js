@@ -40,7 +40,7 @@ describe('Hierarchy Chart Sample Size - Test 1', () => {
 
     it(`Navigate to Brand Positions Stage`, async function () {
         await navBar.clickBrandPositioning();
-        let isBrandPositioningDisplayed = await brandPositioningPage.getBrandPositioningHeader()
+        let isBrandPositioningDisplayed = await brandPositioningPage.isBrandPositioningHeaderDisplayed()
         assert.equal(isBrandPositioningDisplayed, true)   
     })
 

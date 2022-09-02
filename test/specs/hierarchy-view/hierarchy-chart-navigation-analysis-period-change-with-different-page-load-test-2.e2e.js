@@ -12,7 +12,7 @@ const analysisPeriodSelectorAndFilters = require('../../page-objects/common-comp
 
 let newTimePeriod, oldTimePeriod, hierarchyObj, newHierarchyObj;
 
-describe('Hierarchy Chart Navigation - Brand Positioning - More Button Test 2', () => {
+describe('Hierarchy Chart Navigation - Analysis Period Change w/ Different page load - Test 2', () => {
     it('Login to app.', async () => {
         await beraLoginPage.login();
     })
@@ -39,7 +39,7 @@ describe('Hierarchy Chart Navigation - Brand Positioning - More Button Test 2', 
 
     it(`Navigate to Brand Positions Stage`, async function () {
         await navBar.clickBrandPositioning();
-        let isBrandPositioningDisplayed = await brandPositioningPage.getBrandPositioningHeader()
+        let isBrandPositioningDisplayed = await brandPositioningPage.isBrandPositioningHeaderDisplayed()
         assert.equal(isBrandPositioningDisplayed, true, "Brand positioning is not displayed")
     })
     

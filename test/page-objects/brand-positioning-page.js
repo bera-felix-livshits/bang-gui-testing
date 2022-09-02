@@ -3,15 +3,17 @@ const analysisPeriodSelector = require('./common-components/analysis-period-sele
 const customClick = require('../utilities/custom-click.js');
 const camelize = require('../utilities/camelize');
 
-const scrapeBrandPositioningHierarchyView = require("./common-components/scrape-brand-positioning-hierarchy-view.js");
-const scrapeBrandPositionTableView = require("./common-components/scrape-brand-position-table-view.js");
-const scrapeBrandPositionChartView = require("./common-components/scrape-brand-position-chart-view.js");
+const scrapeBrandPositioningHierarchyView = require("./page-helpers/scrape-brand-positioning-hierarchy-view.js");
+const scrapeBrandPositionTableView = require("./page-helpers/scrape-brand-position-table-view.js");
+const scrapeForQuadrentContent = require("./page-helpers/scrape-brand-position-chart-view.js");
 // const { generatePillarsObj } = require("./common-components/scrape-brandpositioning-hierarchy-view.js");
+
+const scrapeBrandPositioningQuandrant = require("./page-helpers/scrape-brand-positioning-quadrant.js");
 
 
 module.exports = {
 
-    getBrandPositioningHeader: async function () {
+    isBrandPositioningHeaderDisplayed: async function () {
         let maintXPath = `//main//span[contains(@class, "MuiTypography-root") and text()="Brand Positioning"]`;
         let elem = await $(maintXPath);
         await elem.waitForDisplayed();
@@ -52,7 +54,7 @@ module.exports = {
     },
 
     clickQuadrantViewButton: async function () {
-        let elem = await $(`//button[@title="Quadrant view tooltip text"]`);
+        let elem = await $(`//button[@title="DNA view tooltip text"]`);
         await elem.isDisplayed();
         await elem.click();
     },
@@ -164,7 +166,7 @@ module.exports = {
         await el.click();
     },
 
-    getConstructBoxPercentageFill: async function (constructName) { 
+    getConstructBoxPercentageFill: async function (constructName) {
         let progressRect = await $(`//*[name()="text" and text()="${constructName}"]/preceding-sibling::*[name()="rect" and @class="hc-block-progress"]`);
         let backgroundRect = await $(`//*[name()="text" and text()="${constructName}"]/preceding-sibling::*[name()="rect" and @class="hc-block-bg"]`)
 
@@ -174,7 +176,7 @@ module.exports = {
         return Math.round(progressRect / backgroundRect * 1000) / 10;
     },
 
-    isConstructDisplayed: async function (constructName){
+    isConstructDisplayed: async function (constructName) {
         let el = await $(`//*[name()="text" and text()="${constructName}"]`);
         await el.waitForExist();
         let progressRect = await $(`//*[name()="text" and text()="${constructName}"]/preceding-sibling::*[name()="rect" and @class="hc-block-progress"]`);
@@ -184,15 +186,82 @@ module.exports = {
         return (await el.isDisplayed() && await progressRect.isDisplayed() && await backgroundRect.isDisplayed());
     },
 
-    getConstructReadMoreElement: async function (constructName){
+    getConstructReadMoreElement: async function (constructName) {
         let el = await $(`//*[name()="text" and contains(@data-testid,"${camelize(constructName)}") and text()="Read more"]`);
         await el.waitForDisplayed();
         return el;
     },
 
+    getSubscreenTitle: async function () {
+        await new Promise(res => { setTimeout(() => { res(); }, 100) });
+        let title = await $(`//div[@id="tabTitle"]/span`);
+        return await title.getText();
+    },
+
+    // DNA subsection
+
+    getQuadrant: async function (desiredQuadrant) {
+        await new Promise(res => { setTimeout(() => { res(); }, 100) });
+        let xPath = `//*[name()="g" and @data-testid="qc-quadrant-${desiredQuadrant}"]/*[name()="rect"]`;
+        let quad = await $(xPath);
+        await quad.waitForDisplayed()
+        return quad;
+    },
+
+    getErrorBannerContents: async function () {
+        await new Promise(res => { setTimeout(() => { res(); }, 100) });
+        let errorIcon = await $(`//div[@class="MuiAlert-icon"]`)
+        let errorMessage = await $(`//div[@class="MuiAlert-message"]`)
+        return {
+            errorIconDisplayed: await errorIcon.isDisplayed(),
+            errorMessage: await errorMessage.getText()
+        }
+    },
+
+    getQuadrantAreaDescription: async function () {
+        let textAreaEl = await $(`//div[@class="bera-quadrant-accessories"]//span[text()="Area Description"]/following-sibling::span`);
+        // await new Promise(res => { setTimeout(() => { res(); }, 100); })
+        await textAreaEl.waitForDisplayed()
+        return await textAreaEl.getText();
+    },
+
+    getActiveQuadrantDescription: async function (counter = 0) {
+        let quadDescriptionsEls = await $$(`//*[name()="g" and @class="qc-description"]/*[name()="text"]`);
+        let quadDescEl = (await Promise.all(quadDescriptionsEls.map(async el => {
+            try {
+                await new Promise(res => { setTimeout(() => { res(); }, 250); })
+                await el.waitForDisplayed({ timeout: 250 })
+            } catch (e) { }
+            return (await el.isDisplayed()) ? el : null;;
+        }))).find(el => el);
+
+        let desc = quadDescEl ? await quadDescEl.getText() : '';
+        return desc;
+    },
+
+    getQuadrantExpander: async function (desiredQuadrant) {
+        let expander = await $(`//*[name()="g" and @data-testid="qc-expander-${desiredQuadrant}"]`)
+        await expander.waitForDisplayed();
+        return expander;
+    },
+
+    getVerticalDivider: async function () {
+        let els = await $$(`//*[name()="rect" and @data-testid="qc-divider-vertical"]`)
+        let el = (await Promise.all(els.map(async el => {
+            await el.waitForDisplayed({ timeout: 250 })
+            if (await el.isDisplayed()) {
+                return el;
+            }
+            return null
+        }))).find(el => el)
+        return el;
+    },
+
+
     ...scrapeBrandPositioningHierarchyView,
     ...scrapeBrandPositionTableView,
-    ...scrapeBrandPositionChartView,
+    ...scrapeForQuadrentContent,
     ...relationshipMap,
     ...analysisPeriodSelector,
+    ...scrapeBrandPositioningQuandrant
 }

@@ -9,9 +9,9 @@ const navBar = require('../../page-objects/common-components/nav-bar.js');
 const overviewPage = require("../../page-objects/overview-page.js");
 const brandPositioningPage = require("../../page-objects/brand-positioning-page.js");
 
-let tableObj, hierarchyObj, chartObj;
+let hierarchyObj;
 
-describe('Hierarchy Chart Navigation - Brand Positioning - More Button Test 2', () => {
+describe('Hierarchy Chart Navigation - Constructs Colors - Test 5', () => {
     it('Login to app.', async () => {
         await beraLoginPage.login();
     })
@@ -38,7 +38,7 @@ describe('Hierarchy Chart Navigation - Brand Positioning - More Button Test 2', 
 
     it(`Navigate to Brand Positions Stage`, async function () {
         await navBar.clickBrandPositioning();
-        let isBrandPositioningDisplayed = await brandPositioningPage.getBrandPositioningHeader()
+        let isBrandPositioningDisplayed = await brandPositioningPage.isBrandPositioningHeaderDisplayed()
         // console.log(`isRelStageDisplayed => ${isRelStageDisplayed}`);
         assert.equal(isBrandPositioningDisplayed, true, "Brand positioning is not displayed")
     })

@@ -49,10 +49,10 @@ module.exports = {
     },
 
     selectFirstFiveBrands: async function () {
-        await this.selectFirstNButtons(5);
+        await this.selectFirstNBrands(5);
     },
 
-    selectFirstNButtons: async function (n) {
+    selectFirstNBrands: async function (n) {
         let brandButtons = await (this.getAddBrandButtons());
         console.log('brand buttons length =>', brandButtons.length);
         for (let i = 0; i < n; i++) {

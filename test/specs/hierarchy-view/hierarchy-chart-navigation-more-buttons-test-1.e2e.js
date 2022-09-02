@@ -12,7 +12,7 @@ const fs = require('fs');
 
 let hierarchyObj;
 
-describe('Love Map Controls (Positive Flow) Test 1', () => {
+describe('Hierarchy Chart Navigation - More Buttons - Test 1', () => {
     it('Login to app.', async () => {
         await beraLoginPage.login();
     })
@@ -39,7 +39,7 @@ describe('Love Map Controls (Positive Flow) Test 1', () => {
 
     it(`Navigate to Brand Positions Stage`, async function () {
         await navBar.clickBrandPositioning();
-        let isBrandPositioningDisplayed = await brandPositioningPage.getBrandPositioningHeader()
+        let isBrandPositioningDisplayed = await brandPositioningPage.isBrandPositioningHeaderDisplayed()
         // console.log(`isRelStageDisplayed => ${isRelStageDisplayed}`);
         assert.equal(isBrandPositioningDisplayed, true)
     })

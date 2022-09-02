@@ -23,7 +23,7 @@ describe('Love Map Controls (Positive Flow) Test 1', () => {
 
     it(`Brand Selector - Select the first 5 brands from the list available and click "Next" button`, async function () {
         await brandSelectorPage.selectSpecificBrand("Adidas");
-        await brandSelectorPage.selectFirstNButtons(4);
+        await brandSelectorPage.selectFirstNBrands(4);
         brandNamesSelectedDuringFlow = await brandSelectorPage.getSelectedBrands();
         await brandSelectorPage.clickNextButton();
     })

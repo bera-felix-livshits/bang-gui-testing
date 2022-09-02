@@ -12,7 +12,7 @@ const flattenHierarchyObj = require('../../utilities/flatten-hierarchy-obj')
 
 let hierarchyObj, chartObj;
 
-describe('Hierarchy Chart Navigation - Positioning Attributes - Test 1', () => {
+describe('Hierarchy Chart Navigation - Positioning Attributes - Test 2', () => {
     it('Login to app.', async () => {
         await beraLoginPage.login();
     })
@@ -39,7 +39,7 @@ describe('Hierarchy Chart Navigation - Positioning Attributes - Test 1', () => {
 
     it(`Navigate to Brand Positions Stage`, async function () {
         await navBar.clickBrandPositioning();
-        let isBrandPositioningDisplayed = await brandPositioningPage.getBrandPositioningHeader()
+        let isBrandPositioningDisplayed = await brandPositioningPage.isBrandPositioningHeaderDisplayed()
         // console.log(`isRelStageDisplayed => ${isRelStageDisplayed}`);
         assert.equal(isBrandPositioningDisplayed, true, "Brand positioning is not displayed")
     })
