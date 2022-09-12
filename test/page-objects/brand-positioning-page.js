@@ -9,6 +9,7 @@ const scrapeForQuadrentContent = require("./page-helpers/scrape-brand-position-c
 // const { generatePillarsObj } = require("./common-components/scrape-brandpositioning-hierarchy-view.js");
 
 const scrapeBrandPositioningQuandrant = require("./page-helpers/scrape-brand-positioning-quadrant.js");
+const waitForLoadingToComplete = require('./common-components/wait-for-loading-to-complete');
 
 
 module.exports = {
@@ -85,9 +86,9 @@ module.exports = {
     },
 
     toggleSampleSize: async function () {
-        let sampleSizeButtonEl = await $(`//button/*[@width="1em"]/*[contains(@d,"M14 6a2")]/..`);
-        await sampleSizeButtonEl.isDisplayed();
-        await sampleSizeButtonEl.click();
+        let featureVisualizationButton = await $(`//button/*[@width="1em"]/*[contains(@d,"M14 6a2")]/..`);
+        await featureVisualizationButton.isDisplayed();
+        await featureVisualizationButton.click();
 
         let sampleSizeSpan = await $(`//span[text()="Sample Size"]`);
 
@@ -95,6 +96,19 @@ module.exports = {
         await sampleSizeSpan.click();
 
         await browser.keys("\uE00C");
+    },
+
+    toggleDrivers: async function () {
+        let featureVisualizationButton = await $(`//button/*[@width="1em"]/*[contains(@d,"M14 6a2")]/..`);
+        await featureVisualizationButton.isDisplayed();
+        await featureVisualizationButton.click();
+
+        let driversButton = await $(`//span[text()="Drivers"]`);
+
+        await driversButton.isDisplayed();
+        await driversButton.click();
+
+        await waitForLoadingToComplete()
     },
 
     getSampleSizeTextValue: async function () {
@@ -125,6 +139,24 @@ module.exports = {
         return { sampleSize, colour, toolTipValue };
     },
 
+    getSampleSizeAttriubutesFromSidebar: async function () {
+        let bsiCountEls = await $$(`//div[@class="MuiCollapse-wrapperInner"]//div[@title and @id]/div[@class="bsi-count"]`);
+        let brandNamesEls = await $$(`//div[@class="MuiCollapse-wrapperInner"]//div[@title and @id]/div[@class="bsi-count"]/../../span[1]`);
+        let tooltips = await $$(`//div[@class="MuiCollapse-wrapperInner"]//div[@title and @id]`);
+        return await Promise.all(bsiCountEls.map(async (el, i) => {
+            let brandName = await brandNamesEls[i].getText();
+            let tooltip = await tooltips[i].getAttribute('title');
+            let sampleSize = await el.getText();
+            let colour = await el.getCSSProperty("color");
+            return {
+                brandName,
+                tooltip,
+                sampleSize,
+                colour
+            }
+        }))
+    },
+
     clickOpenPageInfoButton: async function () {
         let infoButtonIconEl = await $(`//button[contains(@class, "MuiButton-outlined MuiButton-outlinedSizeLarge MuiButton-sizeLarge")]/span/*[name()="svg"]/../..`);
         await infoButtonIconEl.isDisplayed()
@@ -137,7 +169,7 @@ module.exports = {
         await infoButtonIconEl.click();
     },
 
-    getPageInfoContents: async function () {
+    getPageSideBarInfoContents: async function () {
         let iframe = await $(`//iframe[@title="test"]`);
         await iframe.waitForExist();
         await browser.switchToFrame(iframe);
@@ -148,6 +180,25 @@ module.exports = {
         let content = await contentEl.getHTML(contentEl)
         await browser.switchToParentFrame();
         return content;
+    },
+
+    getPageSideBarHeader: async function () {
+        let elem = await $(`//iframe[(contains(@style,'overflow-x: hidden'))]/..//span[string-length(text()) > 0]`);
+        await elem.waitForDisplayed();
+        return await elem.getText();
+    },
+
+    clickCloseSidebar: async function () {
+        let elems = await $$(`//*[contains(@d,"M6.225") and @fill="currentColor" ]`);
+        elems = await Promise.all(elems.map(async el => {
+            await new Promise(res => { setTimeout(() => { res(); }, 250) })
+            if (await el.isDisplayed()) {
+                return el;
+            }
+            return null;
+        }))
+        let el = elems.find(el => el);
+        await el.click();
     },
 
     isBrandPositioningInfoContentShowing: async function () {
@@ -200,6 +251,19 @@ module.exports = {
 
     // DNA subsection
 
+    clickPurposeButton: async function () {
+        let elem = await $(`//div[@role="button"]/span[text()="Purpose"]`);
+        await elem.waitForDisplayed();
+        await elem.click();
+    },
+
+    clickEmotionalButton: async function () {
+        let elem = await $(`//div[@role="button"]/span[text()="Emotional"]`);
+        await elem.waitForDisplayed();
+        await elem.click();
+        await new Promise(res => { setTimeout(() => { res() }, 100) });
+    },
+
     getQuadrant: async function (desiredQuadrant) {
         await new Promise(res => { setTimeout(() => { res(); }, 100) });
         let xPath = `//*[name()="g" and @data-testid="qc-quadrant-${desiredQuadrant}"]/*[name()="rect"]`;
@@ -225,7 +289,7 @@ module.exports = {
         return await textAreaEl.getText();
     },
 
-    getActiveQuadrantDescription: async function (counter = 0) {
+    getActiveQuadrantDescription: async function () {
         let quadDescriptionsEls = await $$(`//*[name()="g" and @class="qc-description"]/*[name()="text"]`);
         let quadDescEl = (await Promise.all(quadDescriptionsEls.map(async el => {
             try {
@@ -237,6 +301,42 @@ module.exports = {
 
         let desc = quadDescEl ? await quadDescEl.getText() : '';
         return desc;
+    },
+
+    getQuadrantPointComponents: async function (desiredEntry) {
+        await new Promise(res => {
+            setTimeout(() => {
+                res()
+            }, 250)
+        })
+
+        let rect = await $(`//*[name()="g" and @id="qc-point-${camelize(desiredEntry)}"]/*[name()="rect"]`)
+        let text = await $(`//*[name()="g" and @id="qc-point-${camelize(desiredEntry)}"]/*[name()="text"]`)
+        let circle = await $(`//*[name()="g" and @id="qc-point-${camelize(desiredEntry)}"]/*[name()="circle"]`)
+
+        return {
+            rect,
+            text,
+            circle
+        }
+    },
+
+    getAllQuadrantPoints: async function () {
+        let els = await $$(`//*[name()="g" and contains(@id,"qc-point-")]`);
+        let textEls = await $$(`//*[name()="g" and contains(@id,"qc-point-")]/*[name()="text"]`);
+        return Promise.all(els.map(async (el, i)=> {
+            let x = await el.getAttribute("data-x")
+            let y = await el.getAttribute("data-y")
+            let text = await textEls[i].getText();
+            let colour = await textEls[i].getCSSProperty("color")
+
+            return {
+                x,
+                y,
+                text,
+                colour
+            }
+        }))
     },
 
     getQuadrantExpander: async function (desiredQuadrant) {
@@ -257,6 +357,16 @@ module.exports = {
         return el;
     },
 
+    toggleFactorsAndAttributes: async function () {
+        let toggle = await $(`//span[text()="Factors"]/../../following-sibling::span//input[@type="checkbox"]`);
+        await toggle.waitForExist();
+        await toggle.click()
+    },
+
+    getDriversOfSelectedBrandsColor: async function () {
+        let elem = await $(`//span[text()="Drivers of Primary Brand"]/preceding-sibling::*/*[name()="rect"]`);
+        return await elem.getCSSProperty("fill");
+    },
 
     ...scrapeBrandPositioningHierarchyView,
     ...scrapeBrandPositionTableView,

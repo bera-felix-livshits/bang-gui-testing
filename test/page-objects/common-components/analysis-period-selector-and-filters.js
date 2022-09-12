@@ -64,7 +64,7 @@ module.exports = {
     },
 
     openAnalysisPeriodDropdownIfClosed: async function () {
-        let elem = await $(`${this.dropDownXPath}//span[text()="Interval"]`)
+        let elem = await $(`${this.dropDownXPath}//span[text()="Analysis Period"]`)
         await elem.waitForDisplayed({ timeout: 1000 })
         let isDisplayed = await elem.isDisplayed();
         if (!isDisplayed) {
@@ -73,9 +73,11 @@ module.exports = {
     },
 
     getApplyButton: async function () {
-        let xPath = `//span[text()="Apply"]`;
+        let xPath = `//span[text()="Apply"]/..`;
         let elem = await $(xPath);
         await elem.waitForDisplayed();
+        await elem.waitForClickable();
+        await new Promise (res => setTimeout(()=> res(),100));
         return elem;
     },
 
@@ -98,6 +100,7 @@ module.exports = {
         await elem.waitForExist();
         await elem.waitForDisplayed();
         await elem.click();
+        await new Promise(res => setTimeout(() => { res() }, 100))
     },
 
     clickCloseFiltersButton: async function () {
@@ -105,7 +108,7 @@ module.exports = {
         await closeFiltersButton.waitForExist();
         await closeFiltersButton.waitForDisplayed();
         await closeFiltersButton.click();
-        // await new Promise(res => setTimeout(() => { res() }, 100))
+        await new Promise(res => setTimeout(() => { res() }, 100))
     },
 
     getSelectedBrands: async function () {

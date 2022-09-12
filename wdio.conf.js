@@ -33,6 +33,20 @@ exports.config = {
         // 'path/to/excluded/files'
     ],
     suites: {
+        quadrant: [
+            'test/specs/quadrant/quadrant-view-navigation-hover-over-attribute-test-1.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-hover-over-attribute-test-2.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-hover-over-factor-test-1.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-hover-over-factor-test-2.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-hover-over-test-1.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-hover-over-test-2.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-hover-over-test-3.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-hover-over-test-4.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-sample-size-test-1.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-sem-outputs-full-prioritization-test-1.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-test-1.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-test-2-four-competitive-set.e2e.js'
+        ],
         hierarchyView: [
             'test/specs/hierarchy-view/hierarchy-chart-info-icon-test-1.e2e.js',
             'test/specs/hierarchy-view/hierarchy-chart-navigation-analysis-period-change-test-1.e2e.js',
@@ -196,6 +210,7 @@ exports.config = {
     framework: 'mocha',
     //
     // The number of times to retry the entire specfile when it fails as a whole
+    // spec retries
     specFileRetries: 2,
     //
     // Delay in seconds between the spec file retry attempts
@@ -390,9 +405,9 @@ exports.config = {
     onComplete: function (exitCode, config, capabilities, results) {
         fs.writeFileSync(`./zzz.config-post-execution.json`, JSON.stringify(config, null, 4))
         fs.writeFileSync(`./zzz.capabilities-post-execution.json`, JSON.stringify(capabilities, null, 4))
-        
+
         const mergeResults = require('wdio-json-reporter/mergeResults')
-        mergeResults('./Results', 'results-*', 'wdio-custom-report.json')
+        mergeResults('./Results', 'results-*', 'bera-gui-results.json')
     },
     /**
     * Gets executed when a refresh happens.

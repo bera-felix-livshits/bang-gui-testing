@@ -18,6 +18,7 @@ describe('Hierarchy Chart Navigation - Positioning Attributes - Test 2', () => {
     })
 
     it(`Brand Accelerator - Select let's get started with Explore the Data selected.`, async function () {
+        await landingPage.selectDataSet("US Brandscape");
         await landingPage.letsGetStartedWithExploreTheData();
     })
 

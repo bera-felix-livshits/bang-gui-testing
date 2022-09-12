@@ -18,6 +18,7 @@ describe('Hierarchy Chart Navigation - Primary Brand Change - Test 1', () => {
     })
 
     it(`Brand Accelerator - Select let's get started with Explore the Data selected.`, async function () {
+        await landingPage.selectDataSet("US Brandscape");
         await landingPage.letsGetStartedWithExploreTheData();
     })
 
@@ -86,7 +87,7 @@ describe('Hierarchy Chart Navigation - Primary Brand Change - Test 1', () => {
     it(`Select a new "Primary Brand"`, async function (){
         await brandSelectorPage.removeAllFromCompetitiveSet();
         await brandSelectorPage.removePrimaryBrand();
-        await brandSelectorPage.selectSpecificBrand("JetBlue");
+        await brandSelectorPage.addSpecificBrand("JetBlue");
         await brandSelectorPage.clickSaveButton();
         await analysisPeriodSelectorAndFilters.clickCloseFiltersButton();
     })

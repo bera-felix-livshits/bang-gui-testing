@@ -18,6 +18,7 @@ describe('Hierarchy Chart Navigation - Analysis Period Change w/ Different page 
     })
 
     it(`Brand Accelerator - Select let's get started with Explore the Data selected.`, async function () {
+        await landingPage.selectDataSet("US Brandscape");
         await landingPage.letsGetStartedWithExploreTheData();
     })
 

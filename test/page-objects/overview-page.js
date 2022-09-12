@@ -1,13 +1,13 @@
 // const relationshipStage = require('./relationship-stage.js');
 
 module.exports = {
-    getPrimaryBrand: async function (){
+    getPrimaryBrand: async function () {
         let elem = await $(`//div[count(child::span)=2 and count(child::*)=2]/span[1]`)
         await elem.waitForDisplayed();
         return await elem.getText();
     },
 
-    getPrimaryBrandCategory: async function (){
+    getPrimaryBrandCategory: async function () {
         let elem = await $(`//div[count(child::span)=2 and count(child::*)=2]/span[2]`)
         await elem.waitForDisplayed();
         return await elem.getText();
@@ -17,9 +17,14 @@ module.exports = {
         if (!brandEquity[columnHeader]) {
             brandEquity[columnHeader] = {}
         }
-        let elem = await $(`//span[text()="${columnHeader}"]//ancestor::div//*[contains(text(),"${valueHeader}")]//following-sibling::div`)
-        await elem.waitForExist();
-        let text = await elem.getText();
+        let elem = await $(`//span[text()="${columnHeader}"]//ancestor::div//*[contains(text(),"${valueHeader}")]//following-sibling::div[text()]`);
+        let text;
+        try {
+            await elem.waitForExist();
+            text = await elem.getText();
+        } catch (e) {
+            text = ''
+        }
         brandEquity[columnHeader][valueHeader] = text;
     },
 
@@ -31,8 +36,8 @@ module.exports = {
             }, 1500)
         })
         counter++;
-        if (counter < 6 && (brandEquity["Brand Equity"]["BERA Score"] === '–' 
-                || brandEquity["Brand Equity"]["BERA Score"] === '')) {
+        if (counter < 6 && (brandEquity["Brand Equity"]["BERA Score"] === '–'
+            || brandEquity["Brand Equity"]["BERA Score"] === '')) {
             await this.checkingSummaryValues(counter, brandEquity)
         }
     },
@@ -68,7 +73,7 @@ module.exports = {
         console.log('overview brandEquity["Brand Levers"]["People"] =>', brandEquity["Brand Levers"]["People"])
         return brandEquity;
     },
-    
+
     // getBrandEquitySummary: function(){
 
     // },

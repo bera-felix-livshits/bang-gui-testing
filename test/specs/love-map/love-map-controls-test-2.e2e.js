@@ -18,11 +18,12 @@ describe('Love Map Controls (Positive Flow) Test 1', () => {
     })
 
     it(`Brand Accelerator - Select let's get started with Explore the Data selected.`, async function () {
+        await landingPage.selectDataSet("US Brandscape");
         await landingPage.letsGetStartedWithExploreTheData();
     })
 
     it(`Brand Selector - Select the first 5 brands from the list available and click "Next" button`, async function () {
-        await brandSelectorPage.selectSpecificBrand("Adidas");
+        await brandSelectorPage.addSpecificBrand("Adidas");
         await brandSelectorPage.selectFirstNBrands(4);
         brandNamesSelectedDuringFlow = await brandSelectorPage.getSelectedBrands();
         await brandSelectorPage.clickNextButton();

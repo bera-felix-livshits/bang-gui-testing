@@ -24,6 +24,7 @@ describe('Hierarchy Chart Info Icon - Test 1', () => {
     })
 
     it(`Brand Accelerator - Select let's get started with Explore the Data selected.`, async function () {
+        await landingPage.selectDataSet("US Brandscape");
         await landingPage.letsGetStartedWithExploreTheData();
     })
 
@@ -53,7 +54,7 @@ describe('Hierarchy Chart Info Icon - Test 1', () => {
     })
 
     it(`Get contents of Brand Positioning information side bar`, async function () {
-        scrapedInfoContent = html2json((await brandPositioningPage.getPageInfoContents()));
+        scrapedInfoContent = html2json((await brandPositioningPage.getPageSideBarInfoContents()));
         assert.deepEqual(scrapedInfoContent, brandPositioningInfoContents, "Scraped Info content does not match expected values found in fixutres.")
     })
 

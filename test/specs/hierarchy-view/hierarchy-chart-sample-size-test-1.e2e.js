@@ -11,8 +11,6 @@ const flattenHierarchyObj = require('../../utilities/flatten-hierarchy-obj');
 const fs = require('fs');
 const analysisPeriodSelectorAndFilters = require('../../page-objects/common-components/analysis-period-selector-and-filters.js');
 
-let hierarchyObj;
-
 describe('Hierarchy Chart Sample Size - Test 1', () => {
     this.retries = 0;
     it('Login to app.', async () => {
@@ -20,11 +18,12 @@ describe('Hierarchy Chart Sample Size - Test 1', () => {
     })
 
     it(`Brand Accelerator - Select let's get started with Explore the Data selected.`, async function () {
+        await landingPage.selectDataSet("US Brandscape");
         await landingPage.letsGetStartedWithExploreTheData();
     })
 
     it(`Brand Selector - Select the Oshkosh from the list available and click "Next" button`, async function () {
-        await brandSelectorPage.selectSpecificBrand("OshKosh");
+        await brandSelectorPage.addSpecificBrand("OshKosh");
         // brandNamesSelectedDuringFlow = await brandSelectorPage.getSelectedBrands();
         await brandSelectorPage.clickNextButton();
     })

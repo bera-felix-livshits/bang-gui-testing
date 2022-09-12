@@ -19,15 +19,16 @@ describe('Love Map Controls (Positive Flow) Test 1', () => {
     })
 
     it(`Brand Accelerator - Select let's get started with Explore the Data selected.`, async function () {
+        await landingPage.selectDataSet("US Brandscape");
         await landingPage.letsGetStartedWithExploreTheData();
     })
 
     it(`Brand Selector - Select the 5 brands from sportswear and click "Next" button`, async function () {
-        await brandSelectorPage.selectSpecificBrand("Adidas");
-        await brandSelectorPage.selectSpecificBrand("Carhartt");
-        await brandSelectorPage.selectSpecificBrand("Champion Sportswear");
-        await brandSelectorPage.selectSpecificBrand("Columbia (clothing)");
-        await brandSelectorPage.selectSpecificBrand("Dickie's");
+        await brandSelectorPage.addSpecificBrand("Adidas");
+        await brandSelectorPage.addSpecificBrand("Carhartt");
+        await brandSelectorPage.addSpecificBrand("Champion Sportswear");
+        await brandSelectorPage.addSpecificBrand("Columbia (clothing)");
+        await brandSelectorPage.addSpecificBrand("Dickie's");
 
         brandNamesSelectedDuringFlow = await brandSelectorPage.getSelectedBrands();
         await brandSelectorPage.clickNextButton();

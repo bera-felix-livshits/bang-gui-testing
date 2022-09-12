@@ -8,7 +8,7 @@ const navBar = require('../../page-objects/common-components/nav-bar.js');
 const overviewPage = require("../../page-objects/overview-page.js");
 const brandPositioningPage = require("../../page-objects/brand-positioning-page.js");
 
-describe(`Quadrant View Navigation - Test 1`, () => {
+describe(`Quadrant View Navigation - Hover Over Factor - Test 1`, () => {
 
     it('Login to app.', async () => {
         await beraLoginPage.login();
@@ -50,12 +50,41 @@ describe(`Quadrant View Navigation - Test 1`, () => {
         assert.equal(title.trim(), "DNA", "Title is not 'DNA' but should be")
     })
 
-    it(`Verify that the view title is set to “2x2 Quadrant View`, async function () {
-        let topLeftVisible = await (await brandPositioningPage.getQuadrant('top-left')).isDisplayed();
-        let topRightVisible = await (await brandPositioningPage.getQuadrant('top-right')).isDisplayed();
-        let bottomLeftVisible = await (await brandPositioningPage.getQuadrant('bottom-left')).isDisplayed();
-        let bottomRightVisible = await (await brandPositioningPage.getQuadrant('bottom-right')).isDisplayed();
+    it(`Click Emotional button`, async function () {
+        await brandPositioningPage.clickEmotionalButton();
+    })
 
-        assert.equal(topLeftVisible && topRightVisible && bottomLeftVisible && bottomRightVisible, true, "All quadrants are not visible");
+    it(`Verify that Grey Oval appears on mouse over`, async function () {
+        let point = await brandPositioningPage.getQuadrantPointComponents("Sincerity")
+        let text = point.text;
+
+        await text.isDisplayed();
+        await text.moveTo();
+
+        let point2 = await brandPositioningPage.getQuadrantPointComponents("Sincerity");
+        let rect = point2.rect;
+
+        let fill, stroke;
+
+        fill = await rect.getCSSProperty("fill-opacity")
+        stroke = await rect.getCSSProperty("stroke-opacity")
+
+        console.log("fill => ", fill)
+        console.log("stroke => ", stroke)
+
+        assert.equal(parseFloat(fill) !== 0, true, "fill-opacity needs to be not zero");
+        assert.equal(parseFloat(stroke) !== 0, true, "fill-opacity needs to be not zero");
+    })
+
+    it(`Verify that side bar appears on click`, async function () {
+        let point = await brandPositioningPage.getQuadrantPointComponents("Sincerity")
+        let text = point.text;
+        await text.click();
+        let sideBarHeaderText = await brandPositioningPage.getPageSideBarHeader();
+        let sideBarContent = await brandPositioningPage.getPageSideBarInfoContents();
+        await brandPositioningPage.clickCloseSidebar()
+
+        assert.equal(sideBarHeaderText.length > 0, true, "Side Bar header is not displayed");
+        assert.equal(sideBarContent.length > 0, true, "Side Bar content is not displayed");
     })
 })

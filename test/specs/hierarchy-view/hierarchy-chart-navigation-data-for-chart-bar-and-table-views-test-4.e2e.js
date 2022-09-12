@@ -17,6 +17,7 @@ describe('Hierarchy Chart Navigation - Data for Chart, Bar, and Table Views - Te
     })
 
     it(`Brand Accelerator - Select let's get started with Explore the Data selected.`, async function () {
+        await landingPage.selectDataSet("US Brandscape");
         await landingPage.letsGetStartedWithExploreTheData();
     })
 

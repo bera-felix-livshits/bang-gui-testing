@@ -16,10 +16,11 @@ describe(`Quadrant View Navigation - Test 2 - Four Competitive Set`, () => {
     })
 
     it(`Brand Accelerator - Select let's get started with Explore the Data selected.`, async function () {
+        await landingPage.selectDataSet("US Brandscape");
         await landingPage.letsGetStartedWithExploreTheData();
     })
 
-    it(`Brand Selector - Select the Oshkosh from the list available and click "Next" button`, async function () {
+    it(`Brand Selector - Select the first 4 brands from the list available and click "Next" button`, async function () {
         await brandSelectorPage.selectFirstNBrands(4);
         await brandSelectorPage.clickNextButton();
     })
@@ -52,14 +53,17 @@ describe(`Quadrant View Navigation - Test 2 - Four Competitive Set`, () => {
     it(`Confirm error message is displayed when only 3`, async function () {
         let expectedError = await brandPositioningPage.getErrorBannerContents()
         assert.equal(expectedError.errorIconDisplayed, true, "Expected to see an error icon in the error banner.")
-        assert.equal(expectedError.errorMessage, "At least 4 brands are required in competitive cet. Please add additional brands.", "Error message does not match the expected `At least 4 brands are required in competitive cet. Please add additional brands.`.")
+        assert.equal(expectedError.errorMessage, "At least 4 brands are required in competitive set. Please add additional brands.", "Error message does not match the expected `At least 4 brands are required in competitive cet. At least 4 brands are required in competitive set. Please add additional brands.`.")
     })
 
     it(`Select only 2 brands from the Competitive Set`, async function () {
         await brandPositioningPage.clickFiltersButton();
         await analysisPeriodSelectorAndFilters.clickEditBrandsButton();
         await brandSelectorPage.removeAllFromCompetitiveSet();
-        await brandSelectorPage.selectFirstNBrands(2);
+
+        await brandSelectorPage.addSpecificBrand("Contigo")
+        await brandSelectorPage.addSpecificBrand("Corkcicle")
+        
         await brandSelectorPage.clickSaveButton();
         await analysisPeriodSelectorAndFilters.clickCloseFiltersButton()
     })
@@ -67,14 +71,14 @@ describe(`Quadrant View Navigation - Test 2 - Four Competitive Set`, () => {
     it(`Confirm error message is displayed when only 2`, async function () {
         let expectedError = await brandPositioningPage.getErrorBannerContents()
         assert.equal(expectedError.errorIconDisplayed, true, "Expected to see an error icon in the error banner.")
-        assert.equal(expectedError.errorMessage, "At least 4 brands are required in competitive cet. Please add additional brands.", "Error message does not match the expected `At least 4 brands are required in competitive cet. Please add additional brands.`.")
+        assert.equal(expectedError.errorMessage, "At least 4 brands are required in competitive set. Please add additional brands.", "Error message does not match the expected `At least 4 brands are required in competitive set. Please add additional brands.`.")
     })
 
     it(`Select only 1 brands from the Competitive Set`, async function () {
         await brandPositioningPage.clickFiltersButton();
         await analysisPeriodSelectorAndFilters.clickEditBrandsButton();
         await brandSelectorPage.removeAllFromCompetitiveSet();
-        await brandSelectorPage.selectFirstNBrands(1);
+        await brandSelectorPage.addSpecificBrand("Hydro Flask")
         await brandSelectorPage.clickSaveButton();
         await analysisPeriodSelectorAndFilters.clickCloseFiltersButton()
     })
@@ -82,14 +86,19 @@ describe(`Quadrant View Navigation - Test 2 - Four Competitive Set`, () => {
     it(`Confirm error message is displayed when only 1`, async function () {
         let expectedError = await brandPositioningPage.getErrorBannerContents()
         assert.equal(expectedError.errorIconDisplayed, true, "Expected to see an error icon in the error banner.")
-        assert.equal(expectedError.errorMessage, "At least 4 brands are required in competitive cet. Please add additional brands.", "Error message does not match the expected `At least 4 brands are required in competitive cet. Please add additional brands.`.")
+        assert.equal(expectedError.errorMessage, "At least 4 brands are required in competitive set. Please add additional brands.", "Error message does not match the expected `At least 4 brands are required in competitive set. Please add additional brands.`.")
     })
 
     it(`Select 4 brands from the Competitive Set`, async function () {
         await brandPositioningPage.clickFiltersButton();
         await analysisPeriodSelectorAndFilters.clickEditBrandsButton();
         await brandSelectorPage.removeAllFromCompetitiveSet();
-        await brandSelectorPage.selectFirstNBrands(4);
+
+        await brandSelectorPage.addSpecificBrand("Contigo")
+        await brandSelectorPage.addSpecificBrand("Corkcicle")
+        await brandSelectorPage.addSpecificBrand("Hydro Flask")
+        await brandSelectorPage.addSpecificBrand("Igloo (coolers)")
+
         await brandSelectorPage.clickSaveButton();
         await analysisPeriodSelectorAndFilters.clickCloseFiltersButton()
     })
@@ -117,7 +126,7 @@ describe(`Quadrant View Navigation - Test 2 - Four Competitive Set`, () => {
 
 })
 
-        // At least 4 brands are required in competitive cet. Please add additional brands.
+        // At least 4 brands are required in competitive cet. At least 4 brands are required in competitive set. Please add additional brands.
         // await new Promise(res => {
         //     setTimeout(() => {
         //         res();

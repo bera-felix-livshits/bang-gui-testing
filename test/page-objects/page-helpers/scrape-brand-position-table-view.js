@@ -50,7 +50,7 @@ module.exports = {
             return await headerEl.getText();
         }))
 
-        let primaryBrand = await (await $(`//tbody/tr[1]/td//div[@class="brand-cell-inline-label"]`)).getText();
+        let primaryBrand = await (await $(`//tbody/tr[1]/td//div[text()][1]`)).getText();
         let primaryBrandValueElements = await $$(`//tbody/tr[1]/td[@role="cell" and not(descendant::*)]`);
 
         let primaryBrandValues = await Promise.all(primaryBrandValueElements.map(async el => {

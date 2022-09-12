@@ -67,21 +67,17 @@ module.exports = {
         await brandButtons[0].click();
     },
 
-    selectSpecificBrand: async function (searchValue) {
+    addSpecificBrand: async function (searchValue) {
         let searchInput = await this.getSearchInput();
         await searchInput.setValue(searchValue);
-
-        await new Promise(res => {
-            setTimeout(() => {
-                res();
-            }, 500)
-        })
+        await new Promise(res => { setTimeout(() => { res(); }, 500) })
 
         let elem = await $(`//div[@class="bt-brand-row"]/div[@class="bt-brand-row-label" and text()="${searchValue}"]/../div[@class="bt-brand-row-button"]`);
         await elem.isClickable();
         await elem.click();
 
         await customClearValue(searchInput);
+        await new Promise(res => { setTimeout(() => { res(); }, 500) })
     },
 
     getSelectedBrands: async function () {

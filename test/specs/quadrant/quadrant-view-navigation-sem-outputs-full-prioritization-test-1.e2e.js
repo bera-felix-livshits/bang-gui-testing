@@ -8,7 +8,7 @@ const navBar = require('../../page-objects/common-components/nav-bar.js');
 const overviewPage = require("../../page-objects/overview-page.js");
 const brandPositioningPage = require("../../page-objects/brand-positioning-page.js");
 
-describe(`Quadrant View Navigation - Test 1`, () => {
+describe(`Quadrant View Navigation - SEM Outputs Full Prioritization - Test 1 - Summary View`, () => {
 
     it('Login to app.', async () => {
         await beraLoginPage.login();
@@ -20,7 +20,11 @@ describe(`Quadrant View Navigation - Test 1`, () => {
     })
 
     it(`Brand Selector - Select the first 5 brands from the list available and click "Next" button`, async function () {
-        await brandSelectorPage.selectFirstFiveBrands();
+        await brandSelectorPage.addSpecificBrand("Contigo");
+        await brandSelectorPage.addSpecificBrand("Corkcicle");
+        await brandSelectorPage.addSpecificBrand("Hydro Flask");
+        await brandSelectorPage.addSpecificBrand("Igloo (coolers)");
+        await brandSelectorPage.addSpecificBrand("Coleman (active gear)");
         // brandNamesSelectedDuringFlow = await brandSelectorPage.getSelectedBrands();
         await brandSelectorPage.clickNextButton();
     })
@@ -57,5 +61,23 @@ describe(`Quadrant View Navigation - Test 1`, () => {
         let bottomRightVisible = await (await brandPositioningPage.getQuadrant('bottom-right')).isDisplayed();
 
         assert.equal(topLeftVisible && topRightVisible && bottomLeftVisible && bottomRightVisible, true, "All quadrants are not visible");
+    })
+
+    it(`Toggle SEM`, async function () {
+        await brandPositioningPage.toggleDrivers();
+    })
+
+    it(`Toggle to Attriubtes`, async function () {
+        await brandPositioningPage.toggleFactorsAndAttributes()
+    })
+
+    it(`Get points on chart`, async function () {
+        let points = await brandPositioningPage.getAllQuadrantPoints();
+        console.log(`points => ${JSON.stringify(points, null, 4)}`)
+    }) 
+
+    it(`Verify Drivers of Primary Brand`, async function () {
+        let colour = await brandPositioningPage.getDriversOfSelectedBrandsColor();
+        console.log(`colour => ${JSON.stringify(colour, null, 4)}`);
     })
 })
