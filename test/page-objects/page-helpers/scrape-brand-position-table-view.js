@@ -5,17 +5,21 @@ module.exports = {
     },
 
     getActiveButtons: async function () {
-        let buttonXpath = `//div[@role="button"]/span[contains(@class,"MuiTypography-root")]`;
-        let buttonsElements = await $$(buttonXpath);
+        let buttonSpanXpath = `//div[@role="button"]/span[contains(@class,"MuiTypography-root")]`;
+        let buttonXpath = `//div[@role="button"]/span[contains(@class,"MuiTypography-root")]/..`;
+        let buttonsSpanElements = await $$(buttonSpanXpath);
+        let buttonElements = await $$(buttonXpath);
 
-        let buttons = await Promise.all(buttonsElements.map(async buttonEl => {
-            let pointerValue = (await buttonEl.getCSSProperty("pointer-events")).value
-            console.log('value =>', pointerValue)
-
+        let buttons = await Promise.all(buttonsSpanElements.map(async (buttonEl, i) => {
+            // let pointerValue = (await buttonEl.getCSSProperty("pointer-events")).value
+            // console.log('value =>', pointerValue)
+            // console.log(`i =>`,i)
+            // console.log(`await buttonEl.getCSSProperty("border-bottom-color") => `, JSON.stringify(await buttonElements[i].getCSSProperty("border-bottom-color"), null, 4))
             return {
                 buttonText: await buttonEl.getText(),
                 buttonElement: buttonEl,
                 active: (await buttonEl.getCSSProperty("pointer-events")).value == "none" ? false : true,
+                selected: (await buttonElements[i].getCSSProperty("border-bottom-color")).value != "rgba(0,0,0,0)" ? true: false
             }
         }));
 

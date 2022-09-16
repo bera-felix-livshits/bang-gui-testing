@@ -77,7 +77,7 @@ module.exports = {
         let elem = await $(xPath);
         await elem.waitForDisplayed();
         await elem.waitForClickable();
-        await new Promise (res => setTimeout(()=> res(),100));
+        await new Promise(res => setTimeout(() => res(), 100));
         return elem;
     },
 
@@ -95,6 +95,7 @@ module.exports = {
     },
 
     clickFiltersButton: async function () {
+        await new Promise(res => { setTimeout(() => { res() }, 250); })
         let filtersButtonXPath = `//button/span[text()="Filters"]`;
         let elem = await $(filtersButtonXPath);
         await elem.waitForExist();
@@ -104,6 +105,7 @@ module.exports = {
     },
 
     clickCloseFiltersButton: async function () {
+        await new Promise(res => { setTimeout(() => { res() }, 250); })
         let closeFiltersButton = await $(`//span[text()="Filters"]/../following-sibling::div/button`);
         await closeFiltersButton.waitForExist();
         await closeFiltersButton.waitForDisplayed();
@@ -112,20 +114,27 @@ module.exports = {
     },
 
     getSelectedBrands: async function () {
+        await new Promise(res => { setTimeout(() => { res() }, 250); })
         await (await $(`//span[contains(@class, "MuiTypography-root") and text()="Filters"]`)).waitForDisplayed();
+        let els = await $$(`//span[text()="Primary Brand"]/following-sibling::div//span[contains(@class, "MuiTypography-root")]`)
+        await Promise.all(els.map(async (el) => { await el.waitForExist() }));
+        let primaryBrandEl = await $(`//span[text()="Primary Brand"]/following-sibling::div//span[contains(@class, "MuiTypography-root")]`);
+        await primaryBrandEl.waitForDisplayed();
+        let compentitiveSetEls = await $$(`//span[text()="Competitive Set"]/following-sibling::div//span[contains(@class, "MuiTypography-root")]`);
+        await new Promise(res => setTimeout(() => { res() }, 100))
         let brandsObj = {
-            primaryBrand: await (await $(`//span[text()="Primary Brand"]/following-sibling::div//span[contains(@class, "MuiTypography-root")]`))
-                .getText(),
-            competitiveSet: await Promise.all(await $$(`//span[text()="Competitive Set"]/following-sibling::div//span[contains(@class, "MuiTypography-root")]`)
-                .filter(async (el, i) => {
-                    if (i % 2 === 0) {
-                        return el;
-                    }
-                })
-                .map(async el => {
-                    await el.waitForDisplayed();
-                    return await el.getText();
-                })
+            primaryBrand: await primaryBrandEl.getText(),
+            competitiveSet: await Promise.all(
+                compentitiveSetEls
+                    .filter(async (el, i) => {
+                        if (i % 2 === 0) {
+                            return el;
+                        }
+                    })
+                    .map(async el => {
+                        await el.waitForDisplayed();
+                        return await el.getText();
+                    })
             )
         }
 

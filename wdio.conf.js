@@ -1,5 +1,6 @@
 const dotenv = require('dotenv');
 const pgCleanup = require('./test/utilities/pg-cleanup.js');
+const toasterCleanup = require(`./test/utilities/toaster-cleanup`)
 const { join } = require("path");
 const fs = require('fs');
 
@@ -34,6 +35,11 @@ exports.config = {
     ],
     suites: {
         quadrant: [
+            'test/specs/quadrant/quadrant-view-navigation-analysis-period-update-test-1.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-change-competitive-set-test-1.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-default-load-params-test-3.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-four-competitive-set-display-test-1.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-four-competitive-set-test-1.e2e.js',
             'test/specs/quadrant/quadrant-view-navigation-hover-over-attribute-test-1.e2e.js',
             'test/specs/quadrant/quadrant-view-navigation-hover-over-attribute-test-2.e2e.js',
             'test/specs/quadrant/quadrant-view-navigation-hover-over-factor-test-1.e2e.js',
@@ -42,10 +48,19 @@ exports.config = {
             'test/specs/quadrant/quadrant-view-navigation-hover-over-test-2.e2e.js',
             'test/specs/quadrant/quadrant-view-navigation-hover-over-test-3.e2e.js',
             'test/specs/quadrant/quadrant-view-navigation-hover-over-test-4.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-primary-brand-update-test-1.e2e.js',
             'test/specs/quadrant/quadrant-view-navigation-sample-size-test-1.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-sem-outputs-full-prioritization-summary-view-test-1.e2e.js',
             'test/specs/quadrant/quadrant-view-navigation-sem-outputs-full-prioritization-test-1.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-sem-outputs-no-prioritization-test-1.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-sem-outputs-partial-prioritization-test-1.e2e.js',
             'test/specs/quadrant/quadrant-view-navigation-test-1.e2e.js',
-            'test/specs/quadrant/quadrant-view-navigation-test-2-four-competitive-set.e2e.js'
+            'test/specs/quadrant/quadrant-view-navigation-test-2-four-competitive-set.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-toggle-between-constructs-test-1.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-zoom-test-1.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-zoom-test-2.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-zoom-test-3.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-zoom-test-4.e2e.js',
         ],
         hierarchyView: [
             'test/specs/hierarchy-view/hierarchy-chart-info-icon-test-1.e2e.js',
@@ -87,6 +102,7 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
+
     maxInstances: 5,
     //
     // If you have trouble getting all important capabilities together, check out the
@@ -211,6 +227,7 @@ exports.config = {
     //
     // The number of times to retry the entire specfile when it fails as a whole
     // spec retries
+
     specFileRetries: 2,
     //
     // Delay in seconds between the spec file retry attempts
@@ -320,8 +337,9 @@ exports.config = {
     /**
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
-    // beforeTest: function (test, context) {
-    // },
+    beforeTest: async function (test, context) {
+        await toasterCleanup();
+    },
     /**
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
      * beforeEach in Mocha)

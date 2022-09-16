@@ -19,9 +19,15 @@ describe(`Quadrant View Navigation - Hover Over Attribute - Test 1`, () => {
         await landingPage.letsGetStartedWithExploreTheData();
     })
 
-    it(`Brand Selector - Select the first 5 brands from the list available and click "Next" button`, async function () {
-        await brandSelectorPage.selectFirstFiveBrands();
+    it(`Brand Selector - Select the brands from the list available and click "Next" button`, async function () {
+        // await brandSelectorPage.selectFirstFiveBrands();
         // brandNamesSelectedDuringFlow = await brandSelectorPage.getSelectedBrands();
+        await brandSelectorPage.addSpecificBrand("OshKosh");
+        await brandSelectorPage.addSpecificBrand("Rustler");
+        await brandSelectorPage.addSpecificBrand("Lee");
+        await brandSelectorPage.addSpecificBrand("London Fog");
+        await brandSelectorPage.addSpecificBrand("Perry Ellis");
+        
         await brandSelectorPage.clickNextButton();
     })
 

@@ -115,6 +115,7 @@ module.exports = {
         await elem.waitForExist();
         await elem.waitForDisplayed();
         await elem.click();
+        await new Promise(res => setTimeout(() => { res() }, 100));
     },
 
     isPrimaryBrandElementDisplayed: async function () {
@@ -164,5 +165,11 @@ module.exports = {
             })
         )
     },
+
+    isOnboardingScreenDisplayed: async function () {
+        let obDiv = await $(`//div[@class="ob-screen"]`);
+        await new Promise(res => setTimeout(() => { res() }, 100));
+        return await obDiv.isDisplayed();
+    }
 
 }

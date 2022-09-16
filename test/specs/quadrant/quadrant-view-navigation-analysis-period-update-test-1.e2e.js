@@ -8,7 +8,9 @@ const navBar = require('../../page-objects/common-components/nav-bar.js');
 const overviewPage = require("../../page-objects/overview-page.js");
 const brandPositioningPage = require("../../page-objects/brand-positioning-page.js");
 
-describe(`Quadrant View Navigation - Hover Over Factor - Test 1`, () => {
+let pointsPurposeBefore, pointsEmotionalBefore, pointsPurposeAfter, pointsEmotionalAfter;
+
+describe(`Quadrant View Navigation - Test 1 - Analysis Period Update`, () => {
 
     it('Login to app.', async () => {
         await beraLoginPage.login();
@@ -20,14 +22,11 @@ describe(`Quadrant View Navigation - Hover Over Factor - Test 1`, () => {
     })
 
     it(`Brand Selector - Select 5 brands from the list available and click "Next" button`, async function () {
-        // await brandSelectorPage.selectFirstFiveBrands();
-        // brandNamesSelectedDuringFlow = await brandSelectorPage.getSelectedBrands();
         await brandSelectorPage.addSpecificBrand("OshKosh");
         await brandSelectorPage.addSpecificBrand("Rustler");
         await brandSelectorPage.addSpecificBrand("Lee");
         await brandSelectorPage.addSpecificBrand("London Fog");
         await brandSelectorPage.addSpecificBrand("Perry Ellis");
-        
         await brandSelectorPage.clickNextButton();
     })
 
@@ -56,41 +55,40 @@ describe(`Quadrant View Navigation - Hover Over Factor - Test 1`, () => {
         assert.equal(title.trim(), "DNA", "Title is not 'DNA' but should be")
     })
 
-    it(`Click Emotional button`, async function () {
+    it(`Verify that the view title is set to “2x2 Quadrant View`, async function () {
+        let topLeftVisible = await (await brandPositioningPage.getQuadrant('top-left')).isDisplayed();
+        let topRightVisible = await (await brandPositioningPage.getQuadrant('top-right')).isDisplayed();
+        let bottomLeftVisible = await (await brandPositioningPage.getQuadrant('bottom-left')).isDisplayed();
+        let bottomRightVisible = await (await brandPositioningPage.getQuadrant('bottom-right')).isDisplayed();
+
+        assert.equal(topLeftVisible && topRightVisible && bottomLeftVisible && bottomRightVisible, true, "All quadrants are not visible");
+    })
+
+    it(`Capture points on quadrant BEFORE date change`, async function(){
+        pointsPurposeBefore = await brandPositioningPage.getAllQuadrantPoints();
         await brandPositioningPage.clickEmotionalButton();
+
+        pointsEmotionalBefore = await brandPositioningPage.getAllQuadrantPoints();
+        await brandPositioningPage.clickPurposeButton();
     })
 
-    it(`Verify that Grey Oval appears on mouse over`, async function () {
-        let point = await brandPositioningPage.getQuadrantPointComponents("Sincerity")
-        let text = point.text;
-
-        await text.isDisplayed();
-        await text.moveTo();
-
-        let point2 = await brandPositioningPage.getQuadrantPointComponents("Sincerity");
-        let rect = point2.rect;
-
-        let fill, stroke;
-
-        fill = await rect.getCSSProperty("fill-opacity")
-        stroke = await rect.getCSSProperty("stroke-opacity")
-
-        console.log("fill => ", fill)
-        console.log("stroke => ", stroke)
-
-        assert.equal(parseFloat(fill) !== 0, true, "fill-opacity needs to be not zero");
-        assert.equal(parseFloat(stroke) !== 0, true, "fill-opacity needs to be not zero");
+    it(`Change the Analysis Period to a different year`, async function () {
+        await brandPositioningPage.clickAnalysisPeriodDropDown();
+        await brandPositioningPage.setIntervalOrAnalysisPeriodInDropdown("Last 2 Years");
+        newTimePeriod = await brandPositioningPage.getDisplayedAnalysisPeriodText();
+        console.log('new time period =>', newTimePeriod)
     })
 
-    it(`Verify that side bar appears on click`, async function () {
-        let point = await brandPositioningPage.getQuadrantPointComponents("Sincerity")
-        let text = point.text;
-        await text.click();
-        let sideBarHeaderText = await brandPositioningPage.getPageSideBarHeader();
-        let sideBarContent = await brandPositioningPage.getPageSideBarInfoContents();
-        await brandPositioningPage.clickCloseSidebar()
+    it(`Capture points on quadrant AFTER date change`, async function(){
+        pointsPurposeAfter = await brandPositioningPage.getAllQuadrantPoints();
+        await brandPositioningPage.clickEmotionalButton();
 
-        assert.equal(sideBarHeaderText.length > 0, true, "Side Bar header is not displayed");
-        assert.equal(sideBarContent.length > 0, true, "Side Bar content is not displayed");
+        pointsEmotionalAfter = await brandPositioningPage.getAllQuadrantPoints();
+        await brandPositioningPage.clickPurposeButton();
+    })
+
+    it(`Verify that points on the quadrant are different after analysis period change`, async function(){
+        assert.notDeepEqual(pointsPurposeBefore, pointsPurposeAfter, `Expecting points on quadrant for "Purpose" to be different after period analysis change, but was the same.`)
+        assert.notDeepEqual(pointsEmotionalBefore, pointsEmotionalAfter, `Expecting points on quadrant for "Emotional" to be different after period analysis change, but was the same.`)
     })
 })

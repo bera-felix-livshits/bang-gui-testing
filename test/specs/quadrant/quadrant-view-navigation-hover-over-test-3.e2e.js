@@ -69,14 +69,14 @@ describe(`Quadrant View Navigation - Hover Over - Test 1`, () => {
     it(`Verify that a zoom indicator icon appears in the upper-right of the quadrant - Bottom Left`, async function (){
         let el = await brandPositioningPage.getQuadrant('bottom-left');
         await el.click()
-        let expander = await brandPositioningPage.getQuadrantExpander('bottom-left')
+        let expander = (await brandPositioningPage.getQuadrantExpander('bottom-left')).el;
         assert.equal(await expander.isDisplayed(), true, "Bottom Left Expander is not Visible")
     })
 
     it(`Verify that clicking on it allows the user to zoom into this quadrant - Bottom Left`, async function (){
         let el = await brandPositioningPage.getQuadrant('bottom-left');
         await el.click()
-        let expander = await brandPositioningPage.getQuadrantExpander('bottom-left')
+        let expander = (await brandPositioningPage.getQuadrantExpander('bottom-left')).el;
         let vertDeviderLocationOne = await (await brandPositioningPage.getVerticalDivider()).getLocation();
         console.log("vertDeviderLocationOne =>", vertDeviderLocationOne)
         await expander.click();

@@ -63,7 +63,7 @@ describe(`Quadrant View Navigation - Test 2 - Four Competitive Set`, () => {
 
         await brandSelectorPage.addSpecificBrand("Contigo")
         await brandSelectorPage.addSpecificBrand("Corkcicle")
-        
+
         await brandSelectorPage.clickSaveButton();
         await analysisPeriodSelectorAndFilters.clickCloseFiltersButton()
     })
@@ -74,11 +74,19 @@ describe(`Quadrant View Navigation - Test 2 - Four Competitive Set`, () => {
         assert.equal(expectedError.errorMessage, "At least 4 brands are required in competitive set. Please add additional brands.", "Error message does not match the expected `At least 4 brands are required in competitive set. Please add additional brands.`.")
     })
 
-    it(`Select only 1 brands from the Competitive Set`, async function () {
+    it(`Navigate to brand selection`, async function (){
         await brandPositioningPage.clickFiltersButton();
         await analysisPeriodSelectorAndFilters.clickEditBrandsButton();
+    })
+
+    it(`Select only 1 brands from the Competitive Set`, async function () {
+        
         await brandSelectorPage.removeAllFromCompetitiveSet();
         await brandSelectorPage.addSpecificBrand("Hydro Flask")
+       
+    })
+
+    it(`Save and close filters`,async function (){
         await brandSelectorPage.clickSaveButton();
         await analysisPeriodSelectorAndFilters.clickCloseFiltersButton()
     })
@@ -89,9 +97,13 @@ describe(`Quadrant View Navigation - Test 2 - Four Competitive Set`, () => {
         assert.equal(expectedError.errorMessage, "At least 4 brands are required in competitive set. Please add additional brands.", "Error message does not match the expected `At least 4 brands are required in competitive set. Please add additional brands.`.")
     })
 
-    it(`Select 4 brands from the Competitive Set`, async function () {
+    it(`Navigate to brand selection`, async function (){
         await brandPositioningPage.clickFiltersButton();
         await analysisPeriodSelectorAndFilters.clickEditBrandsButton();
+    })
+
+    it(`Select 4 brands from the Competitive Set`, async function () {
+
         await brandSelectorPage.removeAllFromCompetitiveSet();
 
         await brandSelectorPage.addSpecificBrand("Contigo")
@@ -99,7 +111,13 @@ describe(`Quadrant View Navigation - Test 2 - Four Competitive Set`, () => {
         await brandSelectorPage.addSpecificBrand("Hydro Flask")
         await brandSelectorPage.addSpecificBrand("Igloo (coolers)")
 
+    })
+
+    it(`Save brand changes`,async function (){
         await brandSelectorPage.clickSaveButton();
+    })
+
+    it(`Close filters`, async function(){
         await analysisPeriodSelectorAndFilters.clickCloseFiltersButton()
     })
 
@@ -109,11 +127,21 @@ describe(`Quadrant View Navigation - Test 2 - Four Competitive Set`, () => {
         assert.equal(quadContent.length, 4, "Quadrant content did not load, but expecting that it should.")
     })
 
-    it(`Select 5 brands from the Competitive Set`, async function () {
+    it(`Navigate to brand selection`, async function (){
         await brandPositioningPage.clickFiltersButton();
         await analysisPeriodSelectorAndFilters.clickEditBrandsButton();
+    })
+
+    it(`Select 5 brands from the Competitive Set`, async function () {
         await brandSelectorPage.removeAllFromCompetitiveSet();
-        await brandSelectorPage.selectFirstNBrands(5);
+        await brandSelectorPage.addSpecificBrand("Contigo")
+        await brandSelectorPage.addSpecificBrand("Corkcicle")
+        await brandSelectorPage.addSpecificBrand("Hydro Flask")
+        await brandSelectorPage.addSpecificBrand("Igloo (coolers)")
+        await brandSelectorPage.addSpecificBrand("Adidas")
+    })
+
+    it(`Save and close filters`,async function (){
         await brandSelectorPage.clickSaveButton();
         await analysisPeriodSelectorAndFilters.clickCloseFiltersButton()
     })

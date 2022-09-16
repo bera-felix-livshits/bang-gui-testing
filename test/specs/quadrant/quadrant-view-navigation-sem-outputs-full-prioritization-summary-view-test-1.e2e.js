@@ -7,10 +7,13 @@ const audienceDetailsPage = require("../../page-objects/audience-details-page.js
 const navBar = require('../../page-objects/common-components/nav-bar.js');
 const overviewPage = require("../../page-objects/overview-page.js");
 const brandPositioningPage = require("../../page-objects/brand-positioning-page.js");
-const { setTimeout } = require('timers/promises');
+const toasterCleanup = require('../../utilities/toaster-cleanup.js');
 
 
 describe(`Quadrant View Navigation - SEM Outputs Full Prioritization - Test 1 - Summary View`, () => {
+    // afterEach(async function () {
+    //     await toasterCleanup();
+    // })
 
     it('Login to app.', async () => {
         await beraLoginPage.login();
@@ -76,7 +79,11 @@ describe(`Quadrant View Navigation - SEM Outputs Full Prioritization - Test 1 - 
         // }, 5000))
     })
 
-    it(`Verify that the Quadrant view updates to show “Drivers of Primary Brand” Header As Green`, async function () {
+    it(`Switch to summary view`, async function () {
+        await brandPositioningPage.clickQuadrantSummaryViewButton()
+    })
+
+    it(`Verify that the Summary view updates to show “Drivers of Primary Brand” Header As Green`, async function () {
         let colourPurpose = await brandPositioningPage.getDriversOfPrimaryBrandsColor();
         console.log(`colour => ${JSON.stringify(colourPurpose, null, 4)}`);
 
@@ -90,19 +97,23 @@ describe(`Quadrant View Navigation - SEM Outputs Full Prioritization - Test 1 - 
         assert.equal(colourEmotional.value, "rgb(41,214,125)", `Expected Emotional color to be green with value "rgb(41,214,125)" but was ${colourEmotional.value} instead.`)
     })
 
-    it(`Verify that points on chart are displayed as Green`, async function () {
-        let pointsPurpose = await brandPositioningPage.getAllQuadrantPoints();
-        console.log(`purpose points => ${JSON.stringify(pointsPurpose, null, 4)}`)
-       
+    it(`Verify that the Summary view updates to show entries in "Maintain and Build" and "Develop" As Green`, async function () {
+        let summaryChartContentsPurpose = await brandPositioningPage.getSummaryChartContents();
+
         await brandPositioningPage.clickEmotionalButton();
 
-        let pointsEmotional = await brandPositioningPage.getAllQuadrantPoints();
-        console.log(`emotional points => ${JSON.stringify(pointsEmotional, null, 4)}`)
+        let summaryChartContentsEmotional = await brandPositioningPage.getSummaryChartContents();
 
         await brandPositioningPage.clickPurposeButton();
 
-        assert.equal(pointsPurpose.some(el => el.colour.value == "rgb(41,214,125)"), true, "There exist no points which are Green")
-        assert.equal(pointsEmotional.some(el => el.colour.value == "rgb(41,214,125)"), true, "There exist no points which are Green")
+        assert.equal(summaryChartContentsPurpose.maintain.every(el => el.colour.value === "rgb(41,214,125)"), true, "There exists an entry in Purpose 'Maintain and Build' that is not Green")
+        assert.equal(summaryChartContentsPurpose.develop.every(el => el.colour.value === "rgb(41,214,125)"), true, "There exists an entry in Purpose 'Develop' that is not Green")
+        assert.equal(summaryChartContentsPurpose.deprioritize.every(el => el.colour.value === "rgb(255,255,255)"), true, "There exists an entry in Purpose 'Deprioritize' that is not Grey")
+
+        assert.equal(summaryChartContentsEmotional.maintain.every(el => el.colour.value === "rgb(41,214,125)"), true, "There exists an entry in Emotional 'Maintain and Build' that is not Green")
+        assert.equal(summaryChartContentsEmotional.develop.every(el => el.colour.value === "rgb(41,214,125)"), true, "There exists an entry in Emotional 'Develop' that is not Green")
+        assert.equal(summaryChartContentsEmotional.deprioritize.every(el => el.colour.value === "rgb(255,255,255)"), true, "There exists an entry in Emotional 'Deprioritize' that is not Grey")
+
     })
 
     it(`Set demographics such that Primary Brand is less than 500 and more than 250`, async function () {
@@ -127,6 +138,25 @@ describe(`Quadrant View Navigation - SEM Outputs Full Prioritization - Test 1 - 
         assert.equal(colourEmotional.value, "rgb(251,120,45)", `Expected Emotional color to be green with value "rgb(41,214,125)" but was ${colourPurpose.value} instead.`)
     })
 
+    it(`Verify that the Summary view updates to show entries in "Maintain and Build" and "Develop" As Orange`, async function () {
+        let summaryChartContentsPurpose = await brandPositioningPage.getSummaryChartContents();
+
+        await brandPositioningPage.clickEmotionalButton();
+
+        let summaryChartContentsEmotional = await brandPositioningPage.getSummaryChartContents();
+
+        await brandPositioningPage.clickPurposeButton();
+
+        assert.equal(summaryChartContentsPurpose.maintain.every(el => el.colour.value === "rgb(251,120,45)"), true, "There exists an entry in Purpose 'Maintain and Build' that is not Orange")
+        assert.equal(summaryChartContentsPurpose.develop.every(el => el.colour.value === "rgb(251,120,45)"), true, "There exists an entry in Purpose 'Develop' that is not Orange")
+        assert.equal(summaryChartContentsPurpose.deprioritize.every(el => el.colour.value === "rgb(255,255,255)"), true, "There exists an entry in Purpose 'Deprioritize' that is not Grey")
+
+        assert.equal(summaryChartContentsEmotional.maintain.every(el => el.colour.value === "rgb(251,120,45)"), true, "There exists an entry in Emotional 'Maintain and Build' that is not Orange")
+        assert.equal(summaryChartContentsEmotional.develop.every(el => el.colour.value === "rgb(251,120,45)"), true, "There exists an entry in Emotional 'Develop' that is not Orange")
+        assert.equal(summaryChartContentsEmotional.deprioritize.every(el => el.colour.value === "rgb(255,255,255)"), true, "There exists an entry in Emotional 'Deprioritize' that is not Grey")
+
+    })
+
     it(`Disable drivers`, async function (){
         await brandPositioningPage.toggleDrivers();
     })
@@ -144,24 +174,28 @@ describe(`Quadrant View Navigation - SEM Outputs Full Prioritization - Test 1 - 
     it (`navigate back to quadrant`, async function(){
         await navBar.clickBrandPositioning();
         await brandPositioningPage.clickQuadrantViewButton();
-    })
-
-    it(`Toggle SEM drivers`, async function (){
         await brandPositioningPage.toggleDrivers()
     })
 
-    it(`Verify that quadrants do not have points`, async function (){
-        let pointsPurpose = await brandPositioningPage.getAllQuadrantPoints();
-        console.log(`purpose points => ${JSON.stringify(pointsPurpose, null, 4)}`)
-       
+    it(`Select summary view`, async function(){
+        await brandPositioningPage.clickQuadrantSummaryViewButton();
+    })
+
+    it(`Verify that Summary chart does not have points`, async function () {
+        let summaryChartContentsPurpose = await brandPositioningPage.getSummaryChartContents();
+
         await brandPositioningPage.clickEmotionalButton();
 
-        let pointsEmotional = await brandPositioningPage.getAllQuadrantPoints();
-        console.log(`emotional points => ${JSON.stringify(pointsEmotional, null, 4)}`)
+        let summaryChartContentsEmotional = await brandPositioningPage.getSummaryChartContents();
 
         await brandPositioningPage.clickPurposeButton();
 
-        assert.equal(pointsPurpose.length, 0, "There should exist no Purpose points in the quadrant view")
-        assert.equal(pointsEmotional.length, 0, "There should exist no Emotional points in the quadrant view") 
+        assert.equal(summaryChartContentsPurpose.maintain.length, 0, "There exists an entry in Purpose 'Maintain and Build' that is not Orange")
+        assert.equal(summaryChartContentsPurpose.develop.length, 0, "There exists an entry in Purpose 'Develop' that is not Orange")
+        assert.equal(summaryChartContentsPurpose.deprioritize.length, 0, "There exists an entry in Purpose 'Deprioritize' that is not Grey")
+
+        assert.equal(summaryChartContentsEmotional.maintain.length, 0, "There exists an entry in Emotional 'Maintain and Build' that is not Orange")
+        assert.equal(summaryChartContentsEmotional.develop.length, 0, "There exists an entry in Emotional 'Develop' that is not Orange")
+        assert.equal(summaryChartContentsEmotional.deprioritize.length, 0, "There exists an entry in Emotional 'Deprioritize' that is not Grey")
     })
 })

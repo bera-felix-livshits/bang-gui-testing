@@ -84,6 +84,7 @@ describe(`Quadrant View Navigation - Sample Size - Test 1`, () => {
     })
 
     it(`Verify that the Sample Size text is Orange`, async function () {
+        
         let attributes = await brandPositioningPage.getSampleSizeAttributes();
         await brandPositioningPage.clickFiltersButton();
         let sideBarAttributes = await brandPositioningPage.getSampleSizeAttriubutesFromSidebar();
