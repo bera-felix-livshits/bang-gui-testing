@@ -4,12 +4,12 @@ const beraLoginPage = require("../../page-objects/bera-login-page.js");
 const landingPage = require("../../page-objects/landing-page.js");
 const brandSelectorPage = require("../../page-objects/brand-selector-page.js");
 const audienceDetailsPage = require("../../page-objects/audience-details-page.js");
-const navBar = require('../../page-objects/common-components/nav-bar.js');
+const navBar = require('../../page-objects/page-components/nav-bar.js');
 const overviewPage = require("../../page-objects/overview-page.js");
 const brandPositioningPage = require("../../page-objects/brand-positioning-page.js");
 const flattenHierarchyObj = require('../../utilities/flatten-hierarchy-obj');
 const fs = require('fs');
-const analysisPeriodSelectorAndFilters = require('../../page-objects/common-components/analysis-period-selector-and-filters.js');
+const analysisPeriodSelectorAndFilters = require('../../page-objects/page-components/analysis-period-selector-and-filters.js');
 
 describe('Hierarchy Chart Sample Size - Test 1', () => {
     this.retries = 0;

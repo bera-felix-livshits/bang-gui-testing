@@ -4,7 +4,7 @@ const beraLoginPage = require("../../page-objects/bera-login-page.js");
 const landingPage = require("../../page-objects/landing-page.js");
 const brandSelectorPage = require("../../page-objects/brand-selector-page.js");
 const audienceDetailsPage = require("../../page-objects/audience-details-page.js");
-const navBar = require('../../page-objects/common-components/nav-bar.js');
+const navBar = require('../../page-objects/page-components/nav-bar.js');
 const overviewPage = require("../../page-objects/overview-page.js");
 const brandPositioningPage = require("../../page-objects/brand-positioning-page.js");
 
@@ -27,7 +27,7 @@ describe(`Quadrant View Navigation - Hover Over Attribute - Test 2`, () => {
         await brandSelectorPage.addSpecificBrand("Lee");
         await brandSelectorPage.addSpecificBrand("London Fog");
         await brandSelectorPage.addSpecificBrand("Perry Ellis");
-        
+
         await brandSelectorPage.clickNextButton();
     })
 

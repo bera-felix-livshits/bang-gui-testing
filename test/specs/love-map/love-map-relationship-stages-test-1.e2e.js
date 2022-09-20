@@ -5,7 +5,7 @@ const landingPage = require("../../page-objects/landing-page.js");
 const brandSelectorPage = require("../../page-objects/brand-selector-page.js");
 const audienceDetailsPage = require("../../page-objects/audience-details-page.js");
 const overviewPage = require("../../page-objects/overview-page.js");
-const navBar = require('../../page-objects/common-components/nav-bar.js');
+const navBar = require('../../page-objects/page-components/nav-bar.js');
 const relationshipStage = require('../../page-objects/relationship-page.js');
 
 const newTab = require("../../utilities/open-new-tab.js");

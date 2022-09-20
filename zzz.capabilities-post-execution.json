@@ -1,0 +1,20 @@
+[
+    {
+        "maxInstances": 5,
+        "browserName": "chrome",
+        "acceptInsecureCerts": true,
+        "goog:chromeOptions": {
+            "args": [
+                "--disable-dev-shm-usage",
+                "--disable-gpu",
+                "--window-size=2048,1180",
+                "--disable-web-security",
+                "ignore-certificate-errors"
+            ]
+        },
+        "protocol": "http",
+        "hostname": "localhost",
+        "port": 9515,
+        "path": "/"
+    }
+]

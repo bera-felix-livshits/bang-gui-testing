@@ -1,6 +1,6 @@
-const analysisPeriodSelector = require('./common-components/analysis-period-selector-and-filters.js');
+const analysisPeriodSelector = require('./page-components/analysis-period-selector-and-filters.js');
 const customClick = require('../utilities/custom-click');
-const relationshipMap = require('../page-objects/common-components/relationship-map');
+const relationshipMap = require('./page-components/relationship-map');
 const { selectFilterOptions, clickApplyFilterButton, insertNameForAudience, clickSaveAndFinishButton } = require('./audience-details-page.js');
 
 module.exports = {
