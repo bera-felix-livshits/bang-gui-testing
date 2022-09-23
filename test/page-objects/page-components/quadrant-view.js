@@ -1,9 +1,9 @@
 const waitForLoadingToComplete = require("./wait-for-loading-to-complete.js");
 const camelize = require("../../utilities/camelize")
 module.exports = {
-     // DNA subsection
+    // DNA subsection
 
-     clickPurposeButton: async function () {
+    clickPurposeButton: async function () {
         let elem = await $(`//div[@role="button"]/span[text()="Purpose"]`);
         await elem.waitForDisplayed();
         await elem.click();
@@ -191,6 +191,10 @@ module.exports = {
 
     getDriversOfSelectedBrandsColor: async function () {
         let elem = await $(`//span[text()="Drivers of Selected Brands"]/preceding-sibling::*/*[name()="rect"]`);
+        try {
+            await elem.waitForDisplayed({ timeout: 5000, interval: 100 })
+        } catch (e) { }
+
         if (await elem.isDisplayed()) {
             return await elem.getCSSProperty("fill");
         }
@@ -213,6 +217,9 @@ module.exports = {
         await new Promise(res => setTimeout(() => { res() }, 1000));
         let textEls = await $$(`//*[name()="g" and contains(@id,"qc-point-")]/*[name()="text"]`);
         textEls = (await Promise.all(textEls.map(async (el) => {
+            try {
+                await el.waitForDisplayed({ timeout: 5000, interval: 100 })
+            } catch (e) { }
             if (await el.isDisplayed()) {
                 return el;
             }

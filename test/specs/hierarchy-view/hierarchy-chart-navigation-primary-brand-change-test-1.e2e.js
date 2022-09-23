@@ -2,13 +2,11 @@ const assert = require('assert');
 const fs = require('fs');
 
 const beraLoginPage = require("../../page-objects/bera-login-page.js");
-const landingPage = require("../../page-objects/landing-page.js");
-const brandSelectorPage = require("../../page-objects/brand-selector-page.js");
-const audienceDetailsPage = require("../../page-objects/audience-details-page.js");
 const navBar = require('../../page-objects/page-components/nav-bar.js');
 const overviewPage = require("../../page-objects/overview-page.js");
 const brandPositioningPage = require("../../page-objects/brand-positioning-page.js");
-const analysisPeriodSelectorAndFilters = require('../../page-objects/page-components/analysis-period-selector-and-filters.js');
+
+const filtersSideBar = require("../../page-objects/page-components/analysis-period-selector-and-filters.js");
 
 let hierarchyObj, newBrandHierarchy;
 
@@ -17,19 +15,20 @@ describe('Hierarchy Chart Navigation - Primary Brand Change - Test 1', () => {
         await beraLoginPage.login();
     })
 
-    it(`Brand Accelerator - Select let's get started with Explore the Data selected.`, async function () {
-        await landingPage.selectDataSet("US Brandscape");
-        await landingPage.letsGetStartedWithExploreTheData();
+    it(`Select the "US Brandscape" dataset.`, async function () {
+        await filtersSideBar.selectDataSet("US Brandscape");
     })
 
-    it(`Brand Selector - Select the first 5 brands from the list available and click "Next" button`, async function () {
-        await brandSelectorPage.selectFirstFiveBrands();
-        brandNamesSelectedDuringFlow = await brandSelectorPage.getSelectedBrands();
-        await brandSelectorPage.clickNextButton();
-    })
+    it(`Select 5 brands from the list available`, async function () {
+        await filtersSideBar.addPrimaryBrand("Coleman (active gear)");
+        await filtersSideBar.addCompetitiveSetBrands([
+            "Contigo",
+            "Corkcicle",
+            "Hydro Flask",
+            "Igloo (coolers)"
+        ])
 
-    it(`Audience Details - click the "Save & Finish" button`, async function () {
-        await audienceDetailsPage.clickSaveAndFinishButton();
+        await filtersSideBar.clickCloseFiltersButton();
     })
 
     it(`Confirm that home page is displayed`, async function () {
@@ -60,18 +59,16 @@ describe('Hierarchy Chart Navigation - Primary Brand Change - Test 1', () => {
     })
 
     it(`Click filters drop down and select "Edit" Primary Audience element`,async function (){
-        await analysisPeriodSelectorAndFilters.clickFiltersButton();
-        await analysisPeriodSelectorAndFilters.clickEditPrimaryAudienceButton();   
+        await filtersSideBar.clickFiltersButton();
     })
 
     it(`Verify that you are presented with the "Audience Details Page"`, async function(){
-        assert.equal((await audienceDetailsPage.getSelectedAudience()).toLowerCase(), "All Respondents 18+ US".toLowerCase(), `User is not presented with the "Audience Details" page`);     
+        assert.equal((await filtersSideBar.getSelectedAudience()).toLowerCase(), "All Respondents 18+ US".toLowerCase(), `User is not presented with the "Audience Details" page`);     
     })
 
     it(`Select new value for Audience`, async function (){
-        await audienceDetailsPage.selectYourAudienceByValue("Household Income $0-$25,000");
-        await audienceDetailsPage.clickSaveAndFinishButton();
-        await analysisPeriodSelectorAndFilters.clickCloseFiltersButton()
+        await filtersSideBar.selectYourAudienceByValue("Household Income $0-$25,000");
+        await filtersSideBar.clickCloseFiltersButton();
     })
 
     it(`Scrape hieararchy for values`, async function () {
@@ -80,16 +77,15 @@ describe('Hierarchy Chart Navigation - Primary Brand Change - Test 1', () => {
     })
 
     it(`Click filters drop down and select "Edit" Primary Brand element`,async function (){
-        await brandPositioningPage.clickFiltersButton();
-        await brandPositioningPage.clickEditBrandsButton();   
+        await filtersSideBar.clickFiltersButton(); 
     })
 
     it(`Select a new "Primary Brand"`, async function (){
-        await brandSelectorPage.removeAllFromCompetitiveSet();
-        await brandSelectorPage.removePrimaryBrand();
-        await brandSelectorPage.addSpecificBrand("JetBlue");
-        await brandSelectorPage.clickSaveButton();
-        await analysisPeriodSelectorAndFilters.clickCloseFiltersButton();
+        // await brandSelectorPage.removeAllFromCompetitiveSet();
+        // await brandSelectorPage.removePrimaryBrand();
+        await filtersSideBar.addPrimaryBrand("JetBlue");
+        // await brandSelectorPage.clickSaveButton();
+        await filtersSideBar.clickCloseFiltersButton();
     })
 
     it(`Scrape hieararchy for values for new brand`, async function () {

@@ -1,9 +1,8 @@
 const assert = require('assert');
 
 const beraLoginPage = require("../../page-objects/bera-login-page.js");
-const landingPage = require("../../page-objects/landing-page.js");
-const brandSelectorPage = require("../../page-objects/brand-selector-page.js");
-const audienceDetailsPage = require("../../page-objects/audience-details-page.js");
+const filtersSideBar = require("../../page-objects/page-components/analysis-period-selector-and-filters.js");
+
 const navBar = require('../../page-objects/page-components/nav-bar.js');
 const overviewPage = require("../../page-objects/overview-page.js");
 const brandPositioningPage = require("../../page-objects/brand-positioning-page.js");
@@ -16,22 +15,20 @@ describe(`Quadrant View Navigation - Test 1 - Analysis Period Update`, () => {
         await beraLoginPage.login();
     })
 
-    it(`Brand Accelerator - Select let's get started with Explore the Data selected.`, async function () {
-        await landingPage.selectDataSet("US Brandscape");
-        await landingPage.letsGetStartedWithExploreTheData();
+    it(`Select the "US Brandscape" dataset.`, async function () {
+        await filtersSideBar.selectDataSet("US Brandscape");
     })
 
-    it(`Brand Selector - Select 5 brands from the list available and click "Next" button`, async function () {
-        await brandSelectorPage.addSpecificBrand("OshKosh");
-        await brandSelectorPage.addSpecificBrand("Rustler");
-        await brandSelectorPage.addSpecificBrand("Lee");
-        await brandSelectorPage.addSpecificBrand("London Fog");
-        await brandSelectorPage.addSpecificBrand("Perry Ellis");
-        await brandSelectorPage.clickNextButton();
-    })
+    it(`Select 5 brands from the list available`, async function () {
+        await filtersSideBar.addPrimaryBrand("OshKosh");
+        await filtersSideBar.addCompetitiveSetBrands([
+            "Rustler",
+            "Lee",
+            "London Fog",
+            "Perry Ellis"
+        ])
 
-    it(`Audience Details - click the "Save & Finish" button`, async function () {
-        await audienceDetailsPage.clickSaveAndFinishButton();
+        await filtersSideBar.clickCloseFiltersButton();
     })
 
     it(`Confirm that home page is displayed`, async function () {
@@ -41,13 +38,13 @@ describe(`Quadrant View Navigation - Test 1 - Analysis Period Update`, () => {
 
     it(`Navigate to Brand Positions Stage`, async function () {
         await navBar.clickBrandPositioning();
+
         let isBrandPositioningDisplayed = await brandPositioningPage.isBrandPositioningHeaderDisplayed()
-        assert.equal(isBrandPositioningDisplayed, true)
+        assert.equal(isBrandPositioningDisplayed, true);
     })
 
     it(`Click the "Quadrant View" button in the view controller`, async function () {
         await brandPositioningPage.clickQuadrantViewButton()
-
     })
 
     it(`Verify that the Quadrant View is loaded`, async function () {

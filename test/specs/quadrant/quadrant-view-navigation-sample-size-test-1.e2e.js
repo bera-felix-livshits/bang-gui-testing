@@ -1,13 +1,12 @@
 const assert = require('assert');
 
 const beraLoginPage = require("../../page-objects/bera-login-page.js");
-const landingPage = require("../../page-objects/landing-page.js");
-const brandSelectorPage = require("../../page-objects/brand-selector-page.js");
-const audienceDetailsPage = require("../../page-objects/audience-details-page.js");
 const navBar = require('../../page-objects/page-components/nav-bar.js');
 const overviewPage = require("../../page-objects/overview-page.js");
 const brandPositioningPage = require("../../page-objects/brand-positioning-page.js");
 const analysisPeriodSelectorAndFilters = require('../../page-objects/page-components/analysis-period-selector-and-filters.js');
+
+const filtersSideBar = require("../../page-objects/page-components/analysis-period-selector-and-filters.js");
 
 describe(`Quadrant View Navigation - Sample Size - Test 1`, () => {
 
@@ -15,20 +14,20 @@ describe(`Quadrant View Navigation - Sample Size - Test 1`, () => {
         await beraLoginPage.login();
     })
 
-    it(`Brand Accelerator - Select let's get started with Explore the Data selected.`, async function () {
-        await landingPage.selectDataSet("US Brandscape");
-        await landingPage.letsGetStartedWithExploreTheData();
+    it(`Select the "US Brandscape" dataset.`, async function () {
+        await filtersSideBar.selectDataSet("US Brandscape");
     })
 
-    it(`Brand Selector - Select Oshkosh and the first 4 brands from the list available and click "Next" button`, async function () {
-        await brandSelectorPage.addSpecificBrand('OshKosh')
-        await brandSelectorPage.selectFirstNBrands(4);
-        // brandNamesSelectedDuringFlow = await brandSelectorPage.getSelectedBrands();
-        await brandSelectorPage.clickNextButton();
-    })
+    it(`Select 5 brands from the list available`, async function () {
+        await filtersSideBar.addPrimaryBrand("OshKosh");
+        await filtersSideBar.addCompetitiveSetBrands([
+            "Rustler",
+            "Lee",
+            "London Fog",
+            "Perry Ellis"
+        ])
 
-    it(`Audience Details - click the "Save & Finish" button`, async function () {
-        await audienceDetailsPage.clickSaveAndFinishButton();
+        await filtersSideBar.clickCloseFiltersButton();
     })
 
     it(`Confirm that home page is displayed`, async function () {
@@ -76,11 +75,9 @@ describe(`Quadrant View Navigation - Sample Size - Test 1`, () => {
     })
 
     it(`Set Audience to "Black or African American" To produce Orange text for moderate Sample Size`, async function () {
-        await brandPositioningPage.clickFiltersButton();
-        await brandPositioningPage.clickEditPrimaryAudienceButton();
-        await audienceDetailsPage.selectYourAudienceByValue("Black or African American");
-        await audienceDetailsPage.clickSaveAndFinishButton();
-        await analysisPeriodSelectorAndFilters.clickCloseFiltersButton()
+        await filtersSideBar.clickFiltersButton();
+        await filtersSideBar.selectYourAudienceByValue("Black or African American");
+        await filtersSideBar.clickCloseFiltersButton()
     })
 
     it(`Verify that the Sample Size text is Orange`, async function () {
@@ -95,11 +92,9 @@ describe(`Quadrant View Navigation - Sample Size - Test 1`, () => {
     })
 
     it(`Set Audience to "American Indian or Alaska Native" To produce Red text for low Sample Size`, async function () {
-        await brandPositioningPage.clickFiltersButton();
-        await brandPositioningPage.clickEditPrimaryAudienceButton();
-        await audienceDetailsPage.selectYourAudienceByValue("American Indian or Alaska Native");
-        await audienceDetailsPage.clickSaveAndFinishButton();
-        await analysisPeriodSelectorAndFilters.clickCloseFiltersButton()
+        await filtersSideBar.clickFiltersButton();
+        await filtersSideBar.selectYourAudienceByValue("American Indian or Alaska Native");
+        await filtersSideBar.clickCloseFiltersButton()
     })
 
     it(`Verify that the Sample Size text is Orange`, async function () {

@@ -1,12 +1,11 @@
 const assert = require('assert');
 
 const beraLoginPage = require("../../page-objects/bera-login-page.js");
-const landingPage = require("../../page-objects/landing-page.js");
-const brandSelectorPage = require("../../page-objects/brand-selector-page.js");
-const audienceDetailsPage = require("../../page-objects/audience-details-page.js");
 const navBar = require('../../page-objects/page-components/nav-bar.js');
 const overviewPage = require("../../page-objects/overview-page.js");
 const brandPositioningPage = require("../../page-objects/brand-positioning-page.js");
+
+const filtersSideBar = require("../../page-objects/page-components/analysis-period-selector-and-filters.js");
 
 let brandNamesSelectedDuringFlow;
 let audienceSelected;
@@ -18,20 +17,28 @@ describe('Hierarchy Chart Navigation - Default Parameters - Test 2', () => {
         await beraLoginPage.login();
     })
 
-    it(`Brand Accelerator - Select let's get started with Explore the Data selected.`, async function () {
-        await landingPage.selectDataSet("US Brandscape");
-        await landingPage.letsGetStartedWithExploreTheData();
+    it(`Select the "US Brandscape" dataset.`, async function () {
+        await filtersSideBar.selectDataSet("US Brandscape");
     })
 
-    it(`Brand Selector - Select the first 5 brands from the list available and click "Next" button`, async function () {
-        await brandSelectorPage.selectFirstFiveBrands();
-        brandNamesSelectedDuringFlow = await brandSelectorPage.getSelectedBrands();
-        await brandSelectorPage.clickNextButton();
+    it(`Select 5 brands from the list available`, async function () {
+        await filtersSideBar.addPrimaryBrand("Coleman (active gear)");
+        await filtersSideBar.addCompetitiveSetBrands([
+            "Contigo",
+            "Corkcicle",
+            "Hydro Flask",
+            "Igloo (coolers)"
+        ])
+
+        await filtersSideBar.clickCloseFiltersButton();
     })
 
-    it(`Audience Details - click the "Save & Finish" button`, async function () {
-        audienceSelected = await audienceDetailsPage.getSelectedAudience();
-        await audienceDetailsPage.clickSaveAndFinishButton();
+    it(`Get selected audiance and brands`, async function () {
+        await filtersSideBar.clickFiltersButton();
+        audienceSelected = await filtersSideBar.getSelectedAudience();
+        brandNamesSelectedDuringFlow = await filtersSideBar.getSelectedBrands();
+        await filtersSideBar.clickCloseFiltersButton();
+        console.log("brandNamesSelectedDuringFlow => ", brandNamesSelectedDuringFlow)
     })
 
     it(`Confirm that home page is displayed`, async function () {
@@ -74,17 +81,17 @@ describe('Hierarchy Chart Navigation - Default Parameters - Test 2', () => {
     })
 
     it(`Click on the Filters Button located to the right of the Analysis Period Dropdown button to confirm brands and audience.`, async function () {
-        await brandPositioningPage.clickFiltersButton();
-        let selectedBrands = await brandPositioningPage.getSelectedBrands()
-        await brandPositioningPage.clickCloseFiltersButton();
+        await filtersSideBar.clickFiltersButton();
+        let selectedBrands = await filtersSideBar.getSelectedBrands()
+        await filtersSideBar.clickCloseFiltersButton();
         //primary brand comparison
-        assert.equal(brandNamesSelectedDuringFlow[0], selectedBrands.primaryBrand);
+        assert.equal(brandNamesSelectedDuringFlow.primaryBrand, selectedBrands.primaryBrand);
 
         //comparitive set
-        assert.equal(brandNamesSelectedDuringFlow[1], selectedBrands.competitiveSet[0]);
-        assert.equal(brandNamesSelectedDuringFlow[2], selectedBrands.competitiveSet[1]);
-        assert.equal(brandNamesSelectedDuringFlow[3], selectedBrands.competitiveSet[2]);
-        assert.equal(brandNamesSelectedDuringFlow[4], selectedBrands.competitiveSet[3]);
+        assert.equal(brandNamesSelectedDuringFlow.competitiveSet[0], selectedBrands.competitiveSet[0]);
+        assert.equal(brandNamesSelectedDuringFlow.competitiveSet[1], selectedBrands.competitiveSet[1]);
+        assert.equal(brandNamesSelectedDuringFlow.competitiveSet[2], selectedBrands.competitiveSet[2]);
+        assert.equal(brandNamesSelectedDuringFlow.competitiveSet[3], selectedBrands.competitiveSet[3]);
 
         //comparing audience
         let brandPositioningAudience = await brandPositioningPage.getAudienceBeingUsed();

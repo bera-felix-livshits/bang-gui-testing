@@ -29,16 +29,16 @@ module.exports = {
         return await this.getChartLevels(names)
     },
 
-    getChartLevels: async function (names, index = 0, chartsObj = {} ) {
+    getChartLevels: async function (names, index = 0, chartsObj = {}) {
         let name = names[index];
         await $(`//div[@role="button"]/span[text()="${name}"]`).click()
         let xAxisEntries = await $$(`//div[@data-bar]`);
         let xAxisEntryNames = await Promise.all(xAxisEntries.map(async el => await el.getAttribute('data-bar')));
         let levelEntries = await this.getChartLevelEntries(xAxisEntryNames)
         chartsObj[name] = levelEntries;
-        
+
         index++;
-        if(index < names.length){
+        if (index < names.length) {
             await new Promise(res => { setTimeout(() => { res() }, 100); })
             chartsObj = await this.getChartLevels(names, index, chartsObj)
         }
@@ -58,6 +58,7 @@ module.exports = {
         await new Promise(res => { setTimeout(() => { res() }, 100); })
 
         let entryNameValueEls = await $$(`//*[@class="recharts-layer recharts-label-list"]//*[name()="text"]`);
+        entryNameValueEls.map(async entryNameValueEl => await entryNameValueEl.waitForDisplayed({ timeout: 10000, interval: 100 }));
         let entryNameValues = await Promise.all(entryNameValueEls.map(async el => await el.getText()));
 
         let colourElements = await $$(`//*[@class="recharts-layer recharts-bar"]//*[@name="${entryName}"]`);

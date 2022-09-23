@@ -1,12 +1,11 @@
 const assert = require('assert');
 
 const beraLoginPage = require("../../page-objects/bera-login-page.js");
-const landingPage = require("../../page-objects/landing-page.js");
-const brandSelectorPage = require("../../page-objects/brand-selector-page.js");
-const audienceDetailsPage = require("../../page-objects/audience-details-page.js");
 const navBar = require('../../page-objects/page-components/nav-bar.js');
 const overviewPage = require("../../page-objects/overview-page.js");
 const brandPositioningPage = require("../../page-objects/brand-positioning-page.js");
+
+const filtersSideBar = require("../../page-objects/page-components/analysis-period-selector-and-filters.js");
 
 let pointsPurposeBeforeFactors, pointsEmotionalBeforeFactors, pointsPurposeAfterFactors, pointsEmotionalAfterFactors;
 let pointsPurposeBeforeAttributes, pointsEmotionalBeforeAttributes, pointsPurposeAfterAttributes, pointsEmotionalAfterAttributes;
@@ -17,22 +16,20 @@ describe(`Quadrant View Navigation - Test 1 - Change Competitive Set`, () => {
         await beraLoginPage.login();
     })
 
-    it(`Brand Accelerator - Select let's get started with Explore the Data selected.`, async function () {
-        await landingPage.selectDataSet("US Brandscape");
-        await landingPage.letsGetStartedWithExploreTheData();
+    it(`Select the "US Brandscape" dataset.`, async function () {
+        await filtersSideBar.selectDataSet("US Brandscape");
     })
 
-    it(`Brand Selector - Select 5 brands from the list available and click "Next" button`, async function () {
-        await brandSelectorPage.addSpecificBrand("OshKosh");
-        await brandSelectorPage.addSpecificBrand("Rustler");
-        await brandSelectorPage.addSpecificBrand("Lee");
-        await brandSelectorPage.addSpecificBrand("London Fog");
-        await brandSelectorPage.addSpecificBrand("Perry Ellis");
-        await brandSelectorPage.clickNextButton();
-    })
+    it(`Select 5 brands from the list available`, async function () {
+        await filtersSideBar.addPrimaryBrand("OshKosh");
+        await filtersSideBar.addCompetitiveSetBrands([
+            "Rustler",
+            "Lee",
+            "London Fog",
+            "Perry Ellis"
+        ])
 
-    it(`Audience Details - click the "Save & Finish" button`, async function () {
-        await audienceDetailsPage.clickSaveAndFinishButton();
+        await filtersSideBar.clickCloseFiltersButton();
     })
 
     it(`Confirm that home page is displayed`, async function () {
@@ -83,33 +80,18 @@ describe(`Quadrant View Navigation - Test 1 - Change Competitive Set`, () => {
         await brandPositioningPage.toggleFactorsAndAttributes();
     })
 
-    it(`Navigate to Edit Brands onbaording modal"`, async function () {
-        await brandPositioningPage.clickFiltersButton();
-        await brandPositioningPage.clickEditBrandsButton();
-    })
-
-    it(`Verify that the brand onboarding modal is launched`, async function () {
-        assert.equal(await brandSelectorPage.isOnboardingScreenDisplayed(), true, "Onboarding Brand Selector Modal is not displayed.");
-    })
-
     it(`Change competitive set`, async function () {
+        await filtersSideBar.clickFiltersButton();
 
-        await brandSelectorPage.removeAllFromCompetitiveSet();
-        // await brandSelectorPage.removePrimaryBrand();
-        // await new Promise(res => setTimeout(() => { res() }, 10000))
-        // await brandSelectorPage.addSpecificBrand("Calvin Klein");
-        await brandSelectorPage.addSpecificBrand("Champion Sportswear");
-        await brandSelectorPage.addSpecificBrand("Coach (fashion)");
-        await brandSelectorPage.addSpecificBrand("Dockers");
-        await brandSelectorPage.addSpecificBrand("GUESS");
-    })
+        await filtersSideBar.removeAllFromCompetitiveSet();
+        await filtersSideBar.addCompetitiveSetBrands([
+            "Champion Sportswear",
+            "Coach (fashion)",
+            "Dockers",
+            "GUESS"
+        ])
 
-    it(`Save changes to competitive set`, async function (){
-        await brandSelectorPage.clickSaveButton();
-    })
-
-    it(`Exit the brand onboarding screen`, async function (){
-        await brandPositioningPage.clickCloseFiltersButton();
+        await filtersSideBar.clickCloseFiltersButton();
     })
 
     it(`Capture points on quadrant AFTER brand change`, async function () {

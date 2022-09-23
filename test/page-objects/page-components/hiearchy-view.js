@@ -1,3 +1,5 @@
+const camelize = require("../../utilities/camelize.js")
+
 module.exports = {
     clickConstructBox: async function (constructName) {
         // let el = await $(`//*[name()="text" and text()="${constructName}"]/preceding-sibling::*[name()="rect" and @class="hc-block-bg"]`);

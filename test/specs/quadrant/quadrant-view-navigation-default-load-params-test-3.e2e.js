@@ -1,14 +1,11 @@
 const assert = require('assert');
 
 const beraLoginPage = require("../../page-objects/bera-login-page.js");
-const landingPage = require("../../page-objects/landing-page.js");
-const brandSelectorPage = require("../../page-objects/brand-selector-page.js");
-const audienceDetailsPage = require("../../page-objects/audience-details-page.js");
 const navBar = require('../../page-objects/page-components/nav-bar.js');
 const overviewPage = require("../../page-objects/overview-page.js");
 const brandPositioningPage = require("../../page-objects/brand-positioning-page.js");
 
-let activeButtons;
+const filtersSideBar = require("../../page-objects/page-components/analysis-period-selector-and-filters.js");
 
 describe(`Quadrant View Navigation - Test 3 - Default Load Params`, () => {
 
@@ -16,22 +13,20 @@ describe(`Quadrant View Navigation - Test 3 - Default Load Params`, () => {
         await beraLoginPage.login();
     })
 
-    it(`Brand Accelerator - Select let's get started with Explore the Data selected.`, async function () {
-        await landingPage.selectDataSet("US Brandscape");
-        await landingPage.letsGetStartedWithExploreTheData();
+    it(`Select the "US Brandscape" dataset.`, async function () {
+        await filtersSideBar.selectDataSet("US Brandscape");
     })
+   
+    it(`Select 5 brands from the list available`, async function () {
+        await filtersSideBar.addPrimaryBrand("OshKosh");
+        await filtersSideBar.addCompetitiveSetBrands([
+            "Rustler",
+            "Lee",
+            "London Fog",
+            "Perry Ellis"
+        ])
 
-    it(`Brand Selector - Select only 3 brands from the Competitive Set and click "Next" button`, async function () {
-        await brandSelectorPage.addSpecificBrand("OshKosh");
-        await brandSelectorPage.addSpecificBrand("Rustler");
-        await brandSelectorPage.addSpecificBrand("Lee");
-        await brandSelectorPage.addSpecificBrand("London Fog");
-        await brandSelectorPage.addSpecificBrand("Perry Ellis");
-        await brandSelectorPage.clickNextButton();
-    })
-
-    it(`Audience Details - click the "Save & Finish" button`, async function () {
-        await audienceDetailsPage.clickSaveAndFinishButton();
+        await filtersSideBar.clickCloseFiltersButton();
     })
 
     it(`Confirm that home page is displayed`, async function () {

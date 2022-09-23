@@ -1,14 +1,11 @@
 const assert = require('assert');
 
 const beraLoginPage = require("../../page-objects/bera-login-page.js");
-const landingPage = require("../../page-objects/landing-page.js");
-const brandSelectorPage = require("../../page-objects/brand-selector-page.js");
-const audienceDetailsPage = require("../../page-objects/audience-details-page.js");
 const navBar = require('../../page-objects/page-components/nav-bar.js');
 const overviewPage = require("../../page-objects/overview-page.js");
 const brandPositioningPage = require("../../page-objects/brand-positioning-page.js");
-const { setTimeout } = require('timers/promises');
 
+const filtersSideBar = require("../../page-objects/page-components/analysis-period-selector-and-filters.js");
 
 describe(`Quadrant View Navigation - SEM Outputs Full Prioritization - Test 1 - Summary View`, () => {
 
@@ -16,23 +13,20 @@ describe(`Quadrant View Navigation - SEM Outputs Full Prioritization - Test 1 - 
         await beraLoginPage.login();
     })
 
-    it(`Brand Accelerator - Select let's get started with Explore the Data selected.`, async function () {
-        await landingPage.selectDataSet("US Brandscape");
-        await landingPage.letsGetStartedWithExploreTheData();
+    it(`Select the "US Brandscape" dataset.`, async function () {
+        await filtersSideBar.selectDataSet("US Brandscape");
     })
 
-    it(`Brand Selector - Select 5 brands from the list available and click "Next" button`, async function () {
-        await brandSelectorPage.addSpecificBrand("OshKosh");
-        await brandSelectorPage.addSpecificBrand("Rustler");
-        await brandSelectorPage.addSpecificBrand("Lee");
-        await brandSelectorPage.addSpecificBrand("London Fog");
-        await brandSelectorPage.addSpecificBrand("Perry Ellis");
-        // brandNamesSelectedDuringFlow = await brandSelectorPage.getSelectedBrands();
-        await brandSelectorPage.clickNextButton();
-    })
+    it(`Select 5 brands from the list available`, async function () {
+        await filtersSideBar.addPrimaryBrand("OshKosh");
+        await filtersSideBar.addCompetitiveSetBrands([
+            "Rustler",
+            "Lee",
+            "London Fog",
+            "Perry Ellis"
+        ])
 
-    it(`Audience Details - click the "Save & Finish" button`, async function () {
-        await audienceDetailsPage.clickSaveAndFinishButton();
+        await filtersSideBar.clickCloseFiltersButton();
     })
 
     it(`Confirm that home page is displayed`, async function () {
@@ -106,12 +100,9 @@ describe(`Quadrant View Navigation - SEM Outputs Full Prioritization - Test 1 - 
     })
 
     it(`Set demographics such that Primary Brand is less than 500 and more than 250`, async function () {
-        await brandPositioningPage.clickFiltersButton();
-        await brandPositioningPage.clickEditPrimaryAudienceButton();
-        await audienceDetailsPage.selectYourAudienceByValue("Black or African American");
-        await audienceDetailsPage.clickSaveAndFinishButton();
-        await brandPositioningPage.clickCloseFiltersButton();
-
+        await filtersSideBar.clickFiltersButton();
+        await filtersSideBar.selectYourAudienceByValue("Black or African American");
+        await filtersSideBar.clickCloseFiltersButton();
         await brandPositioningPage.waitForLoadingToComplete();
     })
 
@@ -134,11 +125,9 @@ describe(`Quadrant View Navigation - SEM Outputs Full Prioritization - Test 1 - 
     it(`Navigate away and change demographics `, async function () {
         await navBar.clickBrandLevers();
 
-        await brandPositioningPage.clickFiltersButton();
-        await brandPositioningPage.clickEditPrimaryAudienceButton();
-        await audienceDetailsPage.selectYourAudienceByValue("Native Hawaiian or Other Pacific Islander");
-        await audienceDetailsPage.clickSaveAndFinishButton();
-        await brandPositioningPage.clickCloseFiltersButton();
+        await filtersSideBar.clickFiltersButton();
+        await filtersSideBar.selectYourAudienceByValue("Native Hawaiian or Other Pacific Islander");
+        await filtersSideBar.clickCloseFiltersButton();
     })
 
     it (`navigate back to quadrant`, async function(){

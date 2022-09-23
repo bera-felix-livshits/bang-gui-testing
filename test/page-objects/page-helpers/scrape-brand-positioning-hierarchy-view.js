@@ -13,14 +13,27 @@ module.exports = {
         return obj;
     },
 
+    massageObjHeading: function (objHeading){
+        if (objHeading && objHeading.toLowerCase() === "protagonism"){
+            return (objHeading + " Factor");
+        }
+
+        return objHeading;
+    },
+
     scrapeHierarchyForValues: async function (obj, existingHeadings = [], chainedHeading = '') {
         let child = { children: [] };
         chainedHeading = chainedHeading.trim();
         let currentLevelPillarHeadings = await this.getPillarHeadingsWithChainedHeading(chainedHeading);
-        currentLevelPillarHeadings = currentLevelPillarHeadings.filter(heading => heading.length > 0);
+        
+        //// Need to massage the obj heading at current level as part of the array before manipulating it as a current header.  The current header gets added as a key
+        //// and is currently being used to assess whether or not the pillar needs to be evaluated (it does if it hasn't been previously)
+        //// hence the map function.
+
+        currentLevelPillarHeadings = currentLevelPillarHeadings.filter(heading => heading.length > 0).map(heading => this.massageObjHeading(heading));
+
         let currentHeading = currentLevelPillarHeadings.find(heading => !(existingHeadings.includes(heading)));
 
-        console.log(`current Level Pillar Headings  =>`, currentHeading)
         if (!!currentHeading) {
             existingHeadings.push(currentHeading);
             await this.applyPropertiesToPillarObject(child, currentHeading, chainedHeading)
@@ -54,10 +67,11 @@ module.exports = {
         await currentHeadingFgBox.click({ x: 15, y: 25 })
     },
 
-    applyPropertiesToPillarObject: async function (obj, objHeading, chainedHeading) {
+  
 
-        // const currentValues = {}
-        obj.pillarName = objHeading
+    applyPropertiesToPillarObject: async function (obj, objHeading, chainedHeading) {
+        
+        obj.pillarName = objHeading;
         obj.percentage = await this.determinePercentage(objHeading, chainedHeading);
         obj.adjacentText = await this.getAdjacentText(objHeading, chainedHeading);
         let [readMoreContent, paragraphContent] = await this.getReadMoreContentHeader(objHeading, chainedHeading)

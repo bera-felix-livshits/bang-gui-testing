@@ -1,41 +1,32 @@
 const assert = require('assert');
 
 const beraLoginPage = require("../../page-objects/bera-login-page.js");
-const landingPage = require("../../page-objects/landing-page.js");
-const brandSelectorPage = require("../../page-objects/brand-selector-page.js");
-const audienceDetailsPage = require("../../page-objects/audience-details-page.js");
 const navBar = require('../../page-objects/page-components/nav-bar.js');
 const overviewPage = require("../../page-objects/overview-page.js");
 const brandPositioningPage = require("../../page-objects/brand-positioning-page.js");
-const toasterCleanup = require('../../utilities/toaster-cleanup.js');
+
+const filtersSideBar = require("../../page-objects/page-components/analysis-period-selector-and-filters.js");
 
 
 describe(`Quadrant View Navigation - SEM Outputs Full Prioritization - Test 1 - Summary View`, () => {
-    // afterEach(async function () {
-    //     await toasterCleanup();
-    // })
-
     it('Login to app.', async () => {
         await beraLoginPage.login();
     })
 
-    it(`Brand Accelerator - Select let's get started with Explore the Data selected.`, async function () {
-        await landingPage.selectDataSet("US Brandscape");
-        await landingPage.letsGetStartedWithExploreTheData();
+    it(`Select the "US Brandscape" dataset.`, async function () {
+        await filtersSideBar.selectDataSet("US Brandscape");
     })
 
-    it(`Brand Selector - Select 5 brands from the list available and click "Next" button`, async function () {
-        await brandSelectorPage.addSpecificBrand("OshKosh");
-        await brandSelectorPage.addSpecificBrand("Rustler");
-        await brandSelectorPage.addSpecificBrand("Lee");
-        await brandSelectorPage.addSpecificBrand("London Fog");
-        await brandSelectorPage.addSpecificBrand("Perry Ellis");
-        // brandNamesSelectedDuringFlow = await brandSelectorPage.getSelectedBrands();
-        await brandSelectorPage.clickNextButton();
-    })
+    it(`Select 5 brands from the list available`, async function () {
+        await filtersSideBar.addPrimaryBrand("OshKosh");
+        await filtersSideBar.addCompetitiveSetBrands([
+            "Rustler",
+            "Lee",
+            "London Fog",
+            "Perry Ellis"
+        ])
 
-    it(`Audience Details - click the "Save & Finish" button`, async function () {
-        await audienceDetailsPage.clickSaveAndFinishButton();
+        await filtersSideBar.clickCloseFiltersButton();
     })
 
     it(`Confirm that home page is displayed`, async function () {
@@ -74,9 +65,6 @@ describe(`Quadrant View Navigation - SEM Outputs Full Prioritization - Test 1 - 
 
     it(`Toggle to Attriubtes`, async function () {
         await brandPositioningPage.toggleFactorsAndAttributes()
-        // await new Promise(res => setTimeout(() => {
-        //     res();
-        // }, 5000))
     })
 
     it(`Switch to summary view`, async function () {
@@ -117,13 +105,9 @@ describe(`Quadrant View Navigation - SEM Outputs Full Prioritization - Test 1 - 
     })
 
     it(`Set demographics such that Primary Brand is less than 500 and more than 250`, async function () {
-        await brandPositioningPage.clickFiltersButton();
-        await brandPositioningPage.clickEditPrimaryAudienceButton();
-        await audienceDetailsPage.selectYourAudienceByValue("Black or African American");
-        await audienceDetailsPage.clickSaveAndFinishButton();
-        await brandPositioningPage.clickCloseFiltersButton();
-
-        await brandPositioningPage.waitForLoadingToComplete();
+        await filtersSideBar.clickFiltersButton();
+        await filtersSideBar.selectYourAudienceByValue("Black or African American");
+        await filtersSideBar.clickCloseFiltersButton();
     })
 
     it(`Verify that the Quadrant view updates to show “Drivers of Primary Brand” As Orange`, async function () {
@@ -157,27 +141,25 @@ describe(`Quadrant View Navigation - SEM Outputs Full Prioritization - Test 1 - 
 
     })
 
-    it(`Disable drivers`, async function (){
+    it(`Disable drivers`, async function () {
         await brandPositioningPage.toggleDrivers();
     })
 
     it(`Navigate away and change demographics `, async function () {
         await navBar.clickBrandLevers();
 
-        await brandPositioningPage.clickFiltersButton();
-        await brandPositioningPage.clickEditPrimaryAudienceButton();
-        await audienceDetailsPage.selectYourAudienceByValue("Native Hawaiian or Other Pacific Islander");
-        await audienceDetailsPage.clickSaveAndFinishButton();
-        await brandPositioningPage.clickCloseFiltersButton();
+        await filtersSideBar.clickFiltersButton();
+        await filtersSideBar.selectYourAudienceByValue("Native Hawaiian or Other Pacific Islander");
+        await filtersSideBar.clickCloseFiltersButton();
     })
 
-    it (`navigate back to quadrant`, async function(){
+    it(`navigate back to quadrant`, async function () {
         await navBar.clickBrandPositioning();
         await brandPositioningPage.clickQuadrantViewButton();
-        await brandPositioningPage.toggleDrivers()
+        await brandPositioningPage.toggleDrivers();
     })
 
-    it(`Select summary view`, async function(){
+    it(`Select summary view`, async function () {
         await brandPositioningPage.clickQuadrantSummaryViewButton();
     })
 
@@ -190,12 +172,20 @@ describe(`Quadrant View Navigation - SEM Outputs Full Prioritization - Test 1 - 
 
         await brandPositioningPage.clickPurposeButton();
 
-        assert.equal(summaryChartContentsPurpose.maintain.length, 0, "There exists an entry in Purpose 'Maintain and Build' that is not Orange")
-        assert.equal(summaryChartContentsPurpose.develop.length, 0, "There exists an entry in Purpose 'Develop' that is not Orange")
-        assert.equal(summaryChartContentsPurpose.deprioritize.length, 0, "There exists an entry in Purpose 'Deprioritize' that is not Grey")
+        console.log("summaryChartContentsEmotional => ", JSON.stringify(summaryChartContentsEmotional, null, 4))
 
-        assert.equal(summaryChartContentsEmotional.maintain.length, 0, "There exists an entry in Emotional 'Maintain and Build' that is not Orange")
-        assert.equal(summaryChartContentsEmotional.develop.length, 0, "There exists an entry in Emotional 'Develop' that is not Orange")
-        assert.equal(summaryChartContentsEmotional.deprioritize.length, 0, "There exists an entry in Emotional 'Deprioritize' that is not Grey")
+        await new Promise(res => {
+            setTimeout(() => {
+                res()
+            }, 15000)
+        })
+
+        assert.equal(summaryChartContentsPurpose.maintain.length, 0, "There exists an entry in Purpose 'Maintain and Build'")
+        assert.equal(summaryChartContentsPurpose.develop.length, 0, "There exists an entry in Purpose 'Develop'")
+        assert.equal(summaryChartContentsPurpose.deprioritize.length, 0, "There exists an entry in Purpose 'Deprioritize'")
+
+        assert.equal(summaryChartContentsEmotional.maintain.length, 0, "There exists an entry in Emotional 'Maintain and Build'")
+        assert.equal(summaryChartContentsEmotional.develop.length, 0, "There exists an entry in Emotional 'Develop'")
+        assert.equal(summaryChartContentsEmotional.deprioritize.length, 0, "There exists an entry in Emotional 'Deprioritize'")
     })
 })

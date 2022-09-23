@@ -1,20 +1,16 @@
 const assert = require('assert');
 
 const beraLoginPage = require("../../page-objects/bera-login-page.js");
-const landingPage = require("../../page-objects/landing-page.js");
-const brandSelectorPage = require("../../page-objects/brand-selector-page.js");
-const audienceDetailsPage = require("../../page-objects/audience-details-page.js");
 const navBar = require('../../page-objects/page-components/nav-bar.js');
 const overviewPage = require("../../page-objects/overview-page.js");
 const brandPositioningPage = require("../../page-objects/brand-positioning-page.js");
-const flattenHierarchyObj = require('../../utilities/flatten-hierarchy-obj');
 const fs = require('fs');
 const { html2json } = require('html2json');
-const analysisPeriodSelectorAndFilters = require('../../page-objects/page-components/analysis-period-selector-and-filters.js');
 
 const brandPositioningInfoContents = JSON.parse(fs.readFileSync('./test/fixtures/brand-positioning-info-content.json'));
 
-let hierarchyObj;
+const filtersSideBar = require("../../page-objects/page-components/analysis-period-selector-and-filters.js");
+
 let scrapedInfoContent;
 
 describe('Hierarchy Chart Info Icon - Test 1', () => {
@@ -23,19 +19,20 @@ describe('Hierarchy Chart Info Icon - Test 1', () => {
         await beraLoginPage.login();
     })
 
-    it(`Brand Accelerator - Select let's get started with Explore the Data selected.`, async function () {
-        await landingPage.selectDataSet("US Brandscape");
-        await landingPage.letsGetStartedWithExploreTheData();
+    it(`Select the "US Brandscape" dataset.`, async function () {
+        await filtersSideBar.selectDataSet("US Brandscape");
     })
 
-    it(`Brand Selector - Select the first 5 brands from the list available and click "Next" button`, async function () {
-        await brandSelectorPage.selectFirstFiveBrands();
-        brandNamesSelectedDuringFlow = await brandSelectorPage.getSelectedBrands();
-        await brandSelectorPage.clickNextButton();
-    })
+    it(`Select 5 brands from the list available`, async function () {
+        await filtersSideBar.addPrimaryBrand("Coleman (active gear)");
+        await filtersSideBar.addCompetitiveSetBrands([
+            "Contigo",
+            "Corkcicle",
+            "Hydro Flask",
+            "Igloo (coolers)"
+        ])
 
-    it(`Audience Details - click the "Save & Finish" button`, async function () {
-        await audienceDetailsPage.clickSaveAndFinishButton();
+        await filtersSideBar.clickCloseFiltersButton();
     })
 
     it(`Confirm that home page is displayed`, async function () {

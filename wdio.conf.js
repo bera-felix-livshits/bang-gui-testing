@@ -3,6 +3,11 @@ const pgCleanup = require('./test/utilities/pg-cleanup.js');
 const toasterCleanup = require(`./test/utilities/toaster-cleanup`)
 const { join } = require("path");
 const fs = require('fs');
+const parseCli = require(`./test/utilities/parse-cli`)
+
+const cli = parseCli();
+console.log(`CLI =>`, cli)
+
 
 exports.config = {
     //
@@ -55,7 +60,6 @@ exports.config = {
             'test/specs/quadrant/quadrant-view-navigation-sem-outputs-no-prioritization-test-1.e2e.js',
             'test/specs/quadrant/quadrant-view-navigation-sem-outputs-partial-prioritization-test-1.e2e.js',
             'test/specs/quadrant/quadrant-view-navigation-test-1.e2e.js',
-            'test/specs/quadrant/quadrant-view-navigation-test-2-four-competitive-set.e2e.js',
             'test/specs/quadrant/quadrant-view-navigation-toggle-between-constructs-test-1.e2e.js',
             'test/specs/quadrant/quadrant-view-navigation-zoom-test-1.e2e.js',
             'test/specs/quadrant/quadrant-view-navigation-zoom-test-2.e2e.js',
@@ -164,7 +168,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'https://apps.bera.ai',
+    baseUrl: cli.codeState == 'prod' || !cli.codeState ? 'https://apps.bera.ai' : 'https://beta.product-ecosystem.pages.dev/brand-explorer',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,

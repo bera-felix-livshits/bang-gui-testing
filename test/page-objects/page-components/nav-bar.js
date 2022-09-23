@@ -11,16 +11,25 @@ module.exports = {
 
     clickOnNavbarItem: async function (itemName) {
         let nbar = await $(this.expandingNavBarXpath)
-        await nbar.waitForDisplayed()
+        await nbar.waitForDisplayed({ timeout: 5000, interval: 100 })
         await (nbar).moveTo();
         customClick(nbar);
         let xpath = this.generateNavBarXpath(itemName);
-        await (await $(xpath)).waitForExist({ timeout: 5000 });
-        await (await $(xpath)).waitForDisplayed({ timeout: 5000 });
-        await (await $(xpath)).click();
-        customClick(await $(xpath));
+
+        let els = await $$(xpath);
+
+        let targetEl = (await Promise.all(els.map(async el => {
+            await new Promise(res => { setTimeout(() => res(), 100) });
+            if (await el.isDisplayed()) {
+                return el;
+            }
+            return null;
+        }))).filter(el => el)[0];
+
+        await customClick(targetEl);
         await (await $(this.headerXpathForMovingFromNavBar)).moveTo();
         customClick(this.headerXpathForMovingFromNavBar);
+
     },
 
     clickOverview: async function () {

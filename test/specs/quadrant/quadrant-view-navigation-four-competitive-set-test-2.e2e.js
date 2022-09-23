@@ -1,14 +1,11 @@
 const assert = require('assert');
 
 const beraLoginPage = require("../../page-objects/bera-login-page.js");
-const landingPage = require("../../page-objects/landing-page.js");
-const brandSelectorPage = require("../../page-objects/brand-selector-page.js");
-const audienceDetailsPage = require("../../page-objects/audience-details-page.js");
 const navBar = require('../../page-objects/page-components/nav-bar.js');
 const overviewPage = require("../../page-objects/overview-page.js");
 const brandPositioningPage = require("../../page-objects/brand-positioning-page.js");
 
-let activeButtons;
+const filtersSideBar = require("../../page-objects/page-components/analysis-period-selector-and-filters.js");
 
 describe(`Quadrant View Navigation - Test 2 - Four Competitive Set`, () => {
 
@@ -16,22 +13,22 @@ describe(`Quadrant View Navigation - Test 2 - Four Competitive Set`, () => {
         await beraLoginPage.login();
     })
 
-    it(`Brand Accelerator - Select let's get started with Explore the Data selected.`, async function () {
-        await landingPage.selectDataSet("US Brandscape");
-        await landingPage.letsGetStartedWithExploreTheData();
+    it(`Select the "US Brandscape" dataset.`, async function () {
+        await filtersSideBar.selectDataSet("US Brandscape");
     })
 
-    it(`Brand Selector - Select only 3 brands from the Competitive Set and click "Next" button`, async function () {
-        await brandSelectorPage.addSpecificBrand("OshKosh");
-        await brandSelectorPage.addSpecificBrand("Rustler");
-        await brandSelectorPage.addSpecificBrand("Lee");
-        await brandSelectorPage.addSpecificBrand("London Fog");
-        // await brandSelectorPage.addSpecificBrand("Perry Ellis");
-        await brandSelectorPage.clickNextButton();
+    it(`Select a primary brand and 3 brands from the list available and click "Next" button`, async function () {
+        await filtersSideBar.addPrimaryBrand("OshKosh");
+
+        await filtersSideBar.addCompetitiveSetBrands([
+            "Rustler",
+            "Lee",
+            "London Fog",
+        ])        
     })
 
-    it(`Audience Details - click the "Save & Finish" button`, async function () {
-        await audienceDetailsPage.clickSaveAndFinishButton();
+    it(`Click close filters button`, async function (){
+        await filtersSideBar.clickCloseFiltersButton();
     })
 
     it(`Confirm that home page is displayed`, async function () {
@@ -46,146 +43,108 @@ describe(`Quadrant View Navigation - Test 2 - Four Competitive Set`, () => {
     })
 
     it(`Click the "Quadrant View" button in the view controller`, async function () {
-        await brandPositioningPage.clickQuadrantViewButton()
+        await brandPositioningPage.clickQuadrantViewButton();
     })
 
-    it(`Verify that the Quadrant View is loaded`, async function () {
-        let title = await brandPositioningPage.getSubscreenTitle();
-        assert.equal(title.trim(), "DNA", "Title is not 'DNA' but should be")
+    it(`Verify that the Quadrant View contents do not load`, async function () {
+        let quadContent = await brandPositioningPage.scrapeForQuadrentContent();
+        console.log("quadContent => ", JSON.stringify(quadContent, null, 4))
+        assert.equal(quadContent.length, 0, "Quadrant content did load, but expecting that it should not.")
     })
 
-    it(`Verify that the Quadrant View does not load with 3 competitive brands`, async function(){
-        let points = await brandPositioningPage.getAllQuadrantPoints();
-        assert.equal(points.length, 0, "Quadrant should not have loaded, but it did.")
+    it(`Confirm error message is displayed when only 3`, async function () {
+        let expectedError = await brandPositioningPage.getErrorBannerContents()
+        assert.equal(expectedError.errorIconDisplayed, true, "Expected to see an error icon in the error banner.")
+        assert.equal(expectedError.errorMessage, "At least 4 brands are required in competitive set. Please add additional brands.", "Error message does not match the expected `At least 4 brands are required in competitive cet. At least 4 brands are required in competitive set. Please add additional brands.`.")
     })
 
-    it(`Verify that you receive a banner is displayed at the top of the view, with the text “At least 4 brands are required in competitive set. Please add additional brands." with 3 competitive brands`, async function(){
-        let errorBanner = await brandPositioningPage.getErrorBannerContents()
-        console.log("error message => ", errorBanner.errorMessage.trim())
-        assert.equal(errorBanner.errorMessage.trim(), "At least 4 brands are required in competitive set. Please add additional brands.", "Error message displayed in the banner does not match the expected 'At least 4 brands are required in competitive set. Please add additional brands.'")
-    })
-
-    it(`Verify that the notification banner has a link that allows customers to open the filter panel, where they can make edits to their Competitive Set with 3 competitive brands`, async function (){
-        let errorBanner = await brandPositioningPage.getErrorBannerContents()
-        await errorBanner.errorFiltersLink.click();
+    it(`Select only 2 brands from the Competitive Set`, async function () {
+        await filtersSideBar.clickFiltersButton();
         
-        let selectedBrands = await brandPositioningPage.getSelectedBrands()
-        console.log("selectedBrands =>", JSON.stringify(selectedBrands, null, 4))
-        assert.equal(!!selectedBrands.primaryBrand, true, "Notification banner link failed to open the filter panel")
+        await filtersSideBar.removeAllFromCompetitiveSet();
+        await filtersSideBar.addCompetitiveSetBrands([
+            "Contigo",
+            "Corkcicle"
+        ])   
+
+        await filtersSideBar.clickCloseFiltersButton()
     })
 
-    it(`Change competitive set to have 2 brands`, async function () {
-        await brandPositioningPage.clickEditBrandsButton();
-        await brandSelectorPage.removeAllFromCompetitiveSet();
-
-        await brandSelectorPage.addSpecificBrand("Rustler");
-        await brandSelectorPage.addSpecificBrand("Lee");
-
-        await brandSelectorPage.clickSaveButton();
-        await brandPositioningPage.clickCloseFiltersButton();
+    it(`Confirm error message is displayed when only 2`, async function () {
+        let expectedError = await brandPositioningPage.getErrorBannerContents()
+        assert.equal(expectedError.errorIconDisplayed, true, "Expected to see an error icon in the error banner.")
+        assert.equal(expectedError.errorMessage, "At least 4 brands are required in competitive set. Please add additional brands.", "Error message does not match the expected `At least 4 brands are required in competitive set. Please add additional brands.`.")
     })
 
-    it(`Verify that the Quadrant View does not load with 2 competitive brands`, async function(){
-        let points = await brandPositioningPage.getAllQuadrantPoints();
-        assert.equal(points.length, 0, "Quadrant should not have loaded, but it did.")
-    })
 
-    it(`Verify that you receive a banner is displayed at the top of the view, with the text “At least 4 brands are required in competitive set. Please add additional brands." with 2 competitive brands`, async function(){
-        let errorBanner = await brandPositioningPage.getErrorBannerContents()
-        console.log("error message => ", errorBanner.errorMessage.trim())
-        assert.equal(errorBanner.errorMessage.trim(), "At least 4 brands are required in competitive set. Please add additional brands.", "Error message displayed in the banner does not match the expected 'At least 4 brands are required in competitive set. Please add additional brands.'")
-    })
-
-    it(`Verify that the notification banner has a link that allows customers to open the filter panel, where they can make edits to their Competitive Set with 2 competitive brands`, async function (){
-        let errorBanner = await brandPositioningPage.getErrorBannerContents()
-        await errorBanner.errorFiltersLink.click();
+    it(`Select only 1 brands from the Competitive Set`, async function () {
+        await filtersSideBar.clickFiltersButton();
         
-        let selectedBrands = await brandPositioningPage.getSelectedBrands()
-        console.log("selectedBrands =>", JSON.stringify(selectedBrands, null, 4))
-        assert.equal(!!selectedBrands.primaryBrand, true, "Notification banner link failed to open the filter panel")
+        await filtersSideBar.removeAllFromCompetitiveSet();
+        await filtersSideBar.addCompetitiveSetBrands([
+            "Hydro Flask"
+        ])   
+
+        await filtersSideBar.clickCloseFiltersButton()
+       
     })
 
-    it(`Change competitive set to have 1 brands`, async function () {
-        await brandPositioningPage.clickEditBrandsButton();
-        await brandSelectorPage.removeAllFromCompetitiveSet();
-
-        await brandSelectorPage.addSpecificBrand("Rustler");
-
-        await brandSelectorPage.clickSaveButton();
-        await brandPositioningPage.clickCloseFiltersButton();
-        // await new Promise(res => setTimeout(() => { res() }, 10000))
+    it(`Confirm error message is displayed when only 1`, async function () {
+        let expectedError = await brandPositioningPage.getErrorBannerContents()
+        assert.equal(expectedError.errorIconDisplayed, true, "Expected to see an error icon in the error banner.")
+        assert.equal(expectedError.errorMessage, "At least 4 brands are required in competitive set. Please add additional brands.", "Error message does not match the expected `At least 4 brands are required in competitive set. Please add additional brands.`.")
     })
 
-    it(`Verify that the Quadrant View does not load with 1 competitive brands`, async function(){
-        let points = await brandPositioningPage.getAllQuadrantPoints();
-        assert.equal(points.length, 0, "Quadrant should not have loaded, but it did.")
-    })
-
-    it(`Verify that you receive a banner is displayed at the top of the view, with the text “At least 4 brands are required in competitive set. Please add additional brands." with 1 competitive brands`, async function(){
-        let errorBanner = await brandPositioningPage.getErrorBannerContents()
-        console.log("error message => ", errorBanner.errorMessage.trim())
-        assert.equal(errorBanner.errorMessage.trim(), "At least 4 brands are required in competitive set. Please add additional brands.", "Error message displayed in the banner does not match the expected 'At least 4 brands are required in competitive set. Please add additional brands.'")
-    })
-
-    it(`Verify that the notification banner has a link that allows customers to open the filter panel, where they can make edits to their Competitive Set with 1 competitive brands`, async function (){
-        let errorBanner = await brandPositioningPage.getErrorBannerContents()
-        await errorBanner.errorFiltersLink.click();
+    it(`Select 4 brands from the Competitive Set`, async function () {
+        await filtersSideBar.clickFiltersButton();
         
-        let selectedBrands = await brandPositioningPage.getSelectedBrands()
-        console.log("selectedBrands =>", JSON.stringify(selectedBrands, null, 4))
-        assert.equal(!!selectedBrands.primaryBrand, true, "Notification banner link failed to open the filter panel")
+        await filtersSideBar.removeAllFromCompetitiveSet();
+        await filtersSideBar.addCompetitiveSetBrands([
+            "Contigo",
+            "Corkcicle",
+            "Hydro Flask",
+            "Igloo (coolers)"
+        ])   
     })
 
-    it(`Change competitive set to have 4 brands`, async function () {
-        await brandPositioningPage.clickEditBrandsButton();
-        await brandSelectorPage.removeAllFromCompetitiveSet();
-
-        await brandSelectorPage.addSpecificBrand("Rustler");
-        await brandSelectorPage.addSpecificBrand("Lee");
-        await brandSelectorPage.addSpecificBrand("London Fog");
-        await brandSelectorPage.addSpecificBrand("Perry Ellis");
-
-        await brandSelectorPage.clickSaveButton();
-        await brandPositioningPage.clickCloseFiltersButton();
-        // await new Promise(res => setTimeout(() => { res() }, 10000))
+    it(`Close filters sidebar`, async function (){
+        await filtersSideBar.clickCloseFiltersButton()
     })
 
-    it(`Verify that the Quadrant View does load with 4 competitive brands`, async function(){
-        let points = await brandPositioningPage.getAllQuadrantPoints();
-        assert.equal(points.length > 0, true, "Quadrant should not have loaded, but it did.")
+    it(`Verify that the Quadrant View contents load when 4 competitive brands are selected`, async function () {
+        let quadContent = await brandPositioningPage.scrapeForQuadrentContent();
+        console.log("quadContent => ", JSON.stringify(quadContent, null, 4))
+        assert.equal(quadContent.length, 4, "Quadrant content did not load, but expecting that it should.")
     })
 
-    it(`Verify that you do not receive a banner with 4 competitive brands`, async function(){
-        let errorBanner = await brandPositioningPage.getErrorBannerContents()
-        console.log("error message 4 => ", errorBanner.errorMessage.trim())
-        assert.equal(errorBanner.errorMessage.trim(), "", "Error message is displayed when 4 or more brands exist in competitive set")
-    })
-
-    it(`Change competitive set to have 5 brands`, async function () {
-        await brandPositioningPage.clickFiltersButton();
-        await brandPositioningPage.clickEditBrandsButton();
-
-        await brandSelectorPage.removeAllFromCompetitiveSet();
+    it(`Select 5 brands from the Competitive Set`, async function () {
+        await filtersSideBar.clickFiltersButton();
         
-        await brandSelectorPage.addSpecificBrand("Champion Sportswear");
-        await brandSelectorPage.addSpecificBrand("Coach (fashion)");
-        await brandSelectorPage.addSpecificBrand("Dockers");
-        await brandSelectorPage.addSpecificBrand("GUESS");
-        await brandSelectorPage.addSpecificBrand("The North Face")
-        await brandSelectorPage.clickSaveButton();
-        await brandPositioningPage.clickCloseFiltersButton();
-
+        await filtersSideBar.removeAllFromCompetitiveSet();
+        await filtersSideBar.addCompetitiveSetBrands([
+            "Contigo",
+            "Corkcicle",
+            "Hydro Flask",
+            "Igloo (coolers)",
+            "Adidas"
+        ])   
     })
 
-    it(`Verify that the Quadrant View does load with 5 competitive brands`, async function(){
-        let points = await brandPositioningPage.getAllQuadrantPoints();
-        assert.equal(points.length > 0, true, "Quadrant should not have loaded, but it did.")
+    it(`Close filters sidebar`, async function (){
+        await filtersSideBar.clickCloseFiltersButton()
     })
 
-    it(`Verify that you do not receive a banner with 5 competitive brands`, async function(){
-        let errorBanner = await brandPositioningPage.getErrorBannerContents()
-        console.log("error message 5 => ", errorBanner.errorMessage.trim())
-        assert.equal(errorBanner.errorMessage.trim(), "", "Error message is displayed when 4 or more brands exist in competitive set")
+    it(`Verify that the Quadrant View contents load when 5 competitive brands are selected`, async function () {
+        let quadContent = await brandPositioningPage.scrapeForQuadrentContent();
+        console.log("quadContent => ", JSON.stringify(quadContent, null, 4))
+        assert.equal(quadContent.length, 4, "Quadrant content did not load, but expecting that it should.")
     })
 
 })
+
+        // At least 4 brands are required in competitive cet. At least 4 brands are required in competitive set. Please add additional brands.
+        // await new Promise(res => {
+        //     setTimeout(() => {
+        //         res();
+        //     }, 15000)
+        // })

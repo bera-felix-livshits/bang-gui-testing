@@ -7,7 +7,7 @@
         "@wdio/local-runner": "^7.20.7",
         "@wdio/mocha-framework": "^7.20.7",
         "@wdio/spec-reporter": "^7.20.7",
-        "chromedriver": "^104.0.0",
+        "chromedriver": "^105.0.1",
         "dotenv": "^16.0.1",
         "html2json": "^1.0.2",
         "mapbox-gl": "^2.9.2",
