@@ -52,7 +52,7 @@ module.exports = {
         await this.clickOnNavbarItem('Brand Levers');
     },
 
-    clickMyAudience: async function () {
-        await this.clickOnNavbarItem('My Audiences');
+    clickAudienceProfile: async function () {
+        await this.clickOnNavbarItem('Audience Profiling');
     }
 }

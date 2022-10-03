@@ -56,7 +56,6 @@ module.exports = {
            
             await browser.execute("localStorage.clear();")
             await browser.execute("sessionStorage.setItem('lp-force-environment','development');")
-
             await browser.execute("window.location.reload();")
             // await new Promise(res => {
             //     setTimeout(() => res(), 5000)

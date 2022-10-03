@@ -1,0 +1,1538 @@
+{
+    "Gender": {
+        "Male": {
+            "Unawares": {
+                "percentageValue": "63.51%",
+                "indexValue": "1.33"
+            },
+            "Rejecters": {
+                "percentageValue": "43.64%",
+                "indexValue": "0.91"
+            },
+            "Winbacks": {
+                "percentageValue": "44.88%",
+                "indexValue": "0.94"
+            },
+            "Lapsed": {
+                "percentageValue": "53.02%",
+                "indexValue": "1.11"
+            },
+            "Switchers": {
+                "percentageValue": "49.42%",
+                "indexValue": "1.03"
+            },
+            "Prospects": {
+                "percentageValue": "44.71%",
+                "indexValue": "0.93"
+            },
+            "Non-Customers": {
+                "percentageValue": "51.10%",
+                "indexValue": "1.07"
+            },
+            "Loyals": {
+                "percentageValue": "57.35%",
+                "indexValue": "1.20"
+            },
+            "Customers": {
+                "percentageValue": "53.68%",
+                "indexValue": "1.12"
+            }
+        },
+        "Female": {
+            "Unawares": {
+                "percentageValue": "36.49%",
+                "indexValue": "0.70"
+            },
+            "Rejecters": {
+                "percentageValue": "56.36%",
+                "indexValue": "1.08"
+            },
+            "Winbacks": {
+                "percentageValue": "55.12%",
+                "indexValue": "1.06"
+            },
+            "Lapsed": {
+                "percentageValue": "46.98%",
+                "indexValue": "0.90"
+            },
+            "Switchers": {
+                "percentageValue": "50.58%",
+                "indexValue": "0.97"
+            },
+            "Prospects": {
+                "percentageValue": "55.29%",
+                "indexValue": "1.06"
+            },
+            "Non-Customers": {
+                "percentageValue": "51.19%",
+                "indexValue": "0.98"
+            },
+            "Loyals": {
+                "percentageValue": "42.65%",
+                "indexValue": "0.82"
+            },
+            "Customers": {
+                "percentageValue": "46.95%",
+                "indexValue": "0.90"
+            }
+        }
+    },
+    "Age": {
+        "18-34": {
+            "Unawares": {
+                "percentageValue": "43.92%",
+                "indexValue": "1.42"
+            },
+            "Rejecters": {
+                "percentageValue": "18.86%",
+                "indexValue": "0.61"
+            },
+            "Winbacks": {
+                "percentageValue": "25.92%",
+                "indexValue": "0.84"
+            },
+            "Lapsed": {
+                "percentageValue": "31.52%",
+                "indexValue": "1.02"
+            },
+            "Switchers": {
+                "percentageValue": "39.38%",
+                "indexValue": "1.27"
+            },
+            "Prospects": {
+                "percentageValue": "29.74%",
+                "indexValue": "0.96"
+            },
+            "Non-Customers": {
+                "percentageValue": "32.24%",
+                "indexValue": "1.04"
+            },
+            "Loyals": {
+                "percentageValue": "49.02%",
+                "indexValue": "1.58"
+            },
+            "Customers": {
+                "percentageValue": "44.73%",
+                "indexValue": "1.44"
+            }
+        },
+        "35-49": {
+            "Unawares": {
+                "percentageValue": "18.24%",
+                "indexValue": "0.77"
+            },
+            "Rejecters": {
+                "percentageValue": "15.21%",
+                "indexValue": "0.65"
+            },
+            "Winbacks": {
+                "percentageValue": "23.16%",
+                "indexValue": "0.98"
+            },
+            "Lapsed": {
+                "percentageValue": "19.39%",
+                "indexValue": "0.82"
+            },
+            "Switchers": {
+                "percentageValue": "27.95%",
+                "indexValue": "1.19"
+            },
+            "Prospects": {
+                "percentageValue": "20.16%",
+                "indexValue": "0.86"
+            },
+            "Non-Customers": {
+                "percentageValue": "19.58%",
+                "indexValue": "0.83"
+            },
+            "Loyals": {
+                "percentageValue": "32.54%",
+                "indexValue": "1.38"
+            },
+            "Customers": {
+                "percentageValue": "30.42%",
+                "indexValue": "1.29"
+            }
+        },
+        "50-64": {
+            "Unawares": {
+                "percentageValue": "24.32%",
+                "indexValue": "0.90"
+            },
+            "Rejecters": {
+                "percentageValue": "31.99%",
+                "indexValue": "1.18"
+            },
+            "Winbacks": {
+                "percentageValue": "30.88%",
+                "indexValue": "1.14"
+            },
+            "Lapsed": {
+                "percentageValue": "29.88%",
+                "indexValue": "1.10"
+            },
+            "Switchers": {
+                "percentageValue": "23.15%",
+                "indexValue": "0.86"
+            },
+            "Prospects": {
+                "percentageValue": "26.88%",
+                "indexValue": "0.99"
+            },
+            "Non-Customers": {
+                "percentageValue": "29.06%",
+                "indexValue": "1.07"
+            },
+            "Loyals": {
+                "percentageValue": "15.26%",
+                "indexValue": "0.56"
+            },
+            "Customers": {
+                "percentageValue": "20.02%",
+                "indexValue": "0.74"
+            }
+        },
+        "65+": {
+            "Unawares": {
+                "percentageValue": "13.51%",
+                "indexValue": "0.74"
+            },
+            "Rejecters": {
+                "percentageValue": "33.95%",
+                "indexValue": "1.85"
+            },
+            "Winbacks": {
+                "percentageValue": "20.04%",
+                "indexValue": "1.09"
+            },
+            "Lapsed": {
+                "percentageValue": "19.21%",
+                "indexValue": "1.05"
+            },
+            "Switchers": {
+                "percentageValue": "9.52%",
+                "indexValue": "0.52"
+            },
+            "Prospects": {
+                "percentageValue": "23.23%",
+                "indexValue": "1.27"
+            },
+            "Non-Customers": {
+                "percentageValue": "24.06%",
+                "indexValue": "1.31"
+            },
+            "Loyals": {
+                "percentageValue": "3.18%",
+                "indexValue": "0.17"
+            },
+            "Customers": {
+                "percentageValue": "7.93%",
+                "indexValue": "0.43"
+            }
+        }
+    },
+    "Income": {
+        "Less than $24,999": {
+            "Unawares": {
+                "percentageValue": "23.65%",
+                "indexValue": "1.19"
+            },
+            "Rejecters": {
+                "percentageValue": "21.97%",
+                "indexValue": "1.11"
+            },
+            "Winbacks": {
+                "percentageValue": "17.96%",
+                "indexValue": "0.90"
+            },
+            "Lapsed": {
+                "percentageValue": "20.50%",
+                "indexValue": "1.03"
+            },
+            "Switchers": {
+                "percentageValue": "17.10%",
+                "indexValue": "0.86"
+            },
+            "Prospects": {
+                "percentageValue": "26.35%",
+                "indexValue": "1.33"
+            },
+            "Non-Customers": {
+                "percentageValue": "22.45%",
+                "indexValue": "1.13"
+            },
+            "Loyals": {
+                "percentageValue": "21.10%",
+                "indexValue": "1.06"
+            },
+            "Customers": {
+                "percentageValue": "19.31%",
+                "indexValue": "0.97"
+            }
+        },
+        "$25,000-$49,999": {
+            "Unawares": {
+                "percentageValue": "17.57%",
+                "indexValue": "0.74"
+            },
+            "Rejecters": {
+                "percentageValue": "28.02%",
+                "indexValue": "1.18"
+            },
+            "Winbacks": {
+                "percentageValue": "23.98%",
+                "indexValue": "1.01"
+            },
+            "Lapsed": {
+                "percentageValue": "22.44%",
+                "indexValue": "0.94"
+            },
+            "Switchers": {
+                "percentageValue": "20.43%",
+                "indexValue": "0.86"
+            },
+            "Prospects": {
+                "percentageValue": "26.77%",
+                "indexValue": "1.12"
+            },
+            "Non-Customers": {
+                "percentageValue": "24.32%",
+                "indexValue": "1.02"
+            },
+            "Loyals": {
+                "percentageValue": "20.99%",
+                "indexValue": "0.88"
+            },
+            "Customers": {
+                "percentageValue": "20.72%",
+                "indexValue": "0.87"
+            }
+        },
+        "$50,000-$99,999": {
+            "Unawares": {
+                "percentageValue": "32.43%",
+                "indexValue": "0.89"
+            },
+            "Rejecters": {
+                "percentageValue": "36.29%",
+                "indexValue": "1.00"
+            },
+            "Winbacks": {
+                "percentageValue": "37.75%",
+                "indexValue": "1.04"
+            },
+            "Lapsed": {
+                "percentageValue": "35.91%",
+                "indexValue": "0.99"
+            },
+            "Switchers": {
+                "percentageValue": "38.28%",
+                "indexValue": "1.06"
+            },
+            "Prospects": {
+                "percentageValue": "32.22%",
+                "indexValue": "0.89"
+            },
+            "Non-Customers": {
+                "percentageValue": "35.06%",
+                "indexValue": "0.97"
+            },
+            "Loyals": {
+                "percentageValue": "33.32%",
+                "indexValue": "0.92"
+            },
+            "Customers": {
+                "percentageValue": "35.97%",
+                "indexValue": "0.99"
+            }
+        },
+        "$100,000+": {
+            "Unawares": {
+                "percentageValue": "26.35%",
+                "indexValue": "1.31"
+            },
+            "Rejecters": {
+                "percentageValue": "13.72%",
+                "indexValue": "0.68"
+            },
+            "Winbacks": {
+                "percentageValue": "20.32%",
+                "indexValue": "1.01"
+            },
+            "Lapsed": {
+                "percentageValue": "21.15%",
+                "indexValue": "1.05"
+            },
+            "Switchers": {
+                "percentageValue": "24.19%",
+                "indexValue": "1.21"
+            },
+            "Prospects": {
+                "percentageValue": "14.66%",
+                "indexValue": "0.73"
+            },
+            "Non-Customers": {
+                "percentageValue": "20.35%",
+                "indexValue": "1.01"
+            },
+            "Loyals": {
+                "percentageValue": "24.59%",
+                "indexValue": "1.23"
+            },
+            "Customers": {
+                "percentageValue": "24.39%",
+                "indexValue": "1.22"
+            }
+        }
+    },
+    "Ethnicity": {
+        "White": {
+            "Unawares": {
+                "percentageValue": "73.65%",
+                "indexValue": "0.97"
+            },
+            "Rejecters": {
+                "percentageValue": "86.26%",
+                "indexValue": "1.13"
+            },
+            "Winbacks": {
+                "percentageValue": "78.69%",
+                "indexValue": "1.03"
+            },
+            "Lapsed": {
+                "percentageValue": "77.45%",
+                "indexValue": "1.02"
+            },
+            "Switchers": {
+                "percentageValue": "69.43%",
+                "indexValue": "0.91"
+            },
+            "Prospects": {
+                "percentageValue": "74.50%",
+                "indexValue": "0.98"
+            },
+            "Non-Customers": {
+                "percentageValue": "78.36%",
+                "indexValue": "1.03"
+            },
+            "Loyals": {
+                "percentageValue": "64.79%",
+                "indexValue": "0.85"
+            },
+            "Customers": {
+                "percentageValue": "67.19%",
+                "indexValue": "0.88"
+            }
+        },
+        "Black or African American": {
+            "Unawares": {
+                "percentageValue": "6.08%",
+                "indexValue": "0.68"
+            },
+            "Rejecters": {
+                "percentageValue": "5.32%",
+                "indexValue": "0.59"
+            },
+            "Winbacks": {
+                "percentageValue": "7.80%",
+                "indexValue": "0.87"
+            },
+            "Lapsed": {
+                "percentageValue": "8.73%",
+                "indexValue": "0.97"
+            },
+            "Switchers": {
+                "percentageValue": "11.46%",
+                "indexValue": "1.28"
+            },
+            "Prospects": {
+                "percentageValue": "10.79%",
+                "indexValue": "1.20"
+            },
+            "Non-Customers": {
+                "percentageValue": "8.23%",
+                "indexValue": "0.92"
+            },
+            "Loyals": {
+                "percentageValue": "12.77%",
+                "indexValue": "1.42"
+            },
+            "Customers": {
+                "percentageValue": "12.15%",
+                "indexValue": "1.36"
+            }
+        },
+        "American Indian or Alaska Native": {
+            "Unawares": {
+                "percentageValue": "0.00%",
+                "indexValue": "0.00"
+            },
+            "Rejecters": {
+                "percentageValue": "0.67%",
+                "indexValue": "0.74"
+            },
+            "Winbacks": {
+                "percentageValue": "0.84%",
+                "indexValue": "0.92"
+            },
+            "Lapsed": {
+                "percentageValue": "1.41%",
+                "indexValue": "1.53"
+            },
+            "Switchers": {
+                "percentageValue": "1.13%",
+                "indexValue": "1.24"
+            },
+            "Prospects": {
+                "percentageValue": "0.79%",
+                "indexValue": "0.87"
+            },
+            "Non-Customers": {
+                "percentageValue": "1.01%",
+                "indexValue": "1.11"
+            },
+            "Loyals": {
+                "percentageValue": "1.04%",
+                "indexValue": "1.14"
+            },
+            "Customers": {
+                "percentageValue": "1.09%",
+                "indexValue": "1.19"
+            }
+        },
+        "Asian": {
+            "Unawares": {
+                "percentageValue": "1.35%",
+                "indexValue": "0.35"
+            },
+            "Rejecters": {
+                "percentageValue": "1.86%",
+                "indexValue": "0.48"
+            },
+            "Winbacks": {
+                "percentageValue": "3.95%",
+                "indexValue": "1.01"
+            },
+            "Lapsed": {
+                "percentageValue": "2.34%",
+                "indexValue": "0.60"
+            },
+            "Switchers": {
+                "percentageValue": "5.57%",
+                "indexValue": "1.43"
+            },
+            "Prospects": {
+                "percentageValue": "4.39%",
+                "indexValue": "1.13"
+            },
+            "Non-Customers": {
+                "percentageValue": "3.29%",
+                "indexValue": "0.84"
+            },
+            "Loyals": {
+                "percentageValue": "4.98%",
+                "indexValue": "1.28"
+            },
+            "Customers": {
+                "percentageValue": "5.29%",
+                "indexValue": "1.36"
+            }
+        },
+        "Native Hawaiian or Other Pacific Islander": {
+            "Unawares": {
+                "percentageValue": "0.00%",
+                "indexValue": "0.00"
+            },
+            "Rejecters": {
+                "percentageValue": "0.02%",
+                "indexValue": "0.40"
+            },
+            "Winbacks": {
+                "percentageValue": "0.06%",
+                "indexValue": "0.99"
+            },
+            "Lapsed": {
+                "percentageValue": "0.06%",
+                "indexValue": "1.01"
+            },
+            "Switchers": {
+                "percentageValue": "0.03%",
+                "indexValue": "0.56"
+            },
+            "Prospects": {
+                "percentageValue": "0.05%",
+                "indexValue": "0.92"
+            },
+            "Non-Customers": {
+                "percentageValue": "0.05%",
+                "indexValue": "0.91"
+            },
+            "Loyals": {
+                "percentageValue": "0.11%",
+                "indexValue": "1.92"
+            },
+            "Customers": {
+                "percentageValue": "0.09%",
+                "indexValue": "1.61"
+            }
+        },
+        "Latino or Hispanic": {
+            "Unawares": {
+                "percentageValue": "18.24%",
+                "indexValue": "2.10"
+            },
+            "Rejecters": {
+                "percentageValue": "4.44%",
+                "indexValue": "0.51"
+            },
+            "Winbacks": {
+                "percentageValue": "7.19%",
+                "indexValue": "0.83"
+            },
+            "Lapsed": {
+                "percentageValue": "8.44%",
+                "indexValue": "0.97"
+            },
+            "Switchers": {
+                "percentageValue": "10.91%",
+                "indexValue": "1.26"
+            },
+            "Prospects": {
+                "percentageValue": "8.31%",
+                "indexValue": "0.96"
+            },
+            "Non-Customers": {
+                "percentageValue": "11.68%",
+                "indexValue": "1.35"
+            },
+            "Loyals": {
+                "percentageValue": "14.84%",
+                "indexValue": "1.71"
+            },
+            "Customers": {
+                "percentageValue": "13.17%",
+                "indexValue": "1.52"
+            }
+        },
+        "Other": {
+            "Unawares": {
+                "percentageValue": "0.68%",
+                "indexValue": "0.47"
+            },
+            "Rejecters": {
+                "percentageValue": "1.42%",
+                "indexValue": "0.98"
+            },
+            "Winbacks": {
+                "percentageValue": "1.47%",
+                "indexValue": "1.02"
+            },
+            "Lapsed": {
+                "percentageValue": "1.58%",
+                "indexValue": "1.09"
+            },
+            "Switchers": {
+                "percentageValue": "1.46%",
+                "indexValue": "1.01"
+            },
+            "Prospects": {
+                "percentageValue": "1.16%",
+                "indexValue": "0.81"
+            },
+            "Non-Customers": {
+                "percentageValue": "1.35%",
+                "indexValue": "0.93"
+            },
+            "Loyals": {
+                "percentageValue": "1.47%",
+                "indexValue": "1.01"
+            },
+            "Customers": {
+                "percentageValue": "1.46%",
+                "indexValue": "1.01"
+            }
+        }
+    },
+    "Education": {
+        "Some High School, no diploma": {
+            "Unawares": {
+                "percentageValue": "5.41%",
+                "indexValue": "1.61"
+            },
+            "Rejecters": {
+                "percentageValue": "3.35%",
+                "indexValue": "1.00"
+            },
+            "Winbacks": {
+                "percentageValue": "2.67%",
+                "indexValue": "0.80"
+            },
+            "Lapsed": {
+                "percentageValue": "3.22%",
+                "indexValue": "0.96"
+            },
+            "Switchers": {
+                "percentageValue": "3.27%",
+                "indexValue": "0.98"
+            },
+            "Prospects": {
+                "percentageValue": "4.50%",
+                "indexValue": "1.34"
+            },
+            "Non-Customers": {
+                "percentageValue": "4.08%",
+                "indexValue": "1.22"
+            },
+            "Loyals": {
+                "percentageValue": "4.55%",
+                "indexValue": "1.36"
+            },
+            "Customers": {
+                "percentageValue": "4.02%",
+                "indexValue": "1.20"
+            }
+        },
+        "High school graduate (includes equivalency)": {
+            "Unawares": {
+                "percentageValue": "22.97%",
+                "indexValue": "1.02"
+            },
+            "Rejecters": {
+                "percentageValue": "25.44%",
+                "indexValue": "1.13"
+            },
+            "Winbacks": {
+                "percentageValue": "20.00%",
+                "indexValue": "0.89"
+            },
+            "Lapsed": {
+                "percentageValue": "20.86%",
+                "indexValue": "0.93"
+            },
+            "Switchers": {
+                "percentageValue": "22.28%",
+                "indexValue": "0.99"
+            },
+            "Prospects": {
+                "percentageValue": "24.76%",
+                "indexValue": "1.10"
+            },
+            "Non-Customers": {
+                "percentageValue": "23.00%",
+                "indexValue": "1.02"
+            },
+            "Loyals": {
+                "percentageValue": "24.99%",
+                "indexValue": "1.11"
+            },
+            "Customers": {
+                "percentageValue": "23.71%",
+                "indexValue": "1.06"
+            }
+        },
+        "Some college, no degree": {
+            "Unawares": {
+                "percentageValue": "16.89%",
+                "indexValue": "0.75"
+            },
+            "Rejecters": {
+                "percentageValue": "23.83%",
+                "indexValue": "1.06"
+            },
+            "Winbacks": {
+                "percentageValue": "23.83%",
+                "indexValue": "1.06"
+            },
+            "Lapsed": {
+                "percentageValue": "23.67%",
+                "indexValue": "1.05"
+            },
+            "Switchers": {
+                "percentageValue": "20.11%",
+                "indexValue": "0.89"
+            },
+            "Prospects": {
+                "percentageValue": "23.02%",
+                "indexValue": "1.02"
+            },
+            "Non-Customers": {
+                "percentageValue": "22.57%",
+                "indexValue": "1.00"
+            },
+            "Loyals": {
+                "percentageValue": "19.32%",
+                "indexValue": "0.86"
+            },
+            "Customers": {
+                "percentageValue": "19.73%",
+                "indexValue": "0.88"
+            }
+        },
+        "Associate's degree": {
+            "Unawares": {
+                "percentageValue": "15.54%",
+                "indexValue": "1.23"
+            },
+            "Rejecters": {
+                "percentageValue": "13.72%",
+                "indexValue": "1.09"
+            },
+            "Winbacks": {
+                "percentageValue": "12.84%",
+                "indexValue": "1.02"
+            },
+            "Lapsed": {
+                "percentageValue": "13.06%",
+                "indexValue": "1.04"
+            },
+            "Switchers": {
+                "percentageValue": "12.11%",
+                "indexValue": "0.96"
+            },
+            "Prospects": {
+                "percentageValue": "12.75%",
+                "indexValue": "1.01"
+            },
+            "Non-Customers": {
+                "percentageValue": "13.66%",
+                "indexValue": "1.08"
+            },
+            "Loyals": {
+                "percentageValue": "11.08%",
+                "indexValue": "0.88"
+            },
+            "Customers": {
+                "percentageValue": "11.62%",
+                "indexValue": "0.92"
+            }
+        },
+        "Bachelor's degree": {
+            "Unawares": {
+                "percentageValue": "29.73%",
+                "indexValue": "1.21"
+            },
+            "Rejecters": {
+                "percentageValue": "21.44%",
+                "indexValue": "0.87"
+            },
+            "Winbacks": {
+                "percentageValue": "25.49%",
+                "indexValue": "1.04"
+            },
+            "Lapsed": {
+                "percentageValue": "24.60%",
+                "indexValue": "1.00"
+            },
+            "Switchers": {
+                "percentageValue": "27.30%",
+                "indexValue": "1.11"
+            },
+            "Prospects": {
+                "percentageValue": "24.29%",
+                "indexValue": "0.99"
+            },
+            "Non-Customers": {
+                "percentageValue": "25.40%",
+                "indexValue": "1.04"
+            },
+            "Loyals": {
+                "percentageValue": "23.41%",
+                "indexValue": "0.95"
+            },
+            "Customers": {
+                "percentageValue": "25.50%",
+                "indexValue": "1.04"
+            }
+        },
+        "Graduate or professional degree": {
+            "Unawares": {
+                "percentageValue": "9.46%",
+                "indexValue": "0.65"
+            },
+            "Rejecters": {
+                "percentageValue": "12.23%",
+                "indexValue": "0.84"
+            },
+            "Winbacks": {
+                "percentageValue": "15.17%",
+                "indexValue": "1.04"
+            },
+            "Lapsed": {
+                "percentageValue": "14.59%",
+                "indexValue": "1.00"
+            },
+            "Switchers": {
+                "percentageValue": "14.93%",
+                "indexValue": "1.03"
+            },
+            "Prospects": {
+                "percentageValue": "10.69%",
+                "indexValue": "0.73"
+            },
+            "Non-Customers": {
+                "percentageValue": "12.82%",
+                "indexValue": "0.88"
+            },
+            "Loyals": {
+                "percentageValue": "16.64%",
+                "indexValue": "1.14"
+            },
+            "Customers": {
+                "percentageValue": "15.83%",
+                "indexValue": "1.09"
+            }
+        }
+    },
+    "Orientation": {
+        "Heterosexual or straight": {
+            "Unawares": {
+                "percentageValue": "86.11%",
+                "indexValue": "0.98"
+            },
+            "Rejecters": {
+                "percentageValue": "88.33%",
+                "indexValue": "1.01"
+            },
+            "Winbacks": {
+                "percentageValue": "88.26%",
+                "indexValue": "1.01"
+            },
+            "Lapsed": {
+                "percentageValue": "86.14%",
+                "indexValue": "0.98"
+            },
+            "Switchers": {
+                "percentageValue": "87.11%",
+                "indexValue": "1.00"
+            },
+            "Prospects": {
+                "percentageValue": "86.46%",
+                "indexValue": "0.99"
+            },
+            "Non-Customers": {
+                "percentageValue": "87.07%",
+                "indexValue": "1.00"
+            },
+            "Loyals": {
+                "percentageValue": "86.19%",
+                "indexValue": "0.98"
+            },
+            "Customers": {
+                "percentageValue": "86.65%",
+                "indexValue": "0.99"
+            }
+        },
+        "Gay or lesbian": {
+            "Unawares": {
+                "percentageValue": "5.56%",
+                "indexValue": "1.60"
+            },
+            "Rejecters": {
+                "percentageValue": "3.59%",
+                "indexValue": "1.04"
+            },
+            "Winbacks": {
+                "percentageValue": "3.46%",
+                "indexValue": "1.00"
+            },
+            "Lapsed": {
+                "percentageValue": "4.31%",
+                "indexValue": "1.24"
+            },
+            "Switchers": {
+                "percentageValue": "2.95%",
+                "indexValue": "0.85"
+            },
+            "Prospects": {
+                "percentageValue": "3.49%",
+                "indexValue": "1.01"
+            },
+            "Non-Customers": {
+                "percentageValue": "4.24%",
+                "indexValue": "1.22"
+            },
+            "Loyals": {
+                "percentageValue": "3.37%",
+                "indexValue": "0.97"
+            },
+            "Customers": {
+                "percentageValue": "3.18%",
+                "indexValue": "0.92"
+            }
+        },
+        "Bisexual": {
+            "Unawares": {
+                "percentageValue": "7.64%",
+                "indexValue": "1.22"
+            },
+            "Rejecters": {
+                "percentageValue": "4.92%",
+                "indexValue": "0.79"
+            },
+            "Winbacks": {
+                "percentageValue": "6.12%",
+                "indexValue": "0.98"
+            },
+            "Lapsed": {
+                "percentageValue": "5.88%",
+                "indexValue": "0.94"
+            },
+            "Switchers": {
+                "percentageValue": "7.47%",
+                "indexValue": "1.20"
+            },
+            "Prospects": {
+                "percentageValue": "6.72%",
+                "indexValue": "1.08"
+            },
+            "Non-Customers": {
+                "percentageValue": "6.39%",
+                "indexValue": "1.02"
+            },
+            "Loyals": {
+                "percentageValue": "6.89%",
+                "indexValue": "1.10"
+            },
+            "Customers": {
+                "percentageValue": "7.19%",
+                "indexValue": "1.15"
+            }
+        },
+        "Trans/Transgender": {
+            "Unawares": {
+                "percentageValue": "0.00%",
+                "indexValue": "0.00"
+            },
+            "Rejecters": {
+                "percentageValue": "0.70%",
+                "indexValue": "1.01"
+            },
+            "Winbacks": {
+                "percentageValue": "0.52%",
+                "indexValue": "0.75"
+            },
+            "Lapsed": {
+                "percentageValue": "1.11%",
+                "indexValue": "1.61"
+            },
+            "Switchers": {
+                "percentageValue": "0.65%",
+                "indexValue": "0.94"
+            },
+            "Prospects": {
+                "percentageValue": "0.69%",
+                "indexValue": "1.00"
+            },
+            "Non-Customers": {
+                "percentageValue": "0.81%",
+                "indexValue": "1.18"
+            },
+            "Loyals": {
+                "percentageValue": "0.95%",
+                "indexValue": "1.38"
+            },
+            "Customers": {
+                "percentageValue": "0.83%",
+                "indexValue": "1.20"
+            }
+        },
+        "Other": {
+            "Unawares": {
+                "percentageValue": "0.69%",
+                "indexValue": "0.58"
+            },
+            "Rejecters": {
+                "percentageValue": "1.53%",
+                "indexValue": "1.28"
+            },
+            "Winbacks": {
+                "percentageValue": "0.93%",
+                "indexValue": "0.77"
+            },
+            "Lapsed": {
+                "percentageValue": "1.51%",
+                "indexValue": "1.26"
+            },
+            "Switchers": {
+                "percentageValue": "1.01%",
+                "indexValue": "0.84"
+            },
+            "Prospects": {
+                "percentageValue": "1.53%",
+                "indexValue": "1.28"
+            },
+            "Non-Customers": {
+                "percentageValue": "1.34%",
+                "indexValue": "1.12"
+            },
+            "Loyals": {
+                "percentageValue": "1.37%",
+                "indexValue": "1.15"
+            },
+            "Customers": {
+                "percentageValue": "1.22%",
+                "indexValue": "1.02"
+            }
+        },
+        "Non-binary": {
+            "Unawares": {
+                "percentageValue": "0.00%",
+                "indexValue": "0.00"
+            },
+            "Rejecters": {
+                "percentageValue": "0.93%",
+                "indexValue": "1.03"
+            },
+            "Winbacks": {
+                "percentageValue": "0.72%",
+                "indexValue": "0.80"
+            },
+            "Lapsed": {
+                "percentageValue": "1.05%",
+                "indexValue": "1.16"
+            },
+            "Switchers": {
+                "percentageValue": "0.81%",
+                "indexValue": "0.90"
+            },
+            "Prospects": {
+                "percentageValue": "1.11%",
+                "indexValue": "1.23"
+            },
+            "Non-Customers": {
+                "percentageValue": "0.97%",
+                "indexValue": "1.08"
+            },
+            "Loyals": {
+                "percentageValue": "1.22%",
+                "indexValue": "1.35"
+            },
+            "Customers": {
+                "percentageValue": "1.06%",
+                "indexValue": "1.17"
+            }
+        }
+    },
+    "Share Of Wallet": {
+        "0 out of last five": {
+            "Unawares": {
+                "percentageValue": "0.00%",
+                "indexValue": "0.00"
+            },
+            "Rejecters": {
+                "percentageValue": "100.00%",
+                "indexValue": "1.79"
+            },
+            "Winbacks": {
+                "percentageValue": "64.47%",
+                "indexValue": "1.16"
+            },
+            "Lapsed": {
+                "percentageValue": "65.10%",
+                "indexValue": "1.17"
+            },
+            "Switchers": {
+                "percentageValue": "22.53%",
+                "indexValue": "0.40"
+            },
+            "Prospects": {
+                "percentageValue": "100.00%",
+                "indexValue": "1.79"
+            },
+            "Non-Customers": {
+                "percentageValue": "86.16%",
+                "indexValue": "1.54"
+            },
+            "Loyals": {
+                "percentageValue": "7.96%",
+                "indexValue": "0.14"
+            },
+            "Customers": {
+                "percentageValue": "18.73%",
+                "indexValue": "0.34"
+            }
+        },
+        "1 out of last five": {
+            "Unawares": {
+                "percentageValue": "0.00%",
+                "indexValue": "0.00"
+            },
+            "Rejecters": {
+                "percentageValue": "0.00%",
+                "indexValue": "0.00"
+            },
+            "Winbacks": {
+                "percentageValue": "16.65%",
+                "indexValue": "1.11"
+            },
+            "Lapsed": {
+                "percentageValue": "12.16%",
+                "indexValue": "0.81"
+            },
+            "Switchers": {
+                "percentageValue": "33.79%",
+                "indexValue": "2.26"
+            },
+            "Prospects": {
+                "percentageValue": "0.00%",
+                "indexValue": "0.00"
+            },
+            "Non-Customers": {
+                "percentageValue": "14.76%",
+                "indexValue": "0.99"
+            },
+            "Loyals": {
+                "percentageValue": "17.32%",
+                "indexValue": "1.16"
+            },
+            "Customers": {
+                "percentageValue": "28.21%",
+                "indexValue": "1.89"
+            }
+        },
+        "2 out of last five": {
+            "Unawares": {
+                "percentageValue": "0.00%",
+                "indexValue": "0.00"
+            },
+            "Rejecters": {
+                "percentageValue": "0.00%",
+                "indexValue": "0.00"
+            },
+            "Winbacks": {
+                "percentageValue": "6.36%",
+                "indexValue": "0.69"
+            },
+            "Lapsed": {
+                "percentageValue": "6.67%",
+                "indexValue": "0.72"
+            },
+            "Switchers": {
+                "percentageValue": "18.16%",
+                "indexValue": "1.96"
+            },
+            "Prospects": {
+                "percentageValue": "0.00%",
+                "indexValue": "0.00"
+            },
+            "Non-Customers": {
+                "percentageValue": "6.52%",
+                "indexValue": "0.70"
+            },
+            "Loyals": {
+                "percentageValue": "20.39%",
+                "indexValue": "2.21"
+            },
+            "Customers": {
+                "percentageValue": "19.34%",
+                "indexValue": "2.09"
+            }
+        },
+        "3 out of last five": {
+            "Unawares": {
+                "percentageValue": "0.00%",
+                "indexValue": "0.00"
+            },
+            "Rejecters": {
+                "percentageValue": "0.00%",
+                "indexValue": "0.00"
+            },
+            "Winbacks": {
+                "percentageValue": "5.72%",
+                "indexValue": "0.72"
+            },
+            "Lapsed": {
+                "percentageValue": "4.71%",
+                "indexValue": "0.59"
+            },
+            "Switchers": {
+                "percentageValue": "9.89%",
+                "indexValue": "1.24"
+            },
+            "Prospects": {
+                "percentageValue": "0.00%",
+                "indexValue": "0.00"
+            },
+            "Non-Customers": {
+                "percentageValue": "5.26%",
+                "indexValue": "0.66"
+            },
+            "Loyals": {
+                "percentageValue": "21.09%",
+                "indexValue": "2.64"
+            },
+            "Customers": {
+                "percentageValue": "17.51%",
+                "indexValue": "2.19"
+            }
+        },
+        "4 out of last five": {
+            "Unawares": {
+                "percentageValue": "0.00%",
+                "indexValue": "0.00"
+            },
+            "Rejecters": {
+                "percentageValue": "0.00%",
+                "indexValue": "0.00"
+            },
+            "Winbacks": {
+                "percentageValue": "2.79%",
+                "indexValue": "0.59"
+            },
+            "Lapsed": {
+                "percentageValue": "5.49%",
+                "indexValue": "1.17"
+            },
+            "Switchers": {
+                "percentageValue": "5.52%",
+                "indexValue": "1.18"
+            },
+            "Prospects": {
+                "percentageValue": "0.00%",
+                "indexValue": "0.00"
+            },
+            "Non-Customers": {
+                "percentageValue": "4.58%",
+                "indexValue": "0.98"
+            },
+            "Loyals": {
+                "percentageValue": "12.71%",
+                "indexValue": "2.71"
+            },
+            "Customers": {
+                "percentageValue": "10.53%",
+                "indexValue": "2.24"
+            }
+        },
+        "5 out of last five": {
+            "Unawares": {
+                "percentageValue": "0.00%",
+                "indexValue": "0.00"
+            },
+            "Rejecters": {
+                "percentageValue": "0.00%",
+                "indexValue": "0.00"
+            },
+            "Winbacks": {
+                "percentageValue": "4.00%",
+                "indexValue": "0.55"
+            },
+            "Lapsed": {
+                "percentageValue": "5.88%",
+                "indexValue": "0.80"
+            },
+            "Switchers": {
+                "percentageValue": "10.11%",
+                "indexValue": "1.38"
+            },
+            "Prospects": {
+                "percentageValue": "0.00%",
+                "indexValue": "0.00"
+            },
+            "Non-Customers": {
+                "percentageValue": "5.12%",
+                "indexValue": "0.70"
+            },
+            "Loyals": {
+                "percentageValue": "20.53%",
+                "indexValue": "2.81"
+            },
+            "Customers": {
+                "percentageValue": "17.09%",
+                "indexValue": "2.34"
+            }
+        }
+    },
+    "Category Spend": {
+        "$0": {
+            "Unawares": {
+                "percentageValue": "0.00%",
+                "indexValue": "0.00"
+            },
+            "Rejecters": {
+                "percentageValue": "61.22%",
+                "indexValue": "3.00"
+            },
+            "Winbacks": {
+                "percentageValue": "37.56%",
+                "indexValue": "3.00"
+            },
+            "Lapsed": {
+                "percentageValue": "35.97%",
+                "indexValue": "3.00"
+            },
+            "Switchers": {
+                "percentageValue": "15.97%",
+                "indexValue": "3.00"
+            },
+            "Prospects": {
+                "percentageValue": "42.59%",
+                "indexValue": "3.00"
+            },
+            "Non-Customers": {
+                "percentageValue": "46.61%",
+                "indexValue": "3.00"
+            },
+            "Loyals": {
+                "percentageValue": "9.06%",
+                "indexValue": "3.00"
+            },
+            "Customers": {
+                "percentageValue": "13.47%",
+                "indexValue": "3.00"
+            }
+        },
+        "$1-$125": {
+            "Unawares": {
+                "percentageValue": "0.00%",
+                "indexValue": "0.00"
+            },
+            "Rejecters": {
+                "percentageValue": "25.44%",
+                "indexValue": "3.00"
+            },
+            "Winbacks": {
+                "percentageValue": "36.76%",
+                "indexValue": "3.00"
+            },
+            "Lapsed": {
+                "percentageValue": "32.16%",
+                "indexValue": "3.00"
+            },
+            "Switchers": {
+                "percentageValue": "35.75%",
+                "indexValue": "3.00"
+            },
+            "Prospects": {
+                "percentageValue": "34.44%",
+                "indexValue": "3.00"
+            },
+            "Non-Customers": {
+                "percentageValue": "32.76%",
+                "indexValue": "3.00"
+            },
+            "Loyals": {
+                "percentageValue": "27.39%",
+                "indexValue": "3.00"
+            },
+            "Customers": {
+                "percentageValue": "32.12%",
+                "indexValue": "3.00"
+            }
+        },
+        "$126-$250": {
+            "Unawares": {
+                "percentageValue": "0.00%",
+                "indexValue": "0.00"
+            },
+            "Rejecters": {
+                "percentageValue": "7.30%",
+                "indexValue": "3.00"
+            },
+            "Winbacks": {
+                "percentageValue": "14.26%",
+                "indexValue": "3.00"
+            },
+            "Lapsed": {
+                "percentageValue": "13.88%",
+                "indexValue": "3.00"
+            },
+            "Switchers": {
+                "percentageValue": "24.35%",
+                "indexValue": "3.00"
+            },
+            "Prospects": {
+                "percentageValue": "10.90%",
+                "indexValue": "3.00"
+            },
+            "Non-Customers": {
+                "percentageValue": "12.26%",
+                "indexValue": "3.00"
+            },
+            "Loyals": {
+                "percentageValue": "23.99%",
+                "indexValue": "3.00"
+            },
+            "Customers": {
+                "percentageValue": "24.17%",
+                "indexValue": "3.00"
+            }
+        },
+        "$251-$375": {
+            "Unawares": {
+                "percentageValue": "0.00%",
+                "indexValue": "0.00"
+            },
+            "Rejecters": {
+                "percentageValue": "3.81%",
+                "indexValue": "3.00"
+            },
+            "Winbacks": {
+                "percentageValue": "7.27%",
+                "indexValue": "3.00"
+            },
+            "Lapsed": {
+                "percentageValue": "10.19%",
+                "indexValue": "3.00"
+            },
+            "Switchers": {
+                "percentageValue": "13.02%",
+                "indexValue": "3.00"
+            },
+            "Prospects": {
+                "percentageValue": "7.41%",
+                "indexValue": "3.00"
+            },
+            "Non-Customers": {
+                "percentageValue": "7.88%",
+                "indexValue": "3.00"
+            },
+            "Loyals": {
+                "percentageValue": "20.61%",
+                "indexValue": "3.00"
+            },
+            "Customers": {
+                "percentageValue": "17.67%",
+                "indexValue": "3.00"
+            }
+        },
+        "$376+": {
+            "Unawares": {
+                "percentageValue": "0.00%",
+                "indexValue": "0.00"
+            },
+            "Rejecters": {
+                "percentageValue": "2.23%",
+                "indexValue": "3.00"
+            },
+            "Winbacks": {
+                "percentageValue": "4.16%",
+                "indexValue": "3.00"
+            },
+            "Lapsed": {
+                "percentageValue": "7.79%",
+                "indexValue": "3.00"
+            },
+            "Switchers": {
+                "percentageValue": "10.91%",
+                "indexValue": "3.00"
+            },
+            "Prospects": {
+                "percentageValue": "4.66%",
+                "indexValue": "3.00"
+            },
+            "Non-Customers": {
+                "percentageValue": "5.56%",
+                "indexValue": "3.00"
+            },
+            "Loyals": {
+                "percentageValue": "18.95%",
+                "indexValue": "3.00"
+            },
+            "Customers": {
+                "percentageValue": "16.01%",
+                "indexValue": "3.00"
+            }
+        }
+    }
+}

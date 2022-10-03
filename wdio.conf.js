@@ -44,7 +44,7 @@ exports.config = {
             'test/specs/quadrant/quadrant-view-navigation-change-competitive-set-test-1.e2e.js',
             'test/specs/quadrant/quadrant-view-navigation-default-load-params-test-3.e2e.js',
             'test/specs/quadrant/quadrant-view-navigation-four-competitive-set-display-test-1.e2e.js',
-            'test/specs/quadrant/quadrant-view-navigation-four-competitive-set-test-1.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-four-competitive-set-test-2.e2e.js',
             'test/specs/quadrant/quadrant-view-navigation-hover-over-attribute-test-1.e2e.js',
             'test/specs/quadrant/quadrant-view-navigation-hover-over-attribute-test-2.e2e.js',
             'test/specs/quadrant/quadrant-view-navigation-hover-over-factor-test-1.e2e.js',
@@ -64,7 +64,7 @@ exports.config = {
             'test/specs/quadrant/quadrant-view-navigation-zoom-test-1.e2e.js',
             'test/specs/quadrant/quadrant-view-navigation-zoom-test-2.e2e.js',
             'test/specs/quadrant/quadrant-view-navigation-zoom-test-3.e2e.js',
-            'test/specs/quadrant/quadrant-view-navigation-zoom-test-4.e2e.js',
+            'test/specs/quadrant/quadrant-view-navigation-zoom-test-4.e2e.js'
         ],
         hierarchyView: [
             'test/specs/hierarchy-view/hierarchy-chart-info-icon-test-1.e2e.js',
@@ -232,7 +232,7 @@ exports.config = {
     // The number of times to retry the entire specfile when it fails as a whole
     // spec retries
 
-    specFileRetries: 2,
+    specFileRetries: 0,
     //
     // Delay in seconds between the spec file retry attempts
     // specFileRetriesDelay: 0,
@@ -250,7 +250,7 @@ exports.config = {
             outputDir: './Results',
             outputFileFormat: function (opts) {
                 fs.writeFileSync(`./zzz.opts-post-execution.json`, JSON.stringify(opts, null, 4))
-                return `results-${opts.cid}.json`
+                return `results-${opts.suite}-${opts.cid}.json`
             }
         }]
 

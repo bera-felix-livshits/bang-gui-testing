@@ -90,7 +90,9 @@ describe(`Quadrant View Navigation - Test 1 - Change Competitive Set`, () => {
             "Dockers",
             "GUESS"
         ])
+    })
 
+    it(`Close filters side bar`,async function (){
         await filtersSideBar.clickCloseFiltersButton();
     })
 

@@ -1,0 +1,180 @@
+{
+    "specs": [
+        "/Users/felixlivshits/workspace/bera-gui-testing/test/specs/audience-profiling/audience-profiling-home-page-tile-where-are-they-test.e2e.js"
+    ],
+    "suites": {
+        "quadrant": [
+            "test/specs/quadrant/quadrant-view-navigation-analysis-period-update-test-1.e2e.js",
+            "test/specs/quadrant/quadrant-view-navigation-change-competitive-set-test-1.e2e.js",
+            "test/specs/quadrant/quadrant-view-navigation-default-load-params-test-3.e2e.js",
+            "test/specs/quadrant/quadrant-view-navigation-four-competitive-set-display-test-1.e2e.js",
+            "test/specs/quadrant/quadrant-view-navigation-four-competitive-set-test-2.e2e.js",
+            "test/specs/quadrant/quadrant-view-navigation-hover-over-attribute-test-1.e2e.js",
+            "test/specs/quadrant/quadrant-view-navigation-hover-over-attribute-test-2.e2e.js",
+            "test/specs/quadrant/quadrant-view-navigation-hover-over-factor-test-1.e2e.js",
+            "test/specs/quadrant/quadrant-view-navigation-hover-over-factor-test-2.e2e.js",
+            "test/specs/quadrant/quadrant-view-navigation-hover-over-test-1.e2e.js",
+            "test/specs/quadrant/quadrant-view-navigation-hover-over-test-2.e2e.js",
+            "test/specs/quadrant/quadrant-view-navigation-hover-over-test-3.e2e.js",
+            "test/specs/quadrant/quadrant-view-navigation-hover-over-test-4.e2e.js",
+            "test/specs/quadrant/quadrant-view-navigation-primary-brand-update-test-1.e2e.js",
+            "test/specs/quadrant/quadrant-view-navigation-sample-size-test-1.e2e.js",
+            "test/specs/quadrant/quadrant-view-navigation-sem-outputs-full-prioritization-summary-view-test-1.e2e.js",
+            "test/specs/quadrant/quadrant-view-navigation-sem-outputs-full-prioritization-test-1.e2e.js",
+            "test/specs/quadrant/quadrant-view-navigation-sem-outputs-no-prioritization-test-1.e2e.js",
+            "test/specs/quadrant/quadrant-view-navigation-sem-outputs-partial-prioritization-test-1.e2e.js",
+            "test/specs/quadrant/quadrant-view-navigation-test-1.e2e.js",
+            "test/specs/quadrant/quadrant-view-navigation-toggle-between-constructs-test-1.e2e.js",
+            "test/specs/quadrant/quadrant-view-navigation-zoom-test-1.e2e.js",
+            "test/specs/quadrant/quadrant-view-navigation-zoom-test-2.e2e.js",
+            "test/specs/quadrant/quadrant-view-navigation-zoom-test-3.e2e.js",
+            "test/specs/quadrant/quadrant-view-navigation-zoom-test-4.e2e.js"
+        ],
+        "hierarchyView": [
+            "test/specs/hierarchy-view/hierarchy-chart-info-icon-test-1.e2e.js",
+            "test/specs/hierarchy-view/hierarchy-chart-navigation-analysis-period-change-test-1.e2e.js",
+            "test/specs/hierarchy-view/hierarchy-chart-navigation-analysis-period-change-with-different-page-load-test-2.e2e.js",
+            "test/specs/hierarchy-view/hierarchy-chart-navigation-audience-change-test-1.e2e.js",
+            "test/specs/hierarchy-view/hierarchy-chart-navigation-audience-change-with-different-page-load-test-2.e2e.js",
+            "test/specs/hierarchy-view/hierarchy-chart-navigation-brand-positioning-more-button-test-2.e2e.js",
+            "test/specs/hierarchy-view/hierarchy-chart-navigation-brand-positioning-test-1.e2e.js",
+            "test/specs/hierarchy-view/hierarchy-chart-navigation-constructs-colors-test-5.e2e.js",
+            "test/specs/hierarchy-view/hierarchy-chart-navigation-constructs-order-test-6.e2e.js",
+            "test/specs/hierarchy-view/hierarchy-chart-navigation-data-for-chart-bar-and-table-views-test-4.e2e.js",
+            "test/specs/hierarchy-view/hierarchy-chart-navigation-data-loads-in-percent-test-3.e2e.js",
+            "test/specs/hierarchy-view/hierarchy-chart-navigation-default-parameters-test-2.e2e.js",
+            "test/specs/hierarchy-view/hierarchy-chart-navigation-factors-level-test-1.e2e.js",
+            "test/specs/hierarchy-view/hierarchy-chart-navigation-factors-level-test-2.e2e.js",
+            "test/specs/hierarchy-view/hierarchy-chart-navigation-more-buttons-test-1.e2e.js",
+            "test/specs/hierarchy-view/hierarchy-chart-navigation-positioning-attributes-test-1.e2e.js",
+            "test/specs/hierarchy-view/hierarchy-chart-navigation-positioning-attributes-test-2.e2e.js",
+            "test/specs/hierarchy-view/hierarchy-chart-navigation-primary-brand-change-test-1.e2e.js",
+            "test/specs/hierarchy-view/hierarchy-chart-navigation-primary-brand-change-with-different-page-load-test-2.e2e.js",
+            "test/specs/hierarchy-view/hierarchy-chart-navigation-test-1.e2e.js",
+            "test/specs/hierarchy-view/hierarchy-chart-sample-size-test-1.e2e.js"
+        ]
+    },
+    "exclude": [],
+    "logLevel": "info",
+    "logLevels": {},
+    "excludeDriverLogs": [],
+    "bail": 0,
+    "waitforInterval": 500,
+    "waitforTimeout": 10000,
+    "framework": "mocha",
+    "reporters": [
+        "spec",
+        "dot",
+        [
+            "json",
+            {
+                "outputDir": "./Results"
+            }
+        ]
+    ],
+    "services": [
+        "chromedriver",
+        [
+            "image-comparison",
+            {
+                "baselineFolder": "/Users/felixlivshits/workspace/bera-gui-testing/test/img-baseline/",
+                "formatImageName": "{tag}",
+                "screenshotPath": "/Users/felixlivshits/workspace/bera-gui-testing/test/img-compare/",
+                "savePerInstance": true,
+                "autoSaveBaseline": true,
+                "blockOutStatusBar": true,
+                "blockOutToolBar": true,
+                "isHybridApp": true,
+                "tabbableOptions": {
+                    "circle": {
+                        "size": 18,
+                        "fontSize": 18
+                    },
+                    "line": {
+                        "color": "#ff221a",
+                        "width": 3
+                    }
+                }
+            }
+        ]
+    ],
+    "maxInstances": 5,
+    "maxInstancesPerCapability": 100,
+    "filesToWatch": [],
+    "connectionRetryTimeout": 120000,
+    "connectionRetryCount": 3,
+    "execArgv": [],
+    "runnerEnv": {
+        "FORCE_COLOR": 1
+    },
+    "runner": "local",
+    "specFileRetries": 0,
+    "specFileRetriesDelay": 0,
+    "specFileRetriesDeferred": false,
+    "reporterSyncInterval": 100,
+    "reporterSyncTimeout": 5000,
+    "cucumberFeaturesWithLineNumbers": [],
+    "autoCompileOpts": {
+        "autoCompile": true,
+        "tsNodeOpts": {
+            "transpileOnly": true
+        },
+        "babelOpts": {}
+    },
+    "mochaOpts": {
+        "timeout": 600000,
+        "ui": "bdd"
+    },
+    "jasmineOpts": {
+        "defaultTimeoutInterval": 10000
+    },
+    "cucumberOpts": {
+        "timeout": 10000
+    },
+    "onPrepare": [],
+    "onWorkerStart": [],
+    "onWorkerEnd": [],
+    "before": [
+        null
+    ],
+    "beforeSession": [
+        null
+    ],
+    "beforeSuite": [
+        null
+    ],
+    "beforeHook": [],
+    "beforeTest": [
+        null
+    ],
+    "beforeCommand": [],
+    "afterCommand": [],
+    "afterTest": [],
+    "afterHook": [],
+    "afterSuite": [
+        null
+    ],
+    "afterSession": [
+        null
+    ],
+    "after": [],
+    "onComplete": [
+        null
+    ],
+    "onReload": [],
+    "beforeFeature": [],
+    "beforeScenario": [],
+    "beforeStep": [],
+    "afterStep": [],
+    "afterScenario": [],
+    "afterFeature": [],
+    "baseUrl": "https://apps.bera.ai",
+    "_": [
+        "run"
+    ],
+    "spec": [
+        "audience-profiling-home-page-tile-where-are-they-test.e2e"
+    ],
+    "$0": "/Users/felixlivshits/workspace/bera-gui-testing/node_modules/.bin/wdio",
+    "config-path": "wdio.conf.js"
+}

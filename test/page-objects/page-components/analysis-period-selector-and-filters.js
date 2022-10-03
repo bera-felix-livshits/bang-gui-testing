@@ -95,6 +95,14 @@ module.exports = {
         await elem.click();
     },
 
+    getAnalysisPeriod: async function () {
+        let periods = await $$(`//span[text()="Analysis Period"]/following-sibling::span[text()]`);
+        return await Promise.all(periods.map(async el => {
+            await el.waitForDisplayed({timeout:10000, interval:100})
+            return await el.getText();
+        }))
+    },
+
     clickFiltersButton: async function () {
         await new Promise(res => { setTimeout(() => { res() }, 250); })
         let filtersButtonXPath = `//button/span[text()="Filters"]`;
@@ -220,6 +228,13 @@ module.exports = {
         await new Promise(res => setTimeout(() => res(), 100));
     },
 
+    getSelectedDataSet: async function (){
+        let dataSet = await $(`//div[text()="Dataset"]/following-sibling::div//div[@role="button"]/div[text()]`);
+        await dataSet.waitForDisplayed({timeout:10000, interval:100});
+        return await dataSet.getText();
+    },
+
+
     getSearchInputBox: async function () {
         let brandInputSearchEl = await $(`//input[@type="search" and @placeholder="Find brand..."]`)
         return brandInputSearchEl;
@@ -269,6 +284,12 @@ module.exports = {
             await browser.keys("\uE00C");
             await searchInputBox.waitForDisplayed({ reverse: true, timeout: 5000, interval: 100 });
         }
+    },
+
+    removeBrandFromCompetitiveSet: async function (brandName) {
+        let closeButton = await $(`//span[text()="${brandName}"]/../following-sibling::div/button[@data-testid="close-button"]`);
+        await closeButton.waitForDisplayed({ timeout: 10000, interval: 100 });
+        await closeButton.click();
     },
 
     removeAllFromCompetitiveSet: async function () {

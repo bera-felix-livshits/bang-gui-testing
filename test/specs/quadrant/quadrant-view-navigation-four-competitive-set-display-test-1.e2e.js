@@ -106,6 +106,9 @@ describe(`Quadrant View Navigation - Test 1 - Four Competitive Set Display`, () 
         await filtersSideBar.addCompetitiveSetBrands([
             "GUESS"
         ])
+    })
+
+    it(`Close filter button`, async function(){
         await filtersSideBar.clickCloseFiltersButton();
     })
 
